@@ -123,8 +123,8 @@ Note: A zero denotes that there was data for the specified dimension member in t
 ###Ruby Examples
 Below are some examples written in the Ruby programming language to get you started:
 
-- [Export Cost History data in CSV format](https://github.com/CloudHealth/cht_api_guide/master/examples/ruby/export_csv.rb)
-- [Finding the Month Over Month Cost Increase](https://github.com/CloudHealth/cht_api_guide/master/examples/ruby/report_monthly_increase.rb)
+- [Export Cost History data in CSV format](https://github.com/CloudHealth/cht_api_guide/blob/master/examples/ruby/export_csv.rb)
+- [Finding the Month Over Month Cost Increase](https://github.com/CloudHealth/cht_api_guide/blob/master/examples/ruby/report_monthly_increase.rb)
 
 ###Support
 If you have questions or issues using the reporting API, please contact us at support@cloudhealthtech.com.
