@@ -23,7 +23,7 @@ try:
   dimensions = [dim.keys()[0] for dim in data["dimensions"]]
 
   # Output a CSV for this report
-  print "Month,%s" % ",".join(data['dimensions'][1][dimensions[1]])
+  print "Month,%s" % ",".join( [member["label"] for member in data['dimensions'][1][dimensions[1]]])
   index = 0
   for month in data["dimensions"][0][dimensions[0]]:
     row = data['data'][index]
@@ -33,7 +33,7 @@ try:
     # We have only selected 1 measure so just take first element of every array
     row_as_array = [str(item[0]) for item in row]
     print ",".join(row_as_array)
-    print "%s,%s" % (month, ",".join(row_as_array))
+    print "%s,%s" % (month["label"], ",".join(row_as_array))
     index+=1
 
 except urllib2.HTTPError as e:

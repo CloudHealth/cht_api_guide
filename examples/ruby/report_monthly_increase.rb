@@ -29,7 +29,7 @@ end
 
 def get_month_index(month)
   if String === month
-    @months.index month_name
+    @months.index  { |st| st["name"] == month_name }
   else
     month > 0 ? month : (@months.size + month)
   end
@@ -37,9 +37,9 @@ end
 
 # Fetch the cost for a specific service type (e.g. EC2 Compute) for a specified month.
 def get_cost_for(service_type, month)
-  it_index     = @service_types.index service_type
+  it_index     = @service_types.index { |st| st["name"] == service_type }
   month_index  = get_month_index month
-  metric_index = @metrics.index 'cost'
+  metric_index = @metrics.index  { |st| st["name"] == 'cost' }
   data     = @data['data']
   data[it_index] && data[it_index][month_index] && data[it_index][month_index][metric_index]
 end
@@ -60,8 +60,8 @@ def analyze_cost_increase_for_all_service_types
   puts "Analyzing for all service_types"
   service_types = @service_types.dup
   service_types.each do |service_type|
-    next if service_type == 'total'
-    analyze_cost_increase_for_service_type service_type
+    next if service_type["name"] == 'total'
+    analyze_cost_increase_for_service_type service_type["name"]
   end
 end
 

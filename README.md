@@ -56,15 +56,6 @@ To retrieve the available reports for a specific topic, you can specify the topi
 $ curl "https://apps.cloudhealthtech.com/olap_reports/cost?api_key=<your api key>"
 ```
 
-###Retrieve Data For a Standard Report
-To retrieve data for a report, you specify its URL, which is provided with the previous requests. For example, the below will retrieve the data for the Cost History report:
-
-```
-$ curl "https://apps.cloudhealthtech.com/olap_reports/cost/history?api_key=<your api key>"
-```
-
-For details on how to interpret the data returned, see the below section on Response For Report Request.
-
 ###Retrieve a List of Custom Reports
 To retrieve a list of custom reports, you can make the below request:
 
@@ -74,8 +65,19 @@ $ curl "https://apps.cloudhealthtech.com/olap_reports/custom?api_key=<your api k
 
 A custom report is any report that you or your users have customized and saved.
 
+
+###Retrieve Data For a Standard Report
+To retrieve data for a report, you specify its URL, which is provided with the previous requests. For example, the below will retrieve the data for the Cost History report:
+
+```
+$ curl "https://apps.cloudhealthtech.com/olap_reports/cost/history?api_key=<your api key>"
+```
+
+For details on how to interpret the data returned, see the below section on Response For Report Request.
+
 ###Retrieve Data For a Custom Report
-You can also retrieve data for a user saved report. To do this, you need to have the unique identifier for the report. To get this identifier, go to Customer Reports, and click preview for the report you wish to retrieve.
+
+You can also retrieve data for a user saved report. To do this, you need to have the URL for the report as discussed above.  If you know the unique identifier for the report, you can construct the URL. To get this identifier, go to Customer Reports, and click preview for the report you wish to retrieve.
 
 You can identify the unique identifier from the URL:
 
@@ -91,7 +93,7 @@ $ curl "https://apps.cloudhealthtech.com/olap_reports/custom/<report id>?api_key
 When you retrieve data for a report, the resulting json has the following major elements, each corresponding to the report terminology provided in Terminology section:
 
 - “report” - the name of the report (string).
-- “dimensions” - the available dimensions (x-axis and category) for the report (array).
+- “dimensions” - the available dimensions (x-axis and category) and their members for the report (array).
 - “filters” - the selected filters for the report (array).
 - “interval” - the selected interval for the report (string).
 - “measures” - the selected measures for the report (array).
@@ -101,8 +103,8 @@ The data is reported in an array, with each row in the array providing data for 
 
 ```
 “dimensions”: [ 
-{“Months”: [“total”, “January”, “February”]}, 
-{“Service Items”: [“total”, “ec2_compute”, “ec2_transfer]}
+{“Past-12-Months”: [{"label": "Total", "name": “total”}, {"label": "2013-10", "name": "2013-10"}, {"label": "2013-11", "name": "2013-11"}, ... ]}, 
+{“AWS-Service-Category”: [{"label": "Total", "name": “total”}, { "label": "EC2 - Compute", "name": "ec2_compute" }, { "label": "EC2 - Transfer", "name": "ec2_transfer" }, ... ]}
 ]
 ```
 
@@ -110,13 +112,13 @@ The supporting data might look like this:
 
 ```
 “data”: [ 
-[[100, 40, 60], [60, 20, 40], [40, 20, 20]],
-[[30, 20, 10], [20, 10, 10], [10, 0, nil]], 
-[[70, 40, 30], [40, 20, 20], [30, 20, 10]], 
+[[100, 40, 60], [60, 20, 40], [40, 20, 20], ...],
+[[30, 20, 10], [20, 10, 10], [10, 0, nil], ...], 
+[[70, 40, 30], [40, 20, 20], [30, 20, 10], ...], 
 ]
 ```
 
-The first row in the data represents the data for the “Month” called “total”; the second row is data for the “Month” called “January”, and so on. Within each row is the specific data that corresponds to the dimension called “Service Items”. For example, the values [60, 20, 40] represent the “total”, “ec_compute”, and “ec2_transfer” for the month of “January”.
+The first row in the data represents the data for the “Month” called “total”; the second row is data for the “Month” called “2013-10”, and so on. Within each row is the specific data that corresponds to the dimension called “AWS-Service-Category”. For example, the values [60, 20, 40] represent the “total”, “ec_compute”, and “ec2_transfer” for the month of “2013-10”.
 
 Note: A zero denotes that there was data for the specified dimension member in the underlying data analyzed, but its aggregate total was zero. A null however denotes that there was no data for this dimension member in the underlying data analyzed.
 

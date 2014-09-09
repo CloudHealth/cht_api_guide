@@ -26,13 +26,13 @@ json = get_report("cost/history", API_KEY)
 dimensions = json["dimensions"].collect{|dim| dim.keys.first }
 
 # Output a CSV for this report
-puts "Month,#{json["dimensions"][1][dimensions[1]].join(',')}\n"
+puts "Month,#{json["dimensions"][1][dimensions[1]].map { |member| member["label"] }.join(',')}\n"
 index = 0
 json["dimensions"][0][dimensions[0]].each do |month|
   row = json['data'][index]
   next if row.nil?
   # We have only selected 1 measure so just take first element of every array
   row_as_array = row.collect{|item| item[0]}
-  puts "#{month},#{(row_as_array.join(','))}\n"
+  puts "#{month["label"]},#{(row_as_array.join(','))}\n"
   index+=1
 end
