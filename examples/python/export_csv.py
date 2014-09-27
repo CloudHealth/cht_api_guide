@@ -4,7 +4,7 @@ import urlparse
 import urllib2
 import json
 
-API_ENDPOINT = "https://apps.cloudhealthtech.com/olap_reports/"
+API_ENDPOINT = "https://chapi.cloudhealthtech.com/olap_reports/"
 API_KEY = "<your api key>"
 
 # Returns json for requested report.
