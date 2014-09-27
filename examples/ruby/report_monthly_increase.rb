@@ -6,12 +6,12 @@ require "uri"
 require "json"
 require 'csv'
 
-API_ENDPOINT = "https://apps.cloudhealthtech.com/olap_reports/"
+API_ENDPOINT = "https://chapi.cloudhealthtech.com/olap_reports/"
 API_KEY = "<your api key>"
 
 # Returns json for requested report.
-def get_report(report, api_key)
-  uri = URI(API_ENDPOINT) + report + "?api_key=#{api_key}"
+def get_report(report)
+  uri = URI(API_ENDPOINT) + report + "?api_key=#{API_KEY}"
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = true
   request = Net::HTTP::Get.new(uri.request_uri)
@@ -51,7 +51,8 @@ def analyze_cost_increase_for_service_type(service_type)
   #  On October   01, Report on increase between August -> September without any code change
   cost_last_month = get_cost_for(service_type, -2).to_f
   cost_prev_month = get_cost_for(service_type, -3).to_f
-  pct = ((cost_last_month - cost_prev_month)/cost_prev_month*100.0)
+  divisor = cost_prev_month == 0 ? 1 : cost_prev_month
+  pct = ((cost_last_month - cost_prev_month)/divisor*100.0)
   puts "#{service_type} cost went from $#{cost_prev_month} to $#{cost_last_month} month-over-month, a change of #{pct}%"
 end
 
@@ -66,7 +67,7 @@ def analyze_cost_increase_for_all_service_types
 end
 
 # Fetch the json for the report
-@data = get_report("cost/history", API_KEY)
+@data = get_report("cost/history")
 @metrics = @data["measures"]
 @service_types = get_dimension_members(@data, "AWS-Service-Category")
 @months = get_dimension_members(@data, "Past-12-Months")
@@ -78,6 +79,4 @@ puts "---"
 
 # Output the month over month cost increase for all service items
 analyze_cost_increase_for_all_service_types
-
-
 

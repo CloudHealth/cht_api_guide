@@ -2,13 +2,12 @@
 var https = require('https');
 var request = require('request');
 
-var API_ENDPOINT = 'https://apps.cloudhealthtech.com/olap_reports/';
+var API_ENDPOINT = 'https://chapi.cloudhealthtech.com/olap_reports/';
 var API_KEY = '<your api key>';
 
 uri = API_ENDPOINT + 'cost/history' + '?api_key=' + API_KEY;
 request(uri, function(error, response, body) {
   json = JSON.parse(body);
-  //console.log(JSON.stringify(json, null, 4));
 
   // Get list of dimension names
   var dimensions = [];
