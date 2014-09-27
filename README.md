@@ -171,16 +171,16 @@ When you retrieve data for a report, the resulting json has the following major 
 The data is returned in a JSON array, with each row in the array providing data for a specific member in the dimension. For example if the dimensions returned:
 
 ```javascript
-“dimensions”: [ 
-{“Past-12-Months”: [{"label": "Total", "name": “total”}, {"label": "2013-10", "name": "2013-10"}, {"label": "2013-11", "name": "2013-11"}, ... ]}, 
-{“AWS-Service-Category”: [{"label": "Total", "name": “total”}, { "label": "EC2 - Compute", "name": "ec2_compute" }, { "label": "EC2 - Transfer", "name": "ec2_transfer" }, ... ]}
+"dimensions": [ 
+{"Past-12-Months": [{"label": "Total", "name": "total"}, {"label": "2013-10", "name": "2013-10"}, {"label": "2013-11", "name": "2013-11"}, ... ]}, 
+{"AWS-Service-Category": [{"label": "Total", "name": "total"}, { "label": "EC2 - Compute", "name": "ec2_compute" }, { "label": "EC2 - Transfer", "name": "ec2_transfer" }, ... ]}
 ]
 ```
 
 The supporting data might look like this:
 
 ```javascript
-“data”: [ 
+"data": [ 
 [[100, 40, 60], [60, 20, 40], [40, 20, 20], ...],
 [[30, 20, 10], [20, 10, 10], [10, 0, nil], ...], 
 [[70, 40, 30], [40, 20, 20], [30, 20, 10], ...], 
@@ -320,7 +320,7 @@ You can also filter on the measures available. For instance, to see just the EC2
 curl 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance?dimensions[]=time&dimensions[]=AWS-Availaibility-Zones&measures[]=ec2_cost_compute&filters\[\]=AWS-Availaibility-Zones:select:us-east-1a&interval=monthly&api_key=<your api key>
 ```
 
-Each filter is denoted with the `filters[]` query parameter and takes the following format: dimension-name:select|reject:member-name,member-name.  That is, a dimension name, a colon, an operator - either select or reject, and a comma separated list of members to include or exclude.  The operator `select` means you're interested in only the following members, and the operator `reject` means you're not interested in the following members.  For instance, to show the EC2 Compute Costs for all availability zones *except* us-east-1b and us-east-1d, you would issue the following query.
+Each filter is denoted with the `filters[]` query parameter and takes the following format: dimension-name:select|reject:member-name,member-name.  That is, a dimension name, a colon, an operator - either select or reject, another colon, and a comma separated list of members to include or exclude.  The operator `select` means you're interested in only the following members, and the operator `reject` means you're not interested in the following members.  For instance, to show the EC2 Compute Costs for all availability zones *except* us-east-1b and us-east-1d, you would issue the following query.
 
 ```
 curl 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance?dimensions[]=time&dimensions[]=AWS-Availaibility-Zones&measures[]=ec2_cost_compute&filters\[\]=AWS-Availaibility-Zones:reject:us-east-1b,us-east-1d&interval=monthly&api_key=<your api key>
