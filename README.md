@@ -347,7 +347,7 @@ curl "https://chapi.cloudhealthtech.com/api.json?api_key=20dbf6e0-1626-0130-2f1e
 To list the available attributes and relations on a single object, perform the following request supplying the object name and your API key.
 
 ```
-curl "https://apps.cloudhealthtech.com/api/AwsInstance.json?api_key=20dbf6e0-1626-0130-2f1e-58b035ef5111"
+curl "https://chapi.cloudhealthtech.com/api/AwsInstance.json?api_key=20dbf6e0-1626-0130-2f1e-58b035ef5111"
 ```
 
 ###Querying Objects
@@ -356,13 +356,13 @@ To retrieve objects matching a specifc criteria, supply a CloudHealth Query Lang
 [field name][operator][value]
 
 ```
-curl "https://apps.cloudhealthtech.com/api/search.json?api_key=20eaebc0-1626-0130-2f1e-58b035ef5111&name=AwsAccount&query=name='MyAccount'+and+is_private=0"
+curl "https://chapi.cloudhealthtech.com/api/search.json?api_key=20eaebc0-1626-0130-2f1e-58b035ef5111&name=AwsAccount&query=name='MyAccount'+and+is_private=0"
 ```
 
 You can also include related objects through the _include_ directive. e.g.
 
 ```
-curl "https://apps.cloudhealthtech.com/api/search.json?api_key=20eaebc0-1626-0130-2f1e-58b035ef5111&name=AwsInstanceStatus&query=event_description<>''&include=instance"
+curl "https://chapi.cloudhealthtech.com/api/search.json?api_key=20eaebc0-1626-0130-2f1e-58b035ef5111&name=AwsInstanceStatus&query=event_description<>''&include=instance"
 ```
 
 ##Ruby Examples
