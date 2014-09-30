@@ -371,17 +371,17 @@ Below are some examples written in the Ruby programming language to get you star
 - [Export Cost History data in CSV format](https://github.com/CloudHealth/cht_api_guide/blob/master/examples/ruby/export_csv.rb)
 - [Finding the Month Over Month Cost Increase](https://github.com/CloudHealth/cht_api_guide/blob/master/examples/ruby/report_monthly_increase.rb)
 
-###Python Examples
+##Python Examples
 Below are some examples written in the Python programming language to get you started:
 
 - [Export Cost History data in CSV format](https://github.com/CloudHealth/cht_api_guide/blob/master/examples/python/export_csv.py)
 
-###Node.js Examples
+##Node.js Examples
 Below are some examples written in Node.js using the JavaScript programming language to get you started:
 
 - [Export Cost History data in CSV format](https://github.com/CloudHealth/cht_api_guide/blob/master/examples/node.js/export_csv.js)
 
 
-###Support
+##Support
 If you have questions or issues using the reporting API, please contact us at support@cloudhealthtech.com.
 
