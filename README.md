@@ -42,13 +42,13 @@ The base API endpoint is https://chapi.cloudhealthtech.com.
 To retrieve a list of standard reports available through the API, run the below from a command:
 
 ```
-$ curl "https://chapi.cloudhealthtech.com/olap_reports?api_key=<your api key>"
+$ curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports?api_key=<your api key>"
 ```
 
 If you have Python installed on your system, you can pretty print the results with this command:
 
 ```
-$ curl "https://chapi.cloudhealthtech.com/olap_reports?api_key=<your api key>" | python -m json.tool
+$ curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports?api_key=<your api key>" | python -m json.tool
 ```
 
 Notice the list of available reports have a hierarchical structure. For example, under the topic “cost” are reports such as “history”, “current” and “instance”. These refer to the standard reports in the CloudHealth platform named Cost History, Current Cost and Instance Cost respectively. Each report also provides a URL to retrieve the report.
@@ -57,7 +57,7 @@ Notice the list of available reports have a hierarchical structure. For example,
 To retrieve the available reports for a specific topic, you can specify the topic in the URL. For example, the below will return a list of all standard reports available for the cost topic: 
 
 ```
-$ curl "https://chapi.cloudhealthtech.com/olap_reports/cost?api_key=<your api key>"
+$ curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/cost?api_key=<your api key>"
 ```
 
 ```javascript
@@ -83,7 +83,7 @@ $ curl "https://chapi.cloudhealthtech.com/olap_reports/cost?api_key=<your api ke
 By following the links above, you can get the URLs for all reports and sub-reports available in each category.  For instance, to retrieve all standard cost-related reports, you can issue the request below:
 
 ```
-$ curl "https://chapi.cloudhealthtech.com/olap_reports/cost?api_key=<your api key>"
+$ curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/cost?api_key=<your api key>"
 ```
 Response
 ```javascript
@@ -120,7 +120,7 @@ Response
 And to retrieve a list of custom reports, that is, reports you have saved, you can make the below request:
 
 ```
-$ curl "https://chapi.cloudhealthtech.com/olap_reports/custom?api_key=<your api key>"
+$ curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/custom?api_key=<your api key>"
 ```
 
 ```javascript
@@ -141,7 +141,7 @@ $ curl "https://chapi.cloudhealthtech.com/olap_reports/custom?api_key=<your api 
 To retrieve data for a standard report, you specify its URL, which is provided with the previous requests. For example, the below will retrieve the data for the Cost History report:
 
 ```
-$ curl "https://chapi.cloudhealthtech.com/olap_reports/cost/history?api_key=<your api key>"
+$ curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/cost/history?api_key=<your api key>"
 ```
 
 For details on how to interpret the data returned, see the below section on Response For Report Request.
@@ -157,7 +157,7 @@ You can identify the unique identifier from the URL:
 By adding the report id in the below request, you can retrieve the data for this report:
 
 ```
-$ curl "https://chapi.cloudhealthtech.com/olap_reports/custom/<report id>?api_key=<your api key>"
+$ curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/custom/<report id>?api_key=<your api key>"
 ```
 
 ####Response Format For Report Requests
@@ -197,7 +197,7 @@ Note: A zero denotes that there was data for the specified dimension member in t
 You are not limited to retrieving standard and saved (custom) reports, you can use the API to construct ad hoc queries.  In order to do so, however, you need to know the names of the dimensions, members, and measures available to each report type.  You can discover these by visiting the `/new` resource available under each report.  For instance, to discover the components available to create an instance usge query, you can visit:
 
 ```
-$ curl "https://chapi.cloudhealthtech.com/olap_reports/usage/instance/new?api_key=<your api key>"
+$ curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/usage/instance/new?api_key=<your api key>"
 ```
 
 This will return an array of available dimensions (including custom perspectives) and their repspective members. As well as an array of available measures.  The response will contain a label, for human consumption, and a name for API use.
@@ -308,7 +308,7 @@ This will return an array of available dimensions (including custom perspectives
 with this information in hand we can query for the EC2 Compute Cost by availabilty zone by time (monthly).
 
 ```
-curl 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance?dimensions[]=time&dimensions[]=AWS-Availaibility-Zones&measures[]=ec2_cost_compute&interval=monthly&api_key=<your api key>
+curl -H "Accept: application/json" 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance?dimensions[]=time&dimensions[]=AWS-Availaibility-Zones&measures[]=ec2_cost_compute&interval=monthly&api_key=<your api key>
 ```
 
 That is, for each dimension add a query string parameter called `dimensions[]`, and for each measure add a parameter called `measures[]`, setting each to the value as returned from the `/new` query.  In general, the dimensions available are hourly, daily, weekly, and monthly.
@@ -319,13 +319,13 @@ Note 2: When run from the command line you may need to escape various characters
 You can also filter on the measures available. For instance, to see just the EC2 Compute Cost in us-east-1a, you can supply a filter as follows:
 
 ```
-curl 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance?dimensions[]=time&dimensions[]=AWS-Availaibility-Zones&measures[]=ec2_cost_compute&filters\[\]=AWS-Availaibility-Zones:select:us-east-1a&interval=monthly&api_key=<your api key>
+curl -H "Accept: application/json" 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance?dimensions[]=time&dimensions[]=AWS-Availaibility-Zones&measures[]=ec2_cost_compute&filters\[\]=AWS-Availaibility-Zones:select:us-east-1a&interval=monthly&api_key=<your api key>
 ```
 
 Each filter is denoted with the `filters[]` query parameter and takes the following format: dimension-name:select|reject:member-name,member-name.  That is, a dimension name, a colon, an operator - either select or reject, another colon, and a comma separated list of members to include or exclude.  The operator `select` means you're interested in only the following members, and the operator `reject` means you're not interested in the following members.  For instance, to show the EC2 Compute Costs for all availability zones *except* us-east-1b and us-east-1d, you would issue the following query.
 
 ```
-curl 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance?dimensions[]=time&dimensions[]=AWS-Availaibility-Zones&measures[]=ec2_cost_compute&filters\[\]=AWS-Availaibility-Zones:reject:us-east-1b,us-east-1d&interval=monthly&api_key=<your api key>
+curl -H "Accept: application/json" 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance?dimensions[]=time&dimensions[]=AWS-Availaibility-Zones&measures[]=ec2_cost_compute&filters\[\]=AWS-Availaibility-Zones:reject:us-east-1b,us-east-1d&interval=monthly&api_key=<your api key>
 ```
 
 ##Asset API
