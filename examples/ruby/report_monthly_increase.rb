@@ -15,6 +15,7 @@ def get_report(report)
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = true
   request = Net::HTTP::Get.new(uri.request_uri)
+  request['Accept'] = 'application/json'
   response = http.request(request)
   raise "Server returned error #{response.code} processing your API request" if response.code != "200"
   JSON.parse(response.body)

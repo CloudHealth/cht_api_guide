@@ -11,7 +11,8 @@ API_KEY = "<your api key>"
 def get_report(report, api_key):
   uri = urlparse.urljoin(API_ENDPOINT, report)
   uri += "?api_key=%s" % API_KEY
-  response = urllib2.urlopen(uri)
+  request  = urllib2.Request(uri, headers={"Accept" : "application/json"})
+  response = urllib2.urlopen(request)
   page = response.read()
   return json.loads(page)
 
