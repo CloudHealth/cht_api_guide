@@ -193,7 +193,7 @@ The first row in the data represents the data for the “Month” called “tota
 
 Note: A zero denotes that there was data for the specified dimension member in the underlying data analyzed, but its aggregate total was zero. A null however denotes that there was no data for this dimension member in the underlying data analyzed.
 
-#### Ad Hoc Queries
+### Ad Hoc Queries
 You are not limited to retrieving standard and saved (custom) reports, you can use the API to construct ad hoc queries.  In order to do so, however, you need to know the names of the dimensions, members, and measures available to each report type.  You can discover these by visiting the `/new` resource available under each report.  For instance, to discover the components available to create an instance usge query, you can visit:
 
 ```
@@ -327,6 +327,36 @@ Each filter is denoted with the `filters[]` query parameter and takes the follow
 ```
 curl -H "Accept: application/json" 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance?dimensions[]=time&dimensions[]=AWS-Availaibility-Zones&measures[]=ec2_cost_compute&filters\[\]=AWS-Availaibility-Zones:reject:us-east-1b,us-east-1d&interval=monthly&api_key=<your api key>
 ```
+
+#### Filtering on Time
+It is common to filter on the time dimension (last month, this quarter, a year ago), but the time dimension differs from all the others in that it's ordinal.  Thus, when filtering on time, you need to provide an index value.  The API supports absolute time from 12 months ago, and relative time from today.  Absolute time uses positive integers, relative time uses negative integers.
+
+For instance, to retrieve the current month only: `&interval=monthly&filters[]=time:select:-1`. And the past three months can be retrieved with: `&interval=monthly&filters[]=time:select:-1,-2,-3`.
+
+Absolute time, for monthly intervals, starts 12 months ago and proceeds to today. with the most distant month being at index 1 and the most recent at index 12. So the above two filters could also be written as: `&interval=monthly&filters[]=time:select:12` and `&interval=monthly&filters[]=time:select:12,11,10`, respectively.
+
+As a conveninence, when selecting (not rejecting) months (not weeks, days, or hours), you can use a date string instead of an index. The date string is in the format YYYY-MM.  So to filter out all but the current month: `&interval=monthly&filters[]=time:select:2014-12`. You cannot mix and match date strings and indexes in a single filter.
+
+Weekly, daily, and hourly (if supported) intervals work similalrly.  The only difference is how much information is available. This table sums it up.  Relative values are provided, since they are generally more useful.
+
+Interval | Units | Notes
+---------|-------|------
+Monthly  |12     | -1 = Current month so far
+Weekly   |52     | -1 = The previous full week
+Daily    |31     | -1 = The previous full day
+Hourly   |84     | -1 = 10PM - 11:59PM the day before (each member has two hours of data)
+
+###Retrieving the Query that makes up a Standard or Custom Report
+
+You can retrieve the query string used in standard and custom reports, by adding ```?get_query=true` to the base URL.
+
+```
+curl -v -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports/custom/{report-id}?get_query=true&api_key=<your api key>'
+
+{"query":"report=My Saved Report?dimensions[]=AWS-Account&dimensions[]=AWS-Service-Category&measures[]=cost&measures[]=cost_recurring&interval=monthly&filters[]=time:select:-1"}
+```
+
+Note, since the response is JSON, metacharacters will be Unicode encoded.
 
 ##Asset API
 The Asset API can be used to retrieve information on assets you are currently or have historically run with AWS. It
