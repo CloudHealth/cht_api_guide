@@ -22,10 +22,14 @@ end
 # Fetch all AwsInstanceUsageHoursMonthly objects for the current month
 month = Time.now.strftime '%Y-%m-01'
 usage_hours = get_report(API_KEY, 'AwsInstanceUsageHoursMonthly', "month='#{month}'")
+puts "| %12s | %9s | %8s | %9s | %8s |" % ['Instance', 'Hours', 'Cost', 'Resvd Hrs', 'Amort Cost']
+puts "|--------------+-----------+----------+-----------+------------|"
 usage_hours.each do |usg|
   instance_id = usg['aws_instance_instance_id']
   hours       = usg['total_hours']
   cost        = usg['total_cost']
-  row         = "| %12s | %3d hours | %8s |"
-  puts row % [ instance_id, hours, cost ]
+  resvd_hours = usg['reserved_hours']
+  amort_cost  = usg['avg_amortized_cost']
+  row         = "| %12s | %3d hours | %8s | %3d hours | %10s |"
+  puts row % [ instance_id, hours, cost, resvd_hours, amort_cost ]
 end
