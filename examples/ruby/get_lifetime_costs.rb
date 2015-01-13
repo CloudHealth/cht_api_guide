@@ -5,8 +5,11 @@ require "net/https"
 require "uri"
 require "json"
 require 'date'
+require 'pry'
 
 CACHE_DIR    = '/tmp/cht_cache'
+@monthly_costs = {}
+
 API_ENDPOINT = "https://chapi.cloudhealthtech.com/api/search.json"
 API_KEY      = "<your-key-here>"
 
@@ -23,6 +26,7 @@ def get_report(api_key, object_name, query = "")
   response.body
 end
 
+
 #
 # Determines if the cost for the month needs to be updated.
 # Do it for current month (always) and up to the 10th for the previous month
@@ -38,13 +42,18 @@ end
 # 
 #
 def get_instances(query)
-  get_report(API_KEY, 'AwsInstance', query)
+  if query.nil? then
+    query = "is_active=1"
+  end
+  assets_json = get_report(API_KEY, 'AwsInstance', query)
+  JSON.parse(assets_json)
 end
 
 def month_list(launch_time)
   month        = Date.parse Date.today.strftime '%Y-%m-01'
-  launch_month = Date.parse launch_time.strftime '%Y-%m-01'
+  launch_month = Date.parse(launch_time[0,8] + "01")
   months = []
+  binding.pry
   12.times do
     break if month < launch_month
     months << month
@@ -54,6 +63,7 @@ def month_list(launch_time)
 end
 
 def get_monthly_costs(month)
+  binding.pry
   if @monthly_costs[month].nil? then
     if refresh_month?(month) then
       @monthly_costs[month] = fetch(month)
@@ -68,29 +78,33 @@ def get_monthly_costs(month)
 end
 
 def fetch(month)
+  print "Fetching data for #{month}..."
   usage_hours_json = get_report(API_KEY, 'AwsInstanceUsageHoursMonthly', "month='#{month}'")
+  print "#{usage_hours_json.size} bytes\n"
   write_month(month, usage_hours_json)
   JSON.parse(usage_hours_json)
 end
 
 def read_month(month)
-  path = File.join(CACHE_DIR, "#{month}.json"
+  path = File.join(CACHE_DIR, "#{month}.json")
   IO.binread(path) if File.exist?(path)
   JSON.parse(usage_hours_json)  
 end
 
 def write_month(month, json)
-  path = File.join(CACHE_DIR, "#{month}.json"
+  path = File.join(CACHE_DIR, "#{month}.json")
   IO.binwrite(path, json)
 end
 
 def get_cost_for_month(instance_id, month)
-  get_monthly_costs(month)[instance_id]
+  monthly_costs=get_monthly_costs(month)
+  binding.pry
+  #get cost for specific asset
 end
 
-def get_lifetime_cost(instance_id, launch_time)
+def get_lifetime_cost(instance_id, launch_date)
   cumul_cost = 0
-  month_list(launch_time).each do |month|
+  month_list(launch_date).each do |month|
     cumul_cost += get_cost_for_month(instance_id, month)
   end
 end
@@ -98,8 +112,8 @@ end
 if __FILE__ == $0 then
   query = $1
   get_instances(query).each do | instance_data |
-    instance_id, name, launch_time = instance_data
-    puts "| %12s | $%5.2 | %20s |" % [ instance_id, get_lifetime_cost(instance_id, launch_time), name ]
+    instance_id, name, launch_date = [:instance_id, :name, :launch_date].map {|s| instance_data[s.to_s] }
+    puts "| %12s | $%5.2f | %20s |" % [ instance_id, get_lifetime_cost(instance_id, launch_date), name ]
   end
 end
 
