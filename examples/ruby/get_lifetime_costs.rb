@@ -13,13 +13,14 @@ CACHE_DIR    = '/tmp/cht_cache'
 API_ENDPOINT = "https://chapi.cloudhealthtech.com/api/search.json"
 API_KEY      = "<your-key-here>"
 
+
 #
 # Returns json for requested assets.
 #
 def get_report(api_key, object_name, query = "")
   uri = URI(API_ENDPOINT) + URI.escape("?api_key=#{api_key}&name=#{object_name}&query=#{query}")
   http = Net::HTTP.new(uri.host, uri.port)
-  http.use_ssl = true
+  http.use_ssl = false #true
   request = Net::HTTP::Get.new(uri.request_uri)
   response = http.request(request)
   raise "Server returned error #{response.code} processing your API request" if response.code != "200"
@@ -40,16 +41,17 @@ def refresh_month?(month)
 end
 
 #
-# 
+# Retrieves the list of assets matching query passed in.
 #
 def get_instances(query)
-  if query.nil? then
-    query = "is_active=1"
-  end
   assets_json = get_report(API_KEY, 'AwsInstance', query)
   JSON.parse(assets_json)
 end
 
+#
+# The span of months over which an asset with given launch time
+# will have costs, over the last 12.
+#
 def month_list(launch_time)
   month        = Date.parse Date.today.strftime '%Y-%m-01'
   launch_month = Date.parse(launch_time[0,8] + "01")
@@ -62,6 +64,11 @@ def month_list(launch_time)
   months.map { |d| d.strftime '%Y-%m-01' }.reverse
 end
 
+#
+# Returns a Hash of instance_id -> $cost for the given month.
+# It will look in local cache to avoid multiple expensive calls.
+# It will also make sure to refresh the month if needed.
+#
 def get_monthly_costs(month)
   if @monthly_costs[month].nil? then
     if refresh_month?(month) then
@@ -76,6 +83,10 @@ def get_monthly_costs(month)
   @monthly_costs[month]
 end
 
+#
+# Fetches the instance-usage for the month from the server.
+# Updates cache.
+#
 def fetch(month)
   print "Fetching data for #{month}..."
   usage_hours_json = get_report(API_KEY, 'AwsInstanceUsageHoursMonthly', "month='#{month}'")
@@ -85,6 +96,10 @@ def fetch(month)
   make_hash(iuh)
 end
 
+#
+# Read monthly cost from cache, if available.
+# Returns nil if missing.
+#
 def read_month(month)
   path = File.join(CACHE_DIR, "#{month}.json")
   if File.exist?(path) then
@@ -94,6 +109,11 @@ def read_month(month)
   end
 end
 
+#
+# Takes instance-usage JSON from report query and converts
+# into a { instance-id -> cost } Hash for easy lookup
+# when summing lifetime costs.
+#
 def make_hash(iuh)
   iuh.inject({}) do |h, i|
     iid = i['aws_instance_instance_id']
@@ -103,16 +123,25 @@ def make_hash(iuh)
   end
 end
 
+#
+# Write month into cache.
+#
 def write_month(month, json)
   path = File.join(CACHE_DIR, "#{month}.json")
   IO.binwrite(path, json)
 end
 
+#
+# Cost of an instance for a specific month.
+#
 def get_cost_for_month(instance_id, month)
   monthly_costs=get_monthly_costs(month)
   monthly_costs[instance_id]
 end
 
+#
+# Returns lifetime cost for the asset with given instance-id.
+#
 def get_lifetime_cost(instance_id, launch_date)
   cumul_cost = 0
   month_list(launch_date).each do |month|
@@ -122,8 +151,13 @@ def get_lifetime_cost(instance_id, launch_date)
   cumul_cost
 end
 
+#
+# Main script to run when invoked as file.
+# Only argument is query to limit the assets to report on.
+# If no argument is passed in, all active assets are listed.
+#
 if __FILE__ == $0 then
-  query = $1
+  query = $1 || "is_active=1"
   get_instances(query).each do | instance_data |
     instance_id, name, launch_date = [:instance_id, :name, :launch_date].map {|s| instance_data[s.to_s] }
     lifetime_cost = get_lifetime_cost(instance_id, launch_date)
