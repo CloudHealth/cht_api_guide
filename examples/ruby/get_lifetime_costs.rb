@@ -1,5 +1,17 @@
 #!/usr/bin/env ruby
 
+#
+# Insert your API_KEY from CloudHealth and run
+# $ ruby get_lifetime_costs.rb
+#
+# Will output a table of lifetime costs for all current assets.
+#
+# Script takes one optional argument.
+# $ ruby get_lifetime_costs.rb "instance_id='i-f74de4da'"
+#
+# Will limit to queried asset.
+#
+
 require "rubygems"
 require "net/https"
 require "uri"
@@ -7,12 +19,11 @@ require "json"
 require 'date'
 require 'pry'
 
-CACHE_DIR    = '/tmp/cht_cache'
+CACHE_DIR      = '/tmp/cht_cache'
 @monthly_costs = {}
 
 API_ENDPOINT = "https://chapi.cloudhealthtech.com/api/search.json"
 API_KEY      = "<your-key-here>"
-
 
 #
 # Returns json for requested assets.
@@ -157,7 +168,7 @@ end
 # If no argument is passed in, all active assets are listed.
 #
 if __FILE__ == $0 then
-  query = $1 || "is_active=1"
+  query = ARGV.first || "is_active=1"
   get_instances(query).each do | instance_data |
     instance_id, name, launch_date = [:instance_id, :name, :launch_date].map {|s| instance_data[s.to_s] }
     lifetime_cost = get_lifetime_cost(instance_id, launch_date)
