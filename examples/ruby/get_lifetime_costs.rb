@@ -33,9 +33,10 @@ end
 #
 def refresh_month?(month)
   td         = Date.today
-  curr_month = td.strftime '%Y-%m'
-  prev_month = td.prev_month.strftime '%Y-%m'
-  month == curr_month || (month == prev_month && td.day < 10)
+  curr_month = td.strftime '%Y-%m-01'
+  prev_month = td.prev_month.strftime '%Y-%m-01'
+  refresh = (month == curr_month || (month == prev_month && td.day < 10))
+  refresh
 end
 
 #
@@ -53,17 +54,15 @@ def month_list(launch_time)
   month        = Date.parse Date.today.strftime '%Y-%m-01'
   launch_month = Date.parse(launch_time[0,8] + "01")
   months = []
-  binding.pry
   12.times do
     break if month < launch_month
     months << month
     month = month << 1
   end
-  months.map { |d| d.strftime '%Y-%m' }.reverse
+  months.map { |d| d.strftime '%Y-%m-01' }.reverse
 end
 
 def get_monthly_costs(month)
-  binding.pry
   if @monthly_costs[month].nil? then
     if refresh_month?(month) then
       @monthly_costs[month] = fetch(month)
@@ -82,13 +81,26 @@ def fetch(month)
   usage_hours_json = get_report(API_KEY, 'AwsInstanceUsageHoursMonthly', "month='#{month}'")
   print "#{usage_hours_json.size} bytes\n"
   write_month(month, usage_hours_json)
-  JSON.parse(usage_hours_json)
+  iuh = JSON.parse(usage_hours_json)
+  make_hash(iuh)
 end
 
 def read_month(month)
   path = File.join(CACHE_DIR, "#{month}.json")
-  IO.binread(path) if File.exist?(path)
-  JSON.parse(usage_hours_json)  
+  if File.exist?(path) then
+    usage_hours_json = IO.binread(path)
+    iuh = JSON.parse(usage_hours_json)
+    make_hash(iuh)
+  end
+end
+
+def make_hash(iuh)
+  iuh.inject({}) do |h, i|
+    iid = i['aws_instance_instance_id']
+    cost = i['full_cost'].slice(1..-1).to_f
+    h[iid] = cost
+    h
+  end
 end
 
 def write_month(month, json)
@@ -98,33 +110,23 @@ end
 
 def get_cost_for_month(instance_id, month)
   monthly_costs=get_monthly_costs(month)
-  binding.pry
-  #get cost for specific asset
+  monthly_costs[instance_id]
 end
 
 def get_lifetime_cost(instance_id, launch_date)
   cumul_cost = 0
   month_list(launch_date).each do |month|
-    cumul_cost += get_cost_for_month(instance_id, month)
+    cost_for_month =  get_cost_for_month(instance_id, month)
+    cumul_cost     += cost_for_month if cost_for_month
   end
+  cumul_cost
 end
 
 if __FILE__ == $0 then
   query = $1
   get_instances(query).each do | instance_data |
     instance_id, name, launch_date = [:instance_id, :name, :launch_date].map {|s| instance_data[s.to_s] }
-    puts "| %12s | $%5.2f | %20s |" % [ instance_id, get_lifetime_cost(instance_id, launch_date), name ]
+    lifetime_cost = get_lifetime_cost(instance_id, launch_date)
+    puts "| %12s | $%7.2f | %40s |" % [ instance_id, lifetime_cost, name ]
   end
-end
-
-
-# Fetch all AwsInstanceUsageHoursMonthly objects for the current month
-month = Time.now.strftime '%Y-%m-01'
-usage_hours = get_report(API_KEY, 'AwsInstanceUsageHoursMonthly', "month='#{month}'")
-usage_hours.each do |usg|
-  instance_id = usg['aws_instance_instance_id']
-  hours       = usg['total_hours']
-  cost        = usg['total_cost']
-  row         = "| %12s | %3d hours | %8s |"
-  puts row % [ instance_id, hours, cost ]
 end
