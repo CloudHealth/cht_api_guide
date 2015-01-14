@@ -17,7 +17,6 @@ require "net/https"
 require "uri"
 require "json"
 require 'date'
-require 'pry'
 
 CACHE_DIR      = '/tmp/cht_cache'
 @monthly_costs = {}
