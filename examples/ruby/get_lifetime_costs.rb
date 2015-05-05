@@ -30,7 +30,7 @@ API_KEY      = "<your-key-here>"
 def get_report(api_key, object_name, query = "")
   uri = URI(API_ENDPOINT) + URI.escape("?api_key=#{api_key}&name=#{object_name}&query=#{query}")
   http = Net::HTTP.new(uri.host, uri.port)
-  http.use_ssl = false #true
+  http.use_ssl = true
   request = Net::HTTP::Get.new(uri.request_uri)
   response = http.request(request)
   raise "Server returned error #{response.code} processing your API request" if response.code != "200"
