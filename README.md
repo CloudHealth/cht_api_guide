@@ -50,16 +50,7 @@ If you have Python installed on your system, you can pretty print the results wi
 ```
 $ curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports?api_key=<your api key>" | python -m json.tool
 ```
-
-Notice the list of available reports have a hierarchical structure. For example, under the topic “cost” are reports such as “history”, “current” and “instance”. These refer to the standard reports in the CloudHealth platform named Cost History, Current Cost and Instance Cost respectively. Each report also provides a URL to retrieve the report.
-
-####Retrieve List of Standard Reports for a Topic
-To retrieve the available reports for a specific topic, you can specify the topic in the URL. For example, the below will return a list of all standard reports available for the cost topic: 
-
-```
-$ curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/cost?api_key=<your api key>"
-```
-
+Response
 ```javascript
 {
     "links": {
@@ -79,8 +70,10 @@ $ curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_rep
 }
 ```
 
-####Retrieve a List of Available Reports
-By following the links above, you can get the URLs for all reports and sub-reports available in each category.  For instance, to retrieve all standard cost-related reports, you can issue the request below:
+Please note that the list of available reports have a hierarchical structure. For example, under the topic “cost” are reports such as “history”, “current” and “instance”. These refer to the standard reports in the CloudHealth platform named Cost History, Current Cost and Instance Cost respectively. Each report also provides a URL to retrieve the report.
+
+####Retrieve List of Available Standard Reports for a Topic
+By following the links above, you can get the URLs for all reports and sub-reports available in each category. To retrieve the available reports for say cost, you can specify cost in the URL. The following command will return a list of all standard reports available for the cost topic: 
 
 ```
 $ curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/cost?api_key=<your api key>"
@@ -194,13 +187,13 @@ The first row in the data represents the data for the “Month” called “tota
 Note: A zero denotes that there was data for the specified dimension member in the underlying data analyzed, but its aggregate total was zero. A null however denotes that there was no data for this dimension member in the underlying data analyzed.
 
 ### Ad Hoc Queries
-You are not limited to retrieving standard and saved (custom) reports, you can use the API to construct ad hoc queries.  In order to do so, however, you need to know the names of the dimensions, members, and measures available to each report type.  You can discover these by visiting the `/new` resource available under each report.  For instance, to discover the components available to create an instance usge query, you can visit:
+You are not limited to retrieving standard and saved (custom) reports, you can use the API to construct ad hoc queries.  In order to do so, however, you need to know the names of the dimensions, members, and measures available to each report type.  You can discover these by visiting the `/new` resource available under each report.  For instance, to discover the components available to create an instance usage query, you can visit:
 
 ```
 $ curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/usage/instance/new?api_key=<your api key>"
 ```
 
-This will return an array of available dimensions (including custom perspectives) and their repspective members. As well as an array of available measures.  The response will contain a label, for human consumption, and a name for API use.
+This will return an array of available dimensions (including custom perspectives) and their respective members. As well as an array of available measures.  The response will contain a label, for human consumption, and a name for API use.
 ```javascript
 {
     "dimensions": [
@@ -305,7 +298,7 @@ This will return an array of available dimensions (including custom perspectives
 }
 ```
 
-with this information in hand we can query for the EC2 Compute Cost by availabilty zone by time (monthly).
+With this information in hand we can query for the EC2 Compute Cost by availability zone by time (monthly).
 
 ```
 curl -H "Accept: application/json" 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance?dimensions[]=time&dimensions[]=AWS-Availaibility-Zones&measures[]=ec2_cost_compute&interval=monthly&api_key=<your api key>
@@ -335,9 +328,9 @@ For instance, to retrieve the current month only: `&interval=monthly&filters[]=t
 
 Absolute time, for monthly intervals, starts 12 months ago and proceeds to today. with the most distant month being at index 1 and the most recent at index 12. So the above two filters could also be written as: `&interval=monthly&filters[]=time:select:12` and `&interval=monthly&filters[]=time:select:12,11,10`, respectively.
 
-As a conveninence, when selecting (not rejecting) months (not weeks, days, or hours), you can use a date string instead of an index. The date string is in the format YYYY-MM.  So to filter out all but the current month: `&interval=monthly&filters[]=time:select:2014-12`. You cannot mix and match date strings and indexes in a single filter.
+As a convenience, when selecting (not rejecting) months (not weeks, days, or hours), you can use a date string instead of an index. The date string is in the format YYYY-MM.  So to filter out all but the current month: `&interval=monthly&filters[]=time:select:2014-12`. You cannot mix and match date strings and indexes in a single filter.
 
-Weekly, daily, and hourly (if supported) intervals work similalrly.  The only difference is how much information is available. This table sums it up.  Relative values are provided, since they are generally more useful.
+Weekly, daily, and hourly (if supported) intervals work similarly.  The only difference is how much information is available. This table sums it up.  Relative values are provided, since they are generally more useful.
 
 Interval | Units | Notes
 ---------|-------|------
@@ -381,7 +374,7 @@ curl "https://chapi.cloudhealthtech.com/api/AwsInstance.json?api_key=20dbf6e0-16
 ```
 
 ###Querying Objects
-To retrieve objects matching a specifc criteria, supply a CloudHealth Query Language (CHQL) statement with your request. CHQL is currently limited and supports the following:
+To retrieve objects matching a specific criteria, supply a CloudHealth Query Language (CHQL) statement with your request. CHQL is currently limited and supports the following:
 
 [field name][operator][value]
 
