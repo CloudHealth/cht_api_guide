@@ -1,15 +1,17 @@
 #!/usr/bin/env ruby
 
-#
-# Insert your API_KEY from CloudHealth and run
+# STEPS TO RUN THIS EXAMPLE SCRIPT:
+# 1. Insert your API_KEY from CloudHealth 
+# 2. Create Folder or Confirm it exists: '/tmp/cht_cache'
+# 3. and run the script using the following command
 # $ ruby get_lifetime_costs.rb
 #
-# Will output a table of lifetime costs for all current assets.
+# The script will output a table of lifetime costs for all current assets.
 #
 # Script takes one optional argument.
 # $ ruby get_lifetime_costs.rb "instance_id='i-f74de4da'"
 #
-# Will limit to queried asset.
+# This optional argument Will limit the API call to the queried asset.
 #
 
 require "rubygems"
@@ -18,6 +20,7 @@ require "uri"
 require "json"
 require 'date'
 
+# Create this folder /tmp/cht_cache if it does not already exist
 CACHE_DIR      = '/tmp/cht_cache'
 @monthly_costs = {}
 
