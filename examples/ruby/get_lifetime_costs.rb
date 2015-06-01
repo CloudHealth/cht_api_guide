@@ -1,12 +1,16 @@
 #!/usr/bin/env ruby
 
 # STEPS TO RUN THIS EXAMPLE SCRIPT:
-# 1. Insert your API_KEY from CloudHealth 
-# 2. Create Folder or Confirm it exists: '/tmp/cht_cache'
-# 3. and run the script using the following command
-# $ ruby get_lifetime_costs.rb
+# 1. Replace <your-key-here> with the API key assigned to your user. 
+#    This can be found under your user profile 
 #
-# The script will output a table of lifetime costs for all current assets.
+# 2. Create Folder or Confirm it exists: 
+#    '/tmp/cht_cache'
+#
+# 3. Run the script using the following command
+#    $ ruby get_lifetime_costs.rb
+#
+# The script will output a table of lifetime costs for all current instances.
 #
 # Script takes one optional argument.
 # $ ruby get_lifetime_costs.rb "instance_id='i-f74de4da'"
@@ -54,7 +58,7 @@ def refresh_month?(month)
 end
 
 #
-# Retrieves the list of assets matching query passed in.
+# Retrieves the list of instances matching query passed in.
 #
 def get_instances(query)
   assets_json = get_report(API_KEY, 'AwsInstance', query)
@@ -153,7 +157,7 @@ def get_cost_for_month(instance_id, month)
 end
 
 #
-# Returns lifetime cost for the asset with given instance-id.
+# Returns lifetime cost for the instances with given instance-id.
 #
 def get_lifetime_cost(instance_id, launch_date)
   cumul_cost = 0
