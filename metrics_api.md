@@ -99,51 +99,53 @@ Each array of metrics species the instance (using a compact form of the AWS ARN 
 Pulling this all together we have:
 
 {
-  "datasets": [
-    {
-      "metadata": {
-        "assetType": "aws:ec2:instance",
-        "granularity": "hour",
-        "keys": [
-          "assetId",
-          "timestamp",
-          "memory:free.avg",
-          "memory:free.max",
-          "memory:free.min"
-          "memory:freePercent.avg",
-          "memory:freePercent.max",
-          "memory:freePercent.min"
+  "metrics": {
+    "datasets": [
+      {
+        "metadata": {
+          "assetType": "aws:ec2:instance",
+          "granularity": "hour",
+          "keys": [
+            "assetId",
+            "timestamp",
+            "memory:free.avg",
+            "memory:free.max",
+            "memory:free.min"
+            "memory:freePercent.avg",
+            "memory:freePercent.max",
+            "memory:freePercent.min"
+          ]
+        },
+        "values": [
+          [
+            "us-east-1:123:i-99999999",
+            "2015-06-03T00:01:00+00:00",
+            100.0,
+            200.0,
+            50.0,
+            50,
+            75,
+            25
+          ],
+          [
+            "us-east-1:123:i-88888888",
+            "2015-06-03T00:02:00+00:00",
+            200.0,
+            300.0,
+            60.0,
+            90,
+            100,
+            80
+          ]
         ]
-      },
-      "values": [
-        [
-          "us-east-1:123:i-99999999",
-          "2015-06-03T00:01:00+00:00",
-          100.0,
-          200.0,
-          50.0,
-          50,
-          75,
-          25
-        ],
-        [
-          "us-east-1:123:i-88888888",
-          "2015-06-03T00:02:00+00:00",
-          200.0,
-          300.0,
-          60.0,
-          90,
-          100,
-          80
-        ]
-      ]
-    }
-  ]
+      }
+    ]
+  }
 }
 
 And translating that to a curl command, we have:
 
-curl -H "Content-Type: application/json" -XPOST "http://chapi.cloudhealthtech.com/metrics/v1?api_key=<API-KEY>" -d '{"datasets":[{"metadata":{"assetType":"aws:ec2:instance","granularity":"hour","keys":["assetId","timestamp","memory:free.avg","memory:free.max","memory:free.min"]},"values":[["us-east-1:123:i-99999999","2015-06-03T00:01:00+00:00",100.0,200.0,50.0],["us-east-1:123:i-88888888","2015-06-03T00:02:00+00:00",200.0,300.0,60.0]]}]}'
+curl -H "Content-Type: application/json" -XPOST "http://chapi.cloudhealthtech.com/metrics/v1?api_key=<API-KEY>" -d '{"metrics":{"datasets":[{"metadata":{"assetType":"aws:ec2:instance","granularity":"hour","keys":["assetId","timestamp","memory:free.avg","memory:free.max","memory:free.min"]},"values":[["us-east-1:123:i-99999999","2015-06-03T00:01:00+00:00",100.0,200.0,50.0],["us-east-1:123:i-88888888","2015-06-03T00:02:00+00:00",200.0,300.0,60.0]]}]}}'
 
 ##POST Response Format
 ### Success and Partial Failure
