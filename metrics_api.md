@@ -149,19 +149,30 @@ curl -H "Content-Type: application/json" -XPOST "http://chapi.cloudhealthtech.co
 
 ##POST Response Format
 ### Success and Partial Failure
-If all or some of the posted metrics were accepted by the system we will return an HTTP 200 OK response code as well as a JSON message formatted as follows:
+If all or some of the posted metrics were accepted by the system we will return an HTTP 200 OK response code as well as a JSON message formatted as follows. Note that this API supports partial failure.  And if there's partial failure, a 200 response is still returned.
 
+#### Response Format
 ```
-{
-  succeeded: <number of accepted rows of data>,
-  failed:    <number of denied rows of data>
-  failures: [
-    {
-      data: <a copy of the failed data set>,
-      reason: <the reason for failure>
-    }
-  ]
-}
+"succeeded": <The total number of rows that were successfully processed>,
+"failed": <The total number of rows that were rejected>,
+"errors": [
+  <A textual description of all errors that prevented the entire payload or an entire dataset from being processed.>
+]
+
+# Datasets provide details of failures at the row level within each dataset.
+"datasets": [
+  {
+    "succeeded": <Count of all rows in this dataset that were successfully added to the system."
+    "errors": [
+        <Textual representation of any errors that prevented all data in this dataset from being processed.>
+    ]
+    "failures": [
+      {
+        "error": <Textual representation of any parsing errors that prevented a single row of data from being persisted.>
+        "row:" < The original row data passed in >
+      }
+    ]
+  }
 ```
 
 For example:
@@ -170,15 +181,40 @@ For example:
 {
   succeeded: 198,
   failed:    2,
-  failures: [
+  errors:    0,
+  datasets:  [
     {
-      data: 100, 200, 300, 40, 50
-      reason: "Number of data elements did not match the number of keys."
-    }
+      "succeeeded": 100,
+      "errors": [],
+      "failures": []
+    },
     {
-      data: 100, 200, 300, 40, 50, 'AAA'
-      reason: "Element 'AAA' is not a number."
-    }
+      "succeeeded": 100,
+      "errors": [],
+      "failures": [
+        {
+          "error": "number of values (6) must equal number of keys (5)",
+          "row": [
+              "us-east-1:123:i-21c78c59",
+              "2015-06-03T00:02:00+00:00",
+              100,
+              75,
+              50,
+              111
+          ]
+        },
+        {
+          "error": "Percentage value (101) is greater than 100.",
+          "row": [
+              "us-east-1:123:i-21c78b65",
+              "2015-06-03T00:02:00+00:00",
+              101,
+              75
+              50
+          ]
+        },
+      ]
+    },
   ]
 }
 ```
