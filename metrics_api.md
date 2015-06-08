@@ -4,6 +4,12 @@ The CloudHealth Metrics API allows you to upload various system metrics to Cloud
 
 Sending us metrics is as simple as POSTing a JSON document to the /metrics/v1 endpoint. The JSON format is described below.
 
+NOTE 1: Authentication via api-key is required as described in the main README document in this repo.
+
+NOTE 2: This API has a dry run facility that will allow you to test your writes without actually persisting them to the database. To use it, just add `dryrun=true` as a query parameter to the URL.
+
+NOTE 3: If your client library does not support sending parameters via both the query string and the POST body, you can supply the API key and the dryrun flag as root level elements in the POST body.
+
 ##Current Limitations
 In this early release there are a few limitations on what we can accept.
 - You may post CPU and memory metrics only
