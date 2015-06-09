@@ -1,6 +1,10 @@
 #CloudHealth API: Getting Started
 CloudHealth provides API services to allow you to programmatically retrieve data from our platform. This guide will provide you a brief overview to get you started using the API, with a focus on retrieving reporting data.
 
+- [Reporting API](#reporting-api)
+- [Asset API](#asset-api)
+- [Metrics API](./metrics-api)
+
 ##Disclaimer
 The current API detailed in this document is version 0.0.1. This early API is subject to change. Future changes to this API may impact code written to previous versions of the API. We will do our best to notify users of the API of pending changes, in order to ease the migration to the new version.
 
@@ -16,6 +20,7 @@ In your profile settings is a section named API Key. Click on the Generate API K
 ![Report Elements](https://github.com/CloudHealth/cht_api_guide/blob/master/images/api_key.png)
 
 To periodically rotate your API key for security reasons, just return to your profile settings and click Generate API Key to create a new key. Upon clicking update the previous key will cease working, and the new one will be in effect.
+
 
 ##Reporting API
 

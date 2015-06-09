@@ -156,7 +156,7 @@ Pulling this all together we have:
 And translating that to a curl command, we have:
 
 ```
-curl -H "Content-Type: application/json" -XPOST "http://chapi.cloudhealthtech.com/metrics/v1?api_key=<API-KEY>" -d '{"metrics":{"datasets":[{"metadata":{"assetType":"aws:ec2:instance","granularity":"hour","keys":["assetId","timestamp","memory:free.avg","memory:free.max","memory:free.min"]},"values":[["us-east-1:123:i-99999999","2015-06-03T00:01:00+00:00",100.0,200.0,50.0],["us-east-1:123:i-88888888","2015-06-03T00:02:00+00:00",200.0,300.0,60.0]]}]}}'
+curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<API-KEY>" -d '{"metrics":{"datasets":[{"metadata":{"assetType":"aws:ec2:instance","granularity":"hour","keys":["assetId","timestamp","memory:free.avg","memory:free.max","memory:free.min"]},"values":[["us-east-1:123:i-99999999","2015-06-03T00:01:00+00:00",100.0,200.0,50.0],["us-east-1:123:i-88888888","2015-06-03T00:02:00+00:00",200.0,300.0,60.0]]}]}}'
 ```
 
 ##POST Response Format
