@@ -3,7 +3,7 @@ CloudHealth provides API services to allow you to programmatically retrieve data
 
 - [Reporting API](#reporting-api)
 - [Asset API](#asset-api)
-- [Metrics API](./metrics-api)
+- [Metrics API](./metrics-api.md)
 
 ##Disclaimer
 The current API detailed in this document is version 0.0.1. This early API is subject to change. Future changes to this API may impact code written to previous versions of the API. We will do our best to notify users of the API of pending changes, in order to ease the migration to the new version.
