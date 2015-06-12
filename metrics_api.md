@@ -256,50 +256,54 @@ To retrieve metrics for an asset, simply add an `asset` parameter to the query s
 curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:123:456:instance/i-99999999"
 ```
 
-This will return the first 100 metrics for this instance ordered by the time they were created or last updated.  The response format is very much the same as the POST format, with two notable exceptions.  One, the response is not wrapped in the `metrics` object and, two, there's a root-level `next` link that can be followed to retrieve the next 100 instances.  The `next` attribute will not be present if there are no more records to retrieve.
+This will return the first 100 metrics for this instance ordered by the time they were created or last updated.  The response format is very much the same as the POST format, with a few notable exceptions.  One, the response is not wrapped in the `metrics` object, two, we do not return an array of datasets, just a single set of metadata and values, and, three, there's a root-level `request` object, that contains a `next` link that can be followed to retrieve the next 100 instances.  The `next` attribute will be `null` if there are no more records to retrieve.
 
 ```
 {
-   "datasets" : {
-      "metadata" : {
-         "assetType" : "aws:ec2:instance",
-         "granualrity" : "hour",
-         "keys" : [
-            "cpu:usedPercent.avg",
-            "cpu:usedPercent.max",
-            "cpu:usedPercent.min",
-            "memory:free.avg",
-            "memory:free.max",
-            "memory:free.min",
-            "memory:usedPercent.avg",
-            "memory:usedPercent.max",
-            "memory:usedPercent.min",
-            "assetId",
-            "timestamp"
-         ]
-      },
-      "values" : [
-         [ 91, 99, 81, 0, 0, 0, 0, 0, 0, "i-99999999", "2015-06-08T06:00:00Z" ],
-         [ 12, 13, 14, 0, 0, 0, 0, 0, 0, "i-99999999", "2015-06-08T12:00:00Z" ],
+   "request" : {
+      "next" : "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn%3Aaws%3Aec2%3A123%3A456%3Ainstance%2Fi-99999999",
+   },
+   "metadata" : {
+      "assetType" : "aws:ec2:instance",
+      "granularity" : "hour",
+      "keys" : [
+         "cpu:usedPercent.avg",
+         "cpu:usedPercent.max",
+         "cpu:usedPercent.min",
+         "memory:free.avg",
+         "memory:free.max",
+         "memory:free.min",
+         "memory:usedPercent.avg",
+         "memory:usedPercent.max",
+         "memory:usedPercent.min",
+         "timestamp",
+         "assetId"
       ]
    },
-   "next" : "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn%3Aaws%3Aec2%3A123%3A456%3Ainstance%2Fi-99999999&page=2"
+   "values" : [
+      [ 76, 99, 51, 0, 0, 0, 0, 0, 0, "2015-06-08T05:00:00Z", "i-99999999" ],
+      [ 91, 99, 81, 0, 0, 0, 0, 0, 0, "2015-06-08T06:00:00Z", "i-99999999" ]
+   ]
 }
 ```
 
 ### Pagination
 As noted, the default number of records returned is 100.  You can change this to any value between 1 and 500 by adding the `per_page` paramater to the query string.
 
+```
 curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:123:456:instance/i-99999999&per_page=50"
+```
 
 You can also specify which page you want to start at with the `page` parameter.
 
+```
 curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:123:456:instance/i-99999999&per_page=50&page=3"
+```
 
-If there are no values to display, the `values` array will be empty. If the `next` attribute is not present, there are no pages beyond the current.
+If there are no values to display, the `values` array will be empty. If the `next` attribute is `null`, there are no pages beyond the current.
 
 ### Time Range
-You can limit what time range to retrieve asset information for.  The default is all time, but you can specify a custom time range with the `timeRange` query parameter (note the camelCase).  `timeRange` takes well know strings as arguments. They are enumerated here.  They're mostly self-explanatory, but for the record, "mtd" = "month to date" and "wtd" = "week to date".
+You can limit what time range to retrieve asset information for.  The default is _today_, but you can specify a custom time range with the `time_range` query parameter. `time_range` takes well know strings as arguments. They are enumerated here.and mostly self-explanatory, but for the record, "mtd" = "month to date" and "wtd" = "week to date".
 
 - mtd
 - last_month
@@ -319,4 +323,6 @@ You can limit what time range to retrieve asset information for.  The default is
 
 Thus, you can get the month-to-date metrics with this curl command:
 
-curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:123:456:instance/i-99999999&timeRange=mtd"
+```
+curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:123:456:instance/i-99999999&time_range=mtd"
+```
