@@ -120,7 +120,7 @@ Pulling this all together we have:
         },
         "values": [
           [
-            "us-east-1:123:i-99999999",
+            "us-east-1:us-east-1:i-99999999",
             "2015-06-03T00:01:00+00:00",
             100.0,
             200.0,
@@ -133,7 +133,7 @@ Pulling this all together we have:
             25
           ],
           [
-            "us-east-1:123:i-88888888",
+            "us-east-1:us-east-1:i-88888888",
             "2015-06-03T00:02:00+00:00",
             200.0,
             300.0,
@@ -206,7 +206,7 @@ For example:
         {
           "error": "Number of values (6) must equal number of keys (5).",
           "row": [
-              "us-east-1:123:i-21c78c59",
+              "us-east-1:123:i-99999999",
               "2015-06-03T00:02:00+00:00",
               100,
               75,
@@ -217,7 +217,7 @@ For example:
         {
           "error": "Percentage value (101) is greater than 100.",
           "row": [
-              "us-east-1:123:i-21c78b65",
+              "us-east-1:123:i-88888888",
               "2015-06-03T00:02:00+00:00",
               101,
               75
@@ -253,36 +253,38 @@ Currently, you are limited to retrieving metric data for individual assets.  Soo
 To retrieve metrics for an asset, simply add an `asset` parameter to the query string and set it equal to the asset's AWS ARN.  For example:
 
 ```
-curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:123:456:instance/i-99999999"
+curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:456:instance/i-99999999"
 ```
 
-This will return the first 100 metrics for this instance ordered by the time they were created or last updated.  The response format is very much the same as the POST format, with a few notable exceptions.  One, the response is not wrapped in the `metrics` object, two, we do not return an array of datasets, just a single set of metadata and values, and, three, there's a root-level `request` object, that contains a `next` link that can be followed to retrieve the next 100 instances.  The `next` attribute will be `null` if there are no more records to retrieve.
+This will return the first 100 metrics for this instance ordered by the time they were created or last updated.  The response format is very much the same as the POST format, with two notable exceptions.  One, the response is not wrapped in the `metrics` object, and two, there's a root-level `request` object, that contains a `next` link that can be followed to retrieve the next 100 instances.  The `next` attribute will be `null` if there are no more records to retrieve.
 
 ```
 {
    "request" : {
-      "next" : "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn%3Aaws%3Aec2%3A123%3A456%3Ainstance%2Fi-99999999",
+      "next" : "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn%3Aaws%3Aec2%3Aus-east-1%3A456%3Ainstance%2Fi-99999999",
    },
-   "metadata" : {
-      "assetType" : "aws:ec2:instance",
-      "granularity" : "hour",
-      "keys" : [
-         "cpu:usedPercent.avg",
-         "cpu:usedPercent.max",
-         "cpu:usedPercent.min",
-         "memory:free.avg",
-         "memory:free.max",
-         "memory:free.min",
-         "memory:usedPercent.avg",
-         "memory:usedPercent.max",
-         "memory:usedPercent.min",
-         "timestamp",
-         "assetId"
+   "datasets": [
+      "metadata" : {
+         "assetType" : "aws:ec2:instance",
+         "granularity" : "hour",
+         "keys" : [
+            "assetId"
+            "timestamp",
+            "cpu:usedPercent.avg",
+            "cpu:usedPercent.max",
+            "cpu:usedPercent.min",
+            "memory:free.avg",
+            "memory:free.max",
+            "memory:free.min",
+            "memory:usedPercent.avg",
+            "memory:usedPercent.max",
+            "memory:usedPercent.min",
+         ]
+      },
+      "values" : [
+         [ "us-east-1:456:i-99999999", "2015-06-08T05:00:00Z", 76, 99, 51, 0, 0, 0, 0, 0, 0 ],
+         [ "us-east-1:456:i-99999999", "2015-06-08T06:00:00Z", 91, 99, 81, 0, 0, 0, 0, 0, 0 ]
       ]
-   },
-   "values" : [
-      [ 76, 99, 51, 0, 0, 0, 0, 0, 0, "2015-06-08T05:00:00Z", "i-99999999" ],
-      [ 91, 99, 81, 0, 0, 0, 0, 0, 0, "2015-06-08T06:00:00Z", "i-99999999" ]
    ]
 }
 ```
@@ -291,13 +293,13 @@ This will return the first 100 metrics for this instance ordered by the time the
 As noted, the default number of records returned is 100.  You can change this to any value between 1 and 500 by adding the `per_page` paramater to the query string.
 
 ```
-curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:123:456:instance/i-99999999&per_page=50"
+curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:456:instance/i-99999999&per_page=50"
 ```
 
 You can also specify which page you want to start at with the `page` parameter.
 
 ```
-curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:123:456:instance/i-99999999&per_page=50&page=3"
+curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:456:instance/i-99999999&per_page=50&page=3"
 ```
 
 If there are no values to display, the `values` array will be empty. If the `next` attribute is `null`, there are no pages beyond the current.
@@ -324,5 +326,5 @@ You can limit what time range to retrieve asset information for.  The default is
 Thus, you can get the month-to-date metrics with this curl command:
 
 ```
-curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:123:456:instance/i-99999999&time_range=mtd"
+curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:456:instance/i-99999999&time_range=mtd"
 ```
