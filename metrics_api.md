@@ -15,10 +15,9 @@ In this early release there are a few limitations on what we can accept.
 - You may post CPU and memory metrics only
 - Metrics must be at an hourly resolution
 - An active AWS instance associated with the metrics must already present in the CloudHealth platform and not be Chef-managed
+- Metric retrieval is for individual assets only.
 
 In the near future, we will support metrics for a larger variety of assets, 15 minute resolutions, and metrics from other cloud providers and local datacenters.
-
-Also note that at this time, this is a write-only API. Very shortly, we will introduce the read facilities. In the meantime, you'll be able to view your posted metrics in the CloudHealth user interface.
 
 ##POST Data Format
 To send system metrics to CloudHealth you need to provide us with a collection of `datasets`. Each dataset consists of a `metadata` header describing the data being sent and an array of `values` that actually is the data. Each dataset describes a single asset type: instance currently.
@@ -121,7 +120,7 @@ Pulling this all together we have:
         },
         "values": [
           [
-            "us-east-1:123:i-99999999",
+            "us-east-1:us-east-1:i-99999999",
             "2015-06-03T00:01:00+00:00",
             100.0,
             200.0,
@@ -134,7 +133,7 @@ Pulling this all together we have:
             25
           ],
           [
-            "us-east-1:123:i-88888888",
+            "us-east-1:us-east-1:i-88888888",
             "2015-06-03T00:02:00+00:00",
             200.0,
             300.0,
@@ -207,7 +206,7 @@ For example:
         {
           "error": "Number of values (6) must equal number of keys (5).",
           "row": [
-              "us-east-1:123:i-21c78c59",
+              "us-east-1:123:i-99999999",
               "2015-06-03T00:02:00+00:00",
               100,
               75,
@@ -218,7 +217,7 @@ For example:
         {
           "error": "Percentage value (101) is greater than 100.",
           "row": [
-              "us-east-1:123:i-21c78b65",
+              "us-east-1:123:i-88888888",
               "2015-06-03T00:02:00+00:00",
               101,
               75
@@ -245,4 +244,87 @@ For example:
     message: "Invalid credentials"
   }
 }
+```
+
+## Read API
+
+Currently, you are limited to retrieving metric data for individual assets.  Soon you'll be able to retrieve multiple assets and aggregate values.
+
+To retrieve metrics for an asset, simply add an `asset` parameter to the query string and set it equal to the asset's AWS ARN.  For example:
+
+```
+curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:456:instance/i-99999999"
+```
+
+This will return the first 100 metrics for this instance ordered by the time they were created or last updated.  The response format is very much the same as the POST format, with two notable exceptions.  One, the response is not wrapped in the `metrics` object, and two, there's a root-level `request` object, that contains a `next` link that can be followed to retrieve the next 100 instances.  The `next` attribute will be `null` if there are no more records to retrieve.
+
+```
+{
+   "request" : {
+      "next" : "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn%3Aaws%3Aec2%3Aus-east-1%3A456%3Ainstance%2Fi-99999999",
+   },
+   "datasets": [
+      "metadata" : {
+         "assetType" : "aws:ec2:instance",
+         "granularity" : "hour",
+         "keys" : [
+            "assetId"
+            "timestamp",
+            "cpu:usedPercent.avg",
+            "cpu:usedPercent.max",
+            "cpu:usedPercent.min",
+            "memory:free.avg",
+            "memory:free.max",
+            "memory:free.min",
+            "memory:usedPercent.avg",
+            "memory:usedPercent.max",
+            "memory:usedPercent.min",
+         ]
+      },
+      "values" : [
+         [ "us-east-1:456:i-99999999", "2015-06-08T05:00:00Z", 76, 99, 51, 0, 0, 0, 0, 0, 0 ],
+         [ "us-east-1:456:i-99999999", "2015-06-08T06:00:00Z", 91, 99, 81, 0, 0, 0, 0, 0, 0 ]
+      ]
+   ]
+}
+```
+
+### Pagination
+As noted, the default number of records returned is 100.  You can change this to any value between 1 and 500 by adding the `per_page` paramater to the query string.
+
+```
+curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:456:instance/i-99999999&per_page=50"
+```
+
+You can also specify which page you want to start at with the `page` parameter.
+
+```
+curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:456:instance/i-99999999&per_page=50&page=3"
+```
+
+If there are no values to display, the `values` array will be empty. If the `next` attribute is `null`, there are no pages beyond the current.
+
+### Time Range
+You can limit what time range to retrieve asset information for.  The default is _today_, but you can specify a custom time range with the `time_range` query parameter. `time_range` takes well know strings as arguments. They are enumerated here.and mostly self-explanatory, but for the record, "mtd" = "month to date" and "wtd" = "week to date".
+
+- mtd
+- last_month
+- last_3_months
+- last_6_months
+- last_12_months
+- wtd
+- last_week
+- last_2_weeks
+- last_4_weeks
+- last_52_weeks
+- yesterday
+- last_2_days
+- last_7_days
+- last_14_days
+- last_31_days
+
+Thus, you can get the month-to-date metrics with this curl command:
+
+```
+curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:456:instance/i-99999999&time_range=mtd"
 ```
