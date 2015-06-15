@@ -248,7 +248,7 @@ For example:
 
 ## Read API
 
-Currently, you are limited to retrieving metric data for individual assets.  Soon you'll be able to retrieve multiple assets and aggregate values.
+Currently, you are limited to retrieving metric data for individual assets.  Soon you'll be able to retrieve multiple assets and additional aggregate values.
 
 To retrieve metrics for an asset, simply add an `asset` parameter to the query string and set it equal to the asset's AWS ARN.  For example:
 
@@ -328,3 +328,20 @@ Thus, you can get the month-to-date metrics with this curl command:
 ```
 curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:456:instance/i-99999999&time_range=mtd"
 ```
+
+### Granularity
+The Metrics API currently accepts metrics at an hourly resolution.  However, you can ask for those base metrics to be rolled up to various other resolutions via the `granularity` parameter.  If you don't ask, the default is `hour`.  The addional granularities are:
+
+- day
+- week
+- month
+
+For example, to request daily rollups of last month's metrics for an instance:
+
+```
+curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:456:instance/i-99999999&time_range=last_month&granularity=day"
+```
+
+Note, you want to be sure that `time_range` is large enough to encompass the requested granularity; asking for yesterday's data at a monthly resolution will return no rows -- not an error.  And requesting yesterday's data with a granularity of `day` will return one row.
+
+Further note, that rollups are calculated daily.  You cannot ask for _today's_ data (the default) at any other granularity than hourly (also the default).
