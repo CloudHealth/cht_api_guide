@@ -85,11 +85,13 @@ The `values` array has an entry for each series of metrics you care to send us. 
 
 Each array of metrics species the instance (using a compact form of the AWS ARN format), a timestamp (in ISO-8601 format), and the supplied metrics (numbers -- integer or float). A single array of metrics can contain information about CPU and/or memory if the asset type is an instance). Each instance or granularity is a new array of values.
 
+The compact ARN must be in the form <region>:<account-number>:<AWS-instance-ID>.  And the time stamp must be on an hourly boundary and be UTC-based.
+
 ```
 "values": [
   [
-    "aws:ec2:us-east-1:i-a99a99a9", "2015-06-03T00:01:00+00:00", 200, 400, ...],
-    "aws:ec2:us-east-1:i-a99a99a9", "2015-06-03T00:02:00+00:00", 100, 300, ...],
+    "us-east-1:12345678:i-a99a99a9", "2015-06-03T00:01:00+00:00", 200, 400, ...],
+    "us-east-1:12345678:i-a99a99a9", "2015-06-03T00:02:00+00:00", 100, 300, ...],
   ]
 ]
 ```
@@ -120,7 +122,7 @@ Pulling this all together we have:
         },
         "values": [
           [
-            "us-east-1:us-east-1:i-99999999",
+            "us-east-1:12345678:i-99999999",
             "2015-06-03T00:01:00+00:00",
             100.0,
             200.0,
@@ -133,7 +135,7 @@ Pulling this all together we have:
             25
           ],
           [
-            "us-east-1:us-east-1:i-88888888",
+            "us-east-1:12345678:i-88888888",
             "2015-06-03T00:02:00+00:00",
             200.0,
             300.0,
@@ -155,7 +157,7 @@ Pulling this all together we have:
 And translating that to a curl command, we have:
 
 ```
-curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<API-KEY>" -d '{"metrics":{"datasets":[{"metadata":{"assetType":"aws:ec2:instance","granularity":"hour","keys":["assetId","timestamp","memory:free.avg","memory:free.max","memory:free.min"]},"values":[["us-east-1:123:i-99999999","2015-06-03T00:01:00+00:00",100.0,200.0,50.0],["us-east-1:123:i-88888888","2015-06-03T00:02:00+00:00",200.0,300.0,60.0]]}]}}'
+curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<API-KEY>" -d '{"metrics":{"datasets":[{"metadata":{"assetType":"aws:ec2:instance","granularity":"hour","keys":["assetId","timestamp","memory:free.avg","memory:free.max","memory:free.min"]},"values":[["us-east-1:12345678:i-99999999","2015-06-03T00:01:00+00:00",100.0,200.0,50.0],["us-east-1:12345678:i-88888888","2015-06-03T00:02:00+00:00",200.0,300.0,60.0]]}]}}'
 ```
 
 ##POST Response Format
@@ -206,7 +208,7 @@ For example:
         {
           "error": "Number of values (6) must equal number of keys (5).",
           "row": [
-              "us-east-1:123:i-99999999",
+              "us-east-1:12345678:i-99999999",
               "2015-06-03T00:02:00+00:00",
               100,
               75,
@@ -217,7 +219,7 @@ For example:
         {
           "error": "Percentage value (101) is greater than 100.",
           "row": [
-              "us-east-1:123:i-88888888",
+              "us-east-1:12345678:i-88888888",
               "2015-06-03T00:02:00+00:00",
               101,
               75
@@ -253,7 +255,7 @@ Currently, you are limited to retrieving metric data for individual assets.  Soo
 To retrieve metrics for an asset, simply add an `asset` parameter to the query string and set it equal to the asset's AWS ARN.  For example:
 
 ```
-curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:456:instance/i-99999999"
+curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:12345678:instance/i-99999999"
 ```
 
 This will return the first 100 metrics for this instance ordered by the time they were created or last updated.  The response format is very much the same as the POST format, with two notable exceptions.  One, the response is not wrapped in the `metrics` object, and two, there's a root-level `request` object, that contains a `next` link that can be followed to retrieve the next 100 instances.  The `next` attribute will be `null` if there are no more records to retrieve.
@@ -261,7 +263,7 @@ This will return the first 100 metrics for this instance ordered by the time the
 ```
 {
    "request" : {
-      "next" : "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn%3Aaws%3Aec2%3Aus-east-1%3A456%3Ainstance%2Fi-99999999",
+      "next" : "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn%3Aaws%3Aec2%3Aus-east-1%3A12345678%3Ainstance%2Fi-99999999",
    },
    "datasets": [
       "metadata" : {
@@ -282,8 +284,8 @@ This will return the first 100 metrics for this instance ordered by the time the
          ]
       },
       "values" : [
-         [ "us-east-1:456:i-99999999", "2015-06-08T05:00:00Z", 76, 99, 51, 0, 0, 0, 0, 0, 0 ],
-         [ "us-east-1:456:i-99999999", "2015-06-08T06:00:00Z", 91, 99, 81, 0, 0, 0, 0, 0, 0 ]
+         [ "us-east-1:12345678:i-99999999", "2015-06-08T05:00:00Z", 76, 99, 51, 0, 0, 0, 0, 0, 0 ],
+         [ "us-east-1:12345678:i-99999999", "2015-06-08T06:00:00Z", 91, 99, 81, 0, 0, 0, 0, 0, 0 ]
       ]
    ]
 }
@@ -293,13 +295,13 @@ This will return the first 100 metrics for this instance ordered by the time the
 As noted, the default number of records returned is 100.  You can change this to any value between 1 and 500 by adding the `per_page` paramater to the query string.
 
 ```
-curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:456:instance/i-99999999&per_page=50"
+curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:12345678:instance/i-99999999&per_page=50"
 ```
 
 You can also specify which page you want to start at with the `page` parameter.
 
 ```
-curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:456:instance/i-99999999&per_page=50&page=3"
+curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:12345678:instance/i-99999999&per_page=50&page=3"
 ```
 
 If there are no values to display, the `values` array will be empty. If the `next` attribute is `null`, there are no pages beyond the current.
@@ -326,7 +328,7 @@ You can limit what time range to retrieve asset information for.  The default is
 Thus, you can get the month-to-date metrics with this curl command:
 
 ```
-curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:456:instance/i-99999999&time_range=mtd"
+curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:12345678:instance/i-99999999&time_range=mtd"
 ```
 
 ### Granularity
@@ -339,7 +341,7 @@ The Metrics API currently accepts metrics at an hourly resolution.  However, you
 For example, to request daily rollups of last month's metrics for an instance:
 
 ```
-curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:456:instance/i-99999999&time_range=last_month&granularity=day"
+curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:12345678:instance/i-99999999&time_range=last_month&granularity=day"
 ```
 
 Note, you want to be sure that `time_range` is large enough to encompass the requested granularity; asking for yesterday's data at a monthly resolution will return no rows -- not an error.  And requesting yesterday's data with a granularity of `day` will return one row.
