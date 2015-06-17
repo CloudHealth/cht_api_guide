@@ -85,7 +85,7 @@ The `values` array has an entry for each series of metrics you care to send us. 
 
 Each array of metrics species the instance (using a compact form of the AWS ARN format), a timestamp (in ISO-8601 format), and the supplied metrics (numbers -- integer or float). A single array of metrics can contain information about CPU and/or memory if the asset type is an instance). Each instance or granularity is a new array of values.
 
-The compact ARN must be in the form <region>:<account-number>:<AWS-instance-ID>.  And the time stamp must be on an hourly boundary and be UTC-based.
+The compact ARN must be in the form &lt;region&gt;:&lt;account-number&gt;:&lt;AWS-instance-ID&gt;.  And the time stamp must be on an hourly boundary and be UTC-based.
 
 ```
 "values": [
