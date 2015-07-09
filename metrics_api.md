@@ -15,8 +15,8 @@ This early release has the following limitations:
 
 - You can post CPU, memory and file system metrics only
 - Metrics must be at an hourly resolution
-- An active AWS instance associated with the metrics must already present and active in the CloudHealth platform and not be Chef-managed
-- Metric retrieval is for individual assets only - for AWS EC2 Instances or file systems of the same
+- An active AWS instance associated with the metrics must already be present and active in the CloudHealth platform and not be Chef-managed
+- Metric retrieval is for individual assets only - for AWS EC2 Instances or file systems of AWS EC2 Instances
 
 When posting to file systems, the associated instance must be present and active as noted above. However, if a file system object does not currently exist, a new one is automatically created and linked to the instance. 
 
