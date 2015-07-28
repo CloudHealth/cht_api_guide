@@ -64,7 +64,7 @@ Where:
 
 Where:  
 
-* `aws_account_id` is the CloudHealth Account ID for the AWS account that owns the instance to be tagged. You can find the `aws_account_id` by clicking on the bulls eyes icon from the [AWS account page](https://apps.cloudhealthtech.com/aws_accounts/) and grabbing the number at the end of the generated URL 
+* `aws_account_id` is the CloudHealth Account ID for the AWS account that owns the instance to be tagged. You can find the `aws_account_id` by clicking on the bulls eye icon from the [AWS account page](https://apps.cloudhealthtech.com/aws_accounts/) and grabbing the number at the end of the generated URL 
 * `instance_id` is the AWS instance ID to be tagged, and
 * `tags` is a hash (object) of key value pairs
 
