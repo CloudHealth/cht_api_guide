@@ -1,6 +1,6 @@
-#Using the CloudHealth Custom Tag API
+#CloudHealth Tagging API -- BETA
 
-The CloudHealth Tagging API allows you to add tags (key value pair) to accounts and assets in CloudHealth. These tags are completely independent of your cloud provider tags. **Please Note:** CloudHealth tags allow you to mark and categorize assets, however these are not pushed down to say AWS. We will continue to pull your AWS tags as we currently do. 
+The CloudHealth Tagging API allows you to add tags (key-value pair) to accounts and assets in CloudHealth. These tags are completely independent of your cloud provider tags. **Please Note:** When you tag accounts or assets using the CloudHealth API the resources are only tagged on the CloudHealth platform and do not cascade down to your cloud provider (AWS). However, we will continue to pull your AWS tags via the AWS API. 
  
 ###<u>Use cases for adding custom tags in CloudHealth:</u> 
  
@@ -28,7 +28,7 @@ Content-Type: application/json
     [
       {
         "type" : "AwsAccount",
-        "owner_id" : "1467",
+        "owner_id" : "123456789012",
         "tags" : {
            "environment" : "SA Labs",
            "owner"       : "Sidd"
@@ -39,9 +39,8 @@ Content-Type: application/json
 </code></pre>
 
 Where:
-
-* `aws_account_id` is the CloudHealth AWS Account ID (not your customer account) that owns the instance,  
-* `owner_id` is the AWS instance ID to be tagged, and
+  
+* `owner_id` is the 12 digit Amazon assigned Account ID for the AWS Account; you can find the `owner_id` by clicking on [My Account in the AWS Console](https://console.aws.amazon.com/billing/home#/account),
 * `tags` is a hash (object) of key value pairs
 
 ###Request Body Example for Tagging AWS Assets:
@@ -49,7 +48,7 @@ Where:
   "assets":
     [
       {
-        "aws_account_id": 90,
+        "aws_account_id": "206158430516",
         "instance_id": "i-9acdeffa",
         "tags": {
             "cost_center": ‘9323’,
@@ -65,7 +64,7 @@ Where:
 
 Where:  
 
-* `aws_account_id` is the CloudHealth AWS Account ID (not your customer account) that owns the instance,  
+* `aws_account_id` is the CloudHealth Account ID for the AWS account that owns the instance to be tagged. You can find the `aws_account_id` by clicking on the bulls eyes icon from the [AWS account page](https://apps.cloudhealthtech.com/aws_accounts/) and grabbing the number at the end of the generated URL 
 * `instance_id` is the AWS instance ID to be tagged, and
 * `tags` is a hash (object) of key value pairs
 
