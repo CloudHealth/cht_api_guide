@@ -33,7 +33,6 @@ try:
 
     # We have only selected 1 measure so just take first element of every array
     row_as_array = [str(item[0]) for item in row]
-    print ",".join(row_as_array)
     print "%s,%s" % (month["label"], ",".join(row_as_array))
     index+=1
 
