@@ -51,8 +51,8 @@ The metadata hash describes the data you are sending. It consists of an asset ty
   "keys" [
     "assetId",
     "timestamp",
-    "memory:free.avg",
-    "memory:free.max",
+    "memory:free:bytes.avg",
+    "memory:free:bytes.max",
     ...
   ]
 }
@@ -75,30 +75,30 @@ For all asset types:
 
 For aws:ec2:instance assets:
 
-- cpu:usedPercent.avg
-- cpu:usedPercent.max
-- cpu:usedPercent.min
-- memory:free.avg
-- memory:free.min
-- memory:free.max
-- memory:size.avg
-- memory:size.min
-- memory:size.max
-- memory:usedPercent.avg
-- memory:usedPercent.min
-- memory:usedPercent.max
+- cpu:used:percent.avg
+- cpu:used:percent.max
+- cpu:used:percent.min
+- memory:free:bytes.avg
+- memory:free:bytes.min
+- memory:free:bytes.max
+- memory:size:bytes.avg
+- memory:size:bytes.min
+- memory:size:bytes.max
+- memory:used:percent.avg
+- memory:used:percent.min
+- memory:used:percent.max
 
 For aws:ec2:instance:fs assets:
 
-- fs:size.avg
-- fs:size.min
-- fs:size.max
-- fs:used.avg
-- fs:used.min
-- fs:used.max
-- fs:usedPercent.avg
-- fs:usedPercent.min
-- fs:usedPercent.max
+- fs:size:bytes.avg
+- fs:size:bytes.min
+- fs:size:bytes.max
+- fs:used:bytes.avg
+- fs:used:bytes.min
+- fs:used:bytes.max
+- fs:used:percent.avg
+- fs:used:percent.min
+- fs:used:percent.max
 
 The `values` array has an entry for each series of metrics you care to send us. Each entry is itself an array of metrics corresponding to the elements in the `keys` array -- in the same order and of the same length!
 
@@ -139,15 +139,15 @@ Pulling this all together we have:
           "keys": [
             "assetId",
             "timestamp",
-            "memory:free.avg",
-            "memory:free.max",
-            "memory:free.min"
-            "memory:size.avg",
-            "memory:size.max",
-            "memory:size.min"
-            "memory:usedPercent.avg",
-            "memory:usedPercent.max",
-            "memory:usedPercent.min"
+            "memory:free:bytes.avg",
+            "memory:free:bytes.max",
+            "memory:free:bytes.min"
+            "memory:size:bytes.avg",
+            "memory:size:bytes.max",
+            "memory:size:bytes.min"
+            "memory:used:percent.avg",
+            "memory:used:percent.max",
+            "memory:used:percent.min"
           ]
         },
         "values": [
@@ -299,15 +299,15 @@ This will return the first 100 metrics for this instance ordered by the time the
          "keys" : [
             "assetId"
             "timestamp",
-            "cpu:usedPercent.avg",
-            "cpu:usedPercent.max",
-            "cpu:usedPercent.min",
-            "memory:free.avg",
-            "memory:free.max",
-            "memory:free.min",
-            "memory:usedPercent.avg",
-            "memory:usedPercent.max",
-            "memory:usedPercent.min",
+            "cpu:used:percent.avg",
+            "cpu:used:percent.max",
+            "cpu:used:percent.min",
+            "memory:free:bytes.avg",
+            "memory:free:bytes.max",
+            "memory:free:bytes.min",
+            "memory:used:percent.avg",
+            "memory:used:percent.max",
+            "memory:used:percent.min",
          ]
       },
       "values" : [
