@@ -109,27 +109,27 @@ The following **keys** are supported:
 	- fs:used:percent.min
 	- fs:used:percent.max
 
-<!--confirm if this each line for respective element and then reword this line-->
 
-The `values` array has an entry for each series of metrics you care to send us. Each entry is itself an array of metrics corresponding to the elements in the `keys` array -- in the same order and of the same length!
+The **`values`** array has an entry for each series of metrics you care to send us. Each entry is itself an array of metrics corresponding to the elements in the **`keys`** array, that is, in the same order and of the same length!
 
-Each array of metrics:
+**Each array of metrics:**
 
  - specifies the instance (using a compact form of the AWS ARN format), 
  - a timestamp (in ISO-8601 format), and 
  - the supplied metrics (numbers: integer or float). 
  
- 
-A single array of metrics can contain information about CPU and/or memory if the asset type is an instance. 
+Also note:
 
+ - A single array of metrics can contain information about CPU and/or memory if the asset type is an instance. 
  - Each instance or timestamp is a new array of values.
 
 The **compact ARN**: 
 
 - for an **instance** must be in the form `<region>:<account-number>:<AWS-instance-ID>`.  
 - for a **file system**, the form is `<region>:<account-number>:<AWS-instance-ID>:<file-system-mount-point>`. 
+- And the **timestamp** must be on an hourly boundary and be UTC-based. 
 
-And the **timestamp** must be on an hourly boundary and be UTC-based. Like so:
+For example:
 
 ```
 "values": [
