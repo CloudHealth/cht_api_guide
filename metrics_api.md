@@ -18,7 +18,7 @@ This early release has the following limitations:
 - You can post CPU, memory, and file system metrics only
 - Metrics must be at an hourly resolution
 - An active AWS instance associated with the metrics must already be present and active in the CloudHealth platform and not be Chef-managed
-- Metric retrieval is for individual assets only - for AWS EC2 Instances or file systems of AWS EC2 Instances
+- Metric retrieval is for individual assets only, that is, for AWS EC2 Instances or file systems of AWS EC2 Instances
 
 When posting to file systems, the associated instance must be present and active as noted above. However, if a file system object does not currently exist, a new one is automatically created and linked to the instance. 
 
@@ -49,9 +49,9 @@ Each **dataset** is a hash consisting of metadata and an array of values. Each e
 
 The **metadata hash** describes the data you are sending. It consists of:
 
- - an asset type, 
- - the granularity of the included data, and 
- - an array of keys that describes the 'type' of each element in the values array.
+ - an asset type 
+ - the granularity of the included data
+ - an array of keys that describes the 'type' of each element in the values array
 
 ```
 "metadata": {
@@ -66,68 +66,68 @@ The **metadata hash** describes the data you are sending. It consists of:
   ]
 }
 ```
-The **supported asset types** are as follows:
+#####The **supported asset types** are as follows:
 
 - aws:ec2:instance
 - aws:ec2:instance:fs
 
-The following **granularities** are allowed:
+#####The following **granularities** are allowed:
 
 - hour
 
-The following **keys** are supported:
+#####The following **keys** are supported:
 
-- For all asset types:
+######For **all** asset types:
 
-  - assetId
-  - timestamp
+ - assetId
+ - timestamp
 
-- For aws:ec2:instance assets:
+######For **aws:ec2:instance** assets:
 
-	- cpu:used:percent.avg
-	- cpu:used:percent.max
-	- cpu:used:percent.min
-	- memory\:free:bytes.avg
-	- memory\:free:bytes.min
-	- memory\:free:bytes.max
-	- memory\:size:bytes.avg
-	- memory\:size:bytes.min
-	- memory\:size:bytes.max
-	- memory\:used:percent.avg
-	- memory\:used:percent.min
-	- memory\:used:percent.max
+- cpu:used:percent.avg
+- cpu:used:percent.max
+- cpu:used:percent.min
+- memory\:free:bytes.avg
+- memory\:free:bytes.min
+- memory\:free:bytes.max
+- memory\:size:bytes.avg
+- memory\:size:bytes.min
+- memory\:size:bytes.max
+- memory\:used:percent.avg
+- memory\:used:percent.min
+- memory\:used:percent.max
 
-- For aws:ec2:instance:fs assets:
+######For **aws:ec2:instance:fs** assets:
 
-	- fs:size:bytes.avg
-	- fs:size:bytes.min
-	- fs:size:bytes.max
-	- fs:used:bytes.avg
-	- fs:used:bytes.min
-	- fs:used:bytes.max
-	- fs:used:percent.avg
-	- fs:used:percent.min
-	- fs:used:percent.max
+- fs:size:bytes.avg
+- fs:size:bytes.min
+- fs:size:bytes.max
+- fs:used:bytes.avg
+- fs:used:bytes.min
+- fs:used:bytes.max
+- fs:used:percent.avg
+- fs:used:percent.min
+- fs:used:percent.max
 
 
-The **`values`** array has an entry for each series of metrics you care to send us. Each entry is itself an array of metrics corresponding to the elements in the **`keys`** array, that is, in the same order and of the same length!
+The **`values`** array has an entry for each series of metrics you care to send us. Each entry is itself an array of metrics corresponding to the elements in the **`keys`** array, that is, in the same order and of the same length.
 
 **Each array of metrics:**
 
- - specifies the instance (using a compact form of the AWS ARN format), 
- - a timestamp (in ISO-8601 format), and 
- - the supplied metrics (numbers: integer or float). 
+ - specifies the instance (using a compact form of the AWS ARN format) 
+ - a timestamp (in ISO-8601 format) 
+ - the supplied metrics (numbers: integer or float) 
  
 Also note:
 
- - A single array of metrics can contain information about CPU and/or memory if the asset type is an instance. 
- - Each instance or timestamp is a new array of values.
+ - A single array of metrics can contain information about CPU and/or memory if the asset type is an instance 
+ - Each instance or timestamp is a new array of values
 
 The **compact ARN**: 
 
-- for an **instance** must be in the form `<region>:<account-number>:<AWS-instance-ID>`.  
-- for a **file system**, the form is `<region>:<account-number>:<AWS-instance-ID>:<file-system-mount-point>`. 
-- And the **timestamp** must be on an hourly boundary and be UTC-based. 
+- for an **instance** must be in the form `<region>:<account-number>:<AWS-instance-ID>`  
+- for a **file system**, the form is `<region>:<account-number>:<AWS-instance-ID>:<file-system-mount-point>` 
+- And the **timestamp** must be on an hourly boundary and be UTC-based 
 
 For example:
 
