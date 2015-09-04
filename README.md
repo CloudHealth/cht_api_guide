@@ -394,6 +394,9 @@ You can also include related objects through the _include_ directive. e.g.
 curl "https://chapi.cloudhealthtech.com/api/search.json?api_key=20eaebc0-1626-0130-2f1e-58b035ef5111&name=AwsInstanceStatus&query=event_description<>''&include=instance"
 ```
 
+###API Versioning
+The default API scopes all calls to assets that are active, regardless of whether the _is_active_ constraint is passed into a query. Including `&api_version=2` as an http query param will remove the scoping of only active assets, and default to returning *all* assets. To limit a query to return only active assets, include `is_active=1` in the query.
+
 ##Ruby Examples
 Below are some examples written in the Ruby programming language to get you started:
 
