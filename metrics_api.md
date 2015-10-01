@@ -1,29 +1,34 @@
-#CloudHealth Metrics API -- BETA
+# CloudHealth Metrics API -- BETA
 
 The CloudHealth Metrics API allows you to upload various performance metrics to CloudHealth. By doing so, you will not only have a better view into the health and performance of your systems, but CloudHealth will be able to generate better rightsizing recommendations.
 
 Sending us metrics is as simple as POSTing a JSON document to the /metrics/v1 endpoint. The JSON format is described below.
 
-NOTE 1: Authentication via api-key is required as described in the main README document in this repo.
+__Note:__
+ 
+1. Authentication via api-key is required as described in the main README document in this repo.
 
-NOTE 2: This API has a dry run facility that allows you to test your writes without actually persisting them to the database. To use it, just add `dryrun=true` as a query parameter to the URL.
+2. This API has a dry run facility that allows you to test your writes without actually persisting them to the database. To use it, just add `dryrun=true` as a query parameter to the URL.
 
-NOTE 3: If your client library does not support sending parameters via both the query string and the POST body, you can supply the API key and the dryrun flag as root level elements in the POST body.
+3. If your client library does not support sending parameters via both the query string and the POST body, you can supply the API key and the dryrun flag as root level elements in the POST body.
 
-##Current Limitations
+## Current Limitations
 This early release has the following limitations:
 
-- You can post CPU, memory and file system metrics only
+- You can post CPU, memory, and file system metrics only
 - Metrics must be at an hourly resolution
 - An active AWS instance associated with the metrics must already be present and active in the CloudHealth platform and not be Chef-managed
-- Metric retrieval is for individual assets only - for AWS EC2 Instances or file systems of AWS EC2 Instances
+- Metric retrieval is for individual assets only, that is, for AWS EC2 Instances or file systems of AWS EC2 Instances
 
 When posting to file systems, the associated instance must be present and active as noted above. However, if a file system object does not currently exist, a new one is automatically created and linked to the instance. 
 
-##POST Data Format
-To send metrics to CloudHealth you need to provide a collection of `datasets`. Each dataset consists of a `metadata` header describing the data being sent and an array of `values` that actually is the data. Each dataset describes a single asset type: instance or file system currently.
+## POST Data Format
+To send metrics to CloudHealth you need to provide a **collection of datasets**. Each dataset describes a single asset type: instance or file system currently. Each dataset consists of:
 
-A collection of one or more datasets is bound up in a hash rooted with the *metrics* element.
+   - a **metadata header** describing the data being sent and 
+   - an **array of values** that is the actual metrics data 
+
+A collection of one or more datasets is bound up in a hash rooted with the **metrics** element.
 
 ```
 "metrics": {
@@ -31,7 +36,7 @@ A collection of one or more datasets is bound up in a hash rooted with the *metr
 }
 ```
 
-Each dataset is a hash consisting of metadata and an array of values. Each element in the values array is itself an array of metrics for a given interval and asset:
+Each **dataset** is a hash consisting of metadata and an array of values. Each element in the **values array** is itself an array of metrics for a given interval and asset:
 
 ```
 {
@@ -42,7 +47,11 @@ Each dataset is a hash consisting of metadata and an array of values. Each eleme
 }
 ```
 
-The metadata hash describes the data you are sending. It consists of an asset type, the granularity of the included data, and an array of keys that describes the 'type' of each element in the values array.
+The **metadata hash** describes the data you are sending. It consists of:
+
+ - an asset type 
+ - the granularity of the included data
+ - an array of keys that describes the 'type' of each element in the values array
 
 ```
 "metadata": {
@@ -57,72 +66,84 @@ The metadata hash describes the data you are sending. It consists of an asset ty
   ]
 }
 ```
-The supported asset types are as follows:
+##### The **supported asset types** are as follows:
 
 - aws:ec2:instance
 - aws:ec2:instance:fs
 
-The following granularities are allowed:
+##### The following **granularities** are allowed:
 
 - hour
 
-The following keys are supported:
+##### The following **keys** are supported:
 
-For all asset types:
+###### For **all** asset types:
 
-- assetId
-- timestamp
+ - assetId
+ - timestamp
 
-For aws:ec2:instance assets:
+###### For **aws:ec2:instance** assets:
 
-- cpu:used:percent.avg
-- cpu:used:percent.max
-- cpu:used:percent.min
-- memory:free:bytes.avg
-- memory:free:bytes.min
-- memory:free:bytes.max
-- memory:size:bytes.avg
-- memory:size:bytes.min
-- memory:size:bytes.max
-- memory:used:percent.avg
-- memory:used:percent.min
-- memory:used:percent.max
+- `cpu:used:percent.avg`
+- `cpu:used:percent.max`
+- `cpu:used:percent.min`
+- `memory:free:bytes.avg`
+- `memory:free:bytes.min`
+- `memory:free:bytes.max`
+- `memory:size:bytes.avg`
+- `memory:size:bytes.min`
+- `memory:size:bytes.max`
+- `memory:used:percent.avg`
+- `memory:used:percent.min`
+- `memory:used:percent.max`
 
-For aws:ec2:instance:fs assets:
+###### For **aws:ec2:instance:fs** assets:
 
-- fs:size:bytes.avg
-- fs:size:bytes.min
-- fs:size:bytes.max
-- fs:used:bytes.avg
-- fs:used:bytes.min
-- fs:used:bytes.max
-- fs:used:percent.avg
-- fs:used:percent.min
-- fs:used:percent.max
+- `fs:size:bytes.avg`
+- `fs:size:bytes.min`
+- `fs:size:bytes.max`
+- `fs:used:bytes.avg`
+- `fs:used:bytes.min`
+- `fs:used:bytes.max`
+- `fs:used:percent.avg`
+- `fs:used:percent.min`
+- `fs:used:percent.max`
 
-The `values` array has an entry for each series of metrics you care to send us. Each entry is itself an array of metrics corresponding to the elements in the `keys` array -- in the same order and of the same length!
 
-Each array of metrics species the instance (using a compact form of the AWS ARN format), a timestamp (in ISO-8601 format), and the supplied metrics (numbers -- integer or float). A single array of metrics can contain information about CPU and/or memory if the asset type is an instance. Each instance or timestamp is a new array of values.
+The **`values`** array has an entry for each series of metrics you care to send us. Each entry is itself an array of metrics corresponding to the elements in the **`keys`** array, that is, in the same order and of the same length.
 
-The compact ARN for an instance must be in the form &lt;region&gt;:&lt;account-number&gt;:&lt;AWS-instance-ID&gt;.  For a file system, the form is &lt;region&gt;:&lt;account-number&gt;:&lt;AWS-instance-ID&gt;:&lt;file-system-mount-point&gt;. And the timestamp must be on an hourly boundary and be UTC-based.
+**Each array of metrics:**
+
+ - specifies the instance (using a compact form of the AWS ARN format) 
+ - a timestamp (in ISO-8601 format) 
+ - the supplied metrics (numbers: integer or float) 
+ 
+Also note:
+
+ - A single array of metrics can contain information about CPU and/or memory if the asset type is an instance 
+ - Each instance or timestamp is a new array of values
+
+The **compact ARN**: 
+
+- for an **instance** must be in the form `<region>:<account-number>:<AWS-instance-ID>`  
+- for a **file system**, the form is `<region>:<account-number>:<AWS-instance-ID>:<file-system-mount-point>` 
+- And the **timestamp** must be on an hourly boundary and be UTC-based 
+
+For example, for instance:
 
 ```
 "values": [
-  [
-    "us-east-1:12345678:i-a99a99a9", "2015-06-03T00:01:00+00:00", 200, 400, ...],
-    "us-east-1:12345678:i-a99a99a9", "2015-06-03T00:02:00+00:00", 100, 300, ...],
-  ]
+  [ "us-east-1:12345678:i-a99a99a9", "2015-06-03T00:01:00+00:00", 200, 400, ...],
+  [ "us-east-1:12345678:i-a99a99a9", "2015-06-03T00:02:00+00:00", 100, 300, ...],
 ]
 ```
 
-or
+or, for file system:
 
 ```
 "values": [
-  [
-    "us-east-1:12345678:i-a99a99a9:/opt", "2015-06-03T00:01:00+00:00", 200, 400, ...],
-    "us-east-1:12345678:i-a99a99a9:/opt", "2015-06-03T00:02:00+00:00", 100, 300, ...],
-  ]
+  [ "us-east-1:12345678:i-a99a99a9:/opt", "2015-06-03T00:01:00+00:00", 200, 400, ...],
+  [ "us-east-1:12345678:i-a99a99a9:/opt", "2015-06-03T00:02:00+00:00", 100, 300, ...],
 ]
 ```
 
@@ -190,11 +211,15 @@ And translating that to a curl command, we have:
 curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<API-KEY>" -d '{"metrics":{"datasets":[{"metadata":{"assetType":"aws:ec2:instance","granularity":"hour","keys":["assetId","timestamp","memory:usedPercent.avg","memory:usedPercent.max","memory:usedPercent.min"]},"values":[["us-east-1:12345678:i-99999999","2015-06-03T01:00:00+00:00",100.0,200.0,50.0],["us-east-1:12345678:i-88888888","2015-06-03T02:00:00+00:00",25.5.0,45.2,15.0]]}]}}'
 ```
 
-##POST Response Format
+
+## POST Response Format
 ### Success and Partial Failure
 If all or some of the posted metrics were accepted by the system, you will receive an HTTP 200 OK response code as well as a JSON message formatted as follows. Note that this API supports partial failure. And if there's partial failure, a 200 response is still returned.
 
 #### Response Format
+
+This is the response format for the API
+
 ```
 "succeeded": <The total number of rows that were successfully processed.>,
 "failed": <The total number of rows that were rejected.>,
@@ -218,7 +243,7 @@ If all or some of the posted metrics were accepted by the system, you will recei
   }
 ```
 
-For example:
+Here is an example of the response:
 
 ```
 {
@@ -340,20 +365,20 @@ You can limit what time range to retrieve asset information for.  The default is
 
 - mtd
 - last_month
-- last_3_months
-- last_6_months
-- last_12_months
+- last\_3_months
+- last\_6_months
+- last\_12_months
 - wtd
-- last_week
-- last_2_weeks
-- last_4_weeks
-- last_52_weeks
+- last\_week
+- last\_2_weeks
+- last\_4_weeks
+- last\_52_weeks
 - today
 - yesterday
-- last_2_days
-- last_7_days
-- last_14_days
-- last_31_days
+- last\_2_days
+- last\_7_days
+- last\_14_days
+- last\_31_days
 
 Thus, you can get the month-to-date metrics with this curl command:
 
