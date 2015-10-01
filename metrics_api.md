@@ -84,30 +84,30 @@ The **metadata hash** describes the data you are sending. It consists of:
 
 ###### For **aws:ec2:instance** assets:
 
-- cpu:used:percent.avg
-- cpu:used:percent.max
-- cpu:used:percent.min
-- memory\:free\:bytes.avg
-- memory\:free\:bytes.min
-- memory\:free\:bytes.max
-- memory\:size:bytes.avg
-- memory\:size:bytes.min
-- memory\:size:bytes.max
-- memory\:used:percent.avg
-- memory\:used:percent.min
-- memory\:used:percent.max
+- `cpu:used:percent.avg`
+- `cpu:used:percent.max`
+- `cpu:used:percent.min`
+- `memory:free:bytes.avg`
+- `memory:free:bytes.min`
+- `memory:free:bytes.max`
+- `memory:size:bytes.avg`
+- `memory:size:bytes.min`
+- `memory:size:bytes.max`
+- `memory:used:percent.avg`
+- `memory\:used:percent.min`
+- `memory\:used:percent.max`
 
 ###### For **aws:ec2:instance:fs** assets:
 
-- fs:size:bytes.avg
-- fs:size:bytes.min
-- fs:size:bytes.max
-- fs:used:bytes.avg
-- fs:used:bytes.min
-- fs:used:bytes.max
-- fs:used:percent.avg
-- fs:used:percent.min
-- fs:used:percent.max
+- `fs:size:bytes.avg`
+- `fs:size:bytes.min`
+- `fs:size:bytes.max`
+- `fs:used:bytes.avg`
+- `fs:used:bytes.min`
+- `fs:used:bytes.max`
+- `fs:used:percent.avg`
+- `fs:used:percent.min`
+- `fs:used:percent.max`
 
 
 The **`values`** array has an entry for each series of metrics you care to send us. Each entry is itself an array of metrics corresponding to the elements in the **`keys`** array, that is, in the same order and of the same length.
