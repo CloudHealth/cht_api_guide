@@ -94,8 +94,8 @@ The **metadata hash** describes the data you are sending. It consists of:
 - `memory:size:bytes.min`
 - `memory:size:bytes.max`
 - `memory:used:percent.avg`
-- `memory\:used:percent.min`
-- `memory\:used:percent.max`
+- `memory:used:percent.min`
+- `memory:used:percent.max`
 
 ###### For **aws:ec2:instance:fs** assets:
 
