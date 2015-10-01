@@ -1,4 +1,4 @@
-#CloudHealth Metrics API -- BETA
+# CloudHealth Metrics API -- BETA
 
 The CloudHealth Metrics API allows you to upload various performance metrics to CloudHealth. By doing so, you will not only have a better view into the health and performance of your systems, but CloudHealth will be able to generate better rightsizing recommendations.
 
@@ -12,7 +12,7 @@ __Note:__
 
 3. If your client library does not support sending parameters via both the query string and the POST body, you can supply the API key and the dryrun flag as root level elements in the POST body.
 
-##Current Limitations
+## Current Limitations
 This early release has the following limitations:
 
 - You can post CPU, memory, and file system metrics only
@@ -22,13 +22,13 @@ This early release has the following limitations:
 
 When posting to file systems, the associated instance must be present and active as noted above. However, if a file system object does not currently exist, a new one is automatically created and linked to the instance. 
 
-##POST Data Format
-To send metrics to CloudHealth you need to provide a collection of `datasets`. Each dataset describes a single asset type: instance or file system currently. Each dataset consists of:
+## POST Data Format
+To send metrics to CloudHealth you need to provide a **collection of datasets**. Each dataset describes a single asset type: instance or file system currently. Each dataset consists of:
 
-   - a `metadata` header describing the data being sent and 
-   - an array of `values` that is the actual metrics data 
+   - a **metadata header** describing the data being sent and 
+   - an **array of values** that is the actual metrics data 
 
-A collection of one or more datasets is bound up in a hash rooted with the *metrics* element.
+A collection of one or more datasets is bound up in a hash rooted with the **metrics** element.
 
 ```
 "metrics": {
@@ -66,30 +66,30 @@ The **metadata hash** describes the data you are sending. It consists of:
   ]
 }
 ```
-#####The **supported asset types** are as follows:
+##### The **supported asset types** are as follows:
 
 - aws:ec2:instance
 - aws:ec2:instance:fs
 
-#####The following **granularities** are allowed:
+##### The following **granularities** are allowed:
 
 - hour
 
-#####The following **keys** are supported:
+##### The following **keys** are supported:
 
-######For **all** asset types:
+###### For **all** asset types:
 
  - assetId
  - timestamp
 
-######For **aws:ec2:instance** assets:
+###### For **aws:ec2:instance** assets:
 
 - cpu:used:percent.avg
 - cpu:used:percent.max
 - cpu:used:percent.min
-- memory\:free:bytes.avg
-- memory\:free:bytes.min
-- memory\:free:bytes.max
+- memory\:free\:bytes.avg
+- memory\:free\:bytes.min
+- memory\:free\:bytes.max
 - memory\:size:bytes.avg
 - memory\:size:bytes.min
 - memory\:size:bytes.max
@@ -97,7 +97,7 @@ The **metadata hash** describes the data you are sending. It consists of:
 - memory\:used:percent.min
 - memory\:used:percent.max
 
-######For **aws:ec2:instance:fs** assets:
+###### For **aws:ec2:instance:fs** assets:
 
 - fs:size:bytes.avg
 - fs:size:bytes.min
@@ -129,25 +129,21 @@ The **compact ARN**:
 - for a **file system**, the form is `<region>:<account-number>:<AWS-instance-ID>:<file-system-mount-point>` 
 - And the **timestamp** must be on an hourly boundary and be UTC-based 
 
-For example:
+For example, for instance:
 
 ```
 "values": [
-  [
-    "us-east-1:12345678:i-a99a99a9", "2015-06-03T00:01:00+00:00", 200, 400, ...],
-    "us-east-1:12345678:i-a99a99a9", "2015-06-03T00:02:00+00:00", 100, 300, ...],
-  ]
+  [ "us-east-1:12345678:i-a99a99a9", "2015-06-03T00:01:00+00:00", 200, 400, ...],
+  [ "us-east-1:12345678:i-a99a99a9", "2015-06-03T00:02:00+00:00", 100, 300, ...],
 ]
 ```
 
-or
+or, for file system:
 
 ```
 "values": [
-  [
-    "us-east-1:12345678:i-a99a99a9:/opt", "2015-06-03T00:01:00+00:00", 200, 400, ...],
-    "us-east-1:12345678:i-a99a99a9:/opt", "2015-06-03T00:02:00+00:00", 100, 300, ...],
-  ]
+  [ "us-east-1:12345678:i-a99a99a9:/opt", "2015-06-03T00:01:00+00:00", 200, 400, ...],
+  [ "us-east-1:12345678:i-a99a99a9:/opt", "2015-06-03T00:02:00+00:00", 100, 300, ...],
 ]
 ```
 
@@ -216,7 +212,7 @@ curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.c
 ```
 
 
-##POST Response Format
+## POST Response Format
 ### Success and Partial Failure
 If all or some of the posted metrics were accepted by the system, you will receive an HTTP 200 OK response code as well as a JSON message formatted as follows. Note that this API supports partial failure. And if there's partial failure, a 200 response is still returned.
 
