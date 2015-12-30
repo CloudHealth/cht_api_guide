@@ -9,13 +9,6 @@ The Account API is used to administer Cloud Provider and Third Party integration
 
 * `name`: Display Name - Must by unique within customer.
 
-## Optional Fields:
-
-* Standard
-    * `tags`: Key/Value identifiers. Keys must be unique.
-    * `hide_public_fields`: If enabled, public DNS and IP info will not be stored
-    * `region`: Either `global` or `govcloud`. Defaults to `global`
-
 * Authentication
     * `auth_type`: Either `access_key` or `assume_role`
     * `access_key`: Access Key, required if using authentication
@@ -23,6 +16,13 @@ The Account API is used to administer Cloud Provider and Third Party integration
     * or
     * `assume_role_arn`: Assume Role ARN, required if using authentication
     * `assume_role_external_id`: External ID, optional
+
+## Optional Fields:
+
+* Standard
+    * `tags`: Key/Value identifiers. Keys must be unique.
+    * `hide_public_fields`: If enabled, public DNS and IP info will not be stored
+    * `region`: Either `global` or `govcloud`. Defaults to `global`
   
 * Billing
     * `bucket`: S3 bucket containing the detailed billing record files
@@ -52,7 +52,7 @@ The Account API is used to administer Cloud Provider and Third Party integration
 ## Discovered Read-only Fields
 
 * `amazon_name`: Display name from within Amazon
-* `owner_id`: AWS Id. Discovered if authentication credentials are provided
+* `owner_id`: AWS Id. Discovered from authentication credentials. Must be unique.
 * `account_type`: `Consolidated`, `Linked`, `Standalone`, `Unknown` - Discovered from analyzing the DBR
 * `vpc_only`: If the account can only create assets in a VPC. Discovered if authentication credentials are provided
 * `cluster_name`: The payer account's name.
