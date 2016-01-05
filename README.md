@@ -3,6 +3,7 @@ CloudHealth provides API services to allow you to programmatically retrieve data
 
 - [Reporting API](#reporting-api)
 - [Asset API](#asset-api)
+- [Account API](./account_api.md)
 - [Metrics API](./metrics_api.md)
 - [Tagging API](./customer_tags_api.md)
 
