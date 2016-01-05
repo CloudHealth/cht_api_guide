@@ -40,7 +40,9 @@ The Account API is used to administer Cloud Provider and Third Party integration
 * CloudWatch
     * `enabled`: Whether to collect CloudWatch data. On by default.
 
-## Computed Read-only Fields
+## CloudHealth Computed Read-only Fields
+
+These are fields that CloudHealth generates and maintains.
 
 * `id`: CloudHealth Unique Identifier
 * `created_at`: Date this account was created in CloudHealth
@@ -50,6 +52,8 @@ The Account API is used to administer Cloud Provider and Third Party integration
 * `groups`: CloudHealth Perspective Membership
 
 ## Discovered Read-only Fields
+
+These fields are discovered after creation by interacting with the AWS API or by parsing a billing statement.
 
 * `amazon_name`: Display name from within Amazon
 * `owner_id`: AWS Id. Discovered from authentication credentials. Must be unique.
