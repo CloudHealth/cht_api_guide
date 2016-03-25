@@ -10,7 +10,7 @@ The Account API is used to administer Cloud Provider and Third Party integration
 * `name`: Display Name - Must by unique within customer.
 
 * Authentication
-    * `auth_type`: Either `access_key` or `assume_role`
+    * `protocol`: Either `access_key` or `assume_role`
     * `access_key`: Access Key, required if using authentication
     * `secret_key`: Secret Key, required if using authentication
     * or
@@ -70,7 +70,7 @@ Request:
 {
     "name": "Production Account",
     "authentication": {
-        "auth_type": "api",
+        "protocol": "access_key",
         "access_key": "AKIAQQQQQQQQQQQ", 
         "secret_key": "S87345j34lkj3l45lkj3453453453+2342"
     },
