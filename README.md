@@ -23,6 +23,7 @@ In your profile settings is a section named API Key. Click on the Generate API K
 
 To periodically rotate your API key for security reasons, just return to your profile settings and click Generate API Key to create a new key. Upon clicking update the previous key will cease working, and the new one will be in effect.
 
+The API enforces all the same authentication and authorization checks as the website. This means users in an organization will only see data scoped to their organization. Additionally, any restrictions made to the user's roles will also be enforced.
 
 ##Reporting API
 
