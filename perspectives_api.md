@@ -12,7 +12,7 @@ A Perspective schema has the following fields:
 
 | **Schema Field**         | **Explanation**                                                                                                                                                                                                                                                                                                                |
 |--------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ```name```               | The name of the Perspective. This does not have to match the name of any pre-existing (active or archived) perspective.                                                                                                                                                                                                                       |
+| ```name```               | The name of the Perspective. This does not have to match the name of any pre-existing (active or archived) Perspective.                                                                                                                                                                                                                       |
 | ```include_in_reports``` | Whether the Perspective is included in Interactive Reports.                                                                                                                                                                                                                                                                    |
 | ```rules```              | An array of rules (objects) that govern Perspective membership. The ordering of the rules matter; rules will be evaluated in order starting from the top. This part of the schema makes group reordering easy. Run a read operation to get the schema of a Perspective, change the order in the schema via your favorite editor and upload the modified schema to same Perspective. |
 | ```merges```             | List of merge objects, which can be of type Dynamic Group or Dynamic Group Block. The Dynamic Group merge allows for two groups to merged and the Dynamic Block Group is to merge two entire blocks of group(s). Each merge specifies a list of source objects and a single target object (groups or blocks), where the sources are to be merged into the target.                                                                                             |
@@ -140,7 +140,7 @@ curl -s -H "Accept: application/json" "https://chapi.cloudhealthtech.com/v1/pers
 ```
 
 ##Create Operation
-To build a perspective from scratch directly using the API use the POST action with the perspective schema
+To build a Perspective from scratch directly using the API use the POST action with the Perspective schema
 
 ###Create | Post Operation - cURL Command Format
 
@@ -155,12 +155,12 @@ curl -H "Accept: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/
 ```
 
 ###Creating Duplicate Perspective
-It is completely legal to extract a schema from a perspective (e.g. perspective A) and POST that schema after the name is changed (for example to B) to create a clone of A. All references in the schema rules to existing groups and blocks in (A) will just be seen as directive to create corresponding groups in B; it will not modify anything inside A. 
+It is completely legal to extract a schema from a Perspective (e.g. Perspective A) and POST that schema after the name is changed (for example to B) to create a clone of A. All references in the schema rules to existing groups and blocks in (A) will just be seen as directive to create corresponding groups in B; it will not modify anything inside A. 
 
 ###Creating New Group
-Another way to put this is, if there is a reference to a nonexistent group (nonexistent inside the target perspective) in a rule, the create/upload calls will create a brand new group inside the perspective for it. This way, if you specify multiple rules referring to the same target string "my new group" inside the schema, the create/upload operations will create a new group and ensure these rules point to the newly created group. 
+Another way to put this is, if there is a reference to a nonexistent group (nonexistent inside the target Perspective) in a rule, the create/upload calls will create a brand new group inside the Perspective for it. This way, if you specify multiple rules referring to the same target string "my new group" inside the schema, the create/upload operations will create a new group and ensure these rules point to the newly created group. 
 
-For example, this following POST call will create a **new perspective**:
+For example, this following POST call will create a **new Perspective**:
 
 ```bash
 curl -H "Accept: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas?api_key=<api_key>" -d 'schema={"name":"Test 1000002","rules":[{"type":"filter","asset":"AwsInstance","to":"new group 1","condition":{"clauses":[{"field":["Active?"],"op":"=","val":"true"}]}},{"type":"filter","asset":"AwsInstance","to":"new group 1","condition":{"clauses":[{"field":["First Discovered"],"op":">","val":"2016-01-04T23:19:34+00:00"}]}}],"constants":[],"merges":[]}'
@@ -177,7 +177,7 @@ curl -H "Accept: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/
 
 ##Update Operation
 
-Update is similar to Create; in fact, Create essentially creates an empty perspective and 'updates' that perspective with the supplied schema. The actual Update call modifies the target perspective to have rules as specified in the uploaded schema. 
+Update is similar to Create; in fact, Create essentially creates an empty Perspective and 'updates' that Perspective with the supplied schema. The actual Update call modifies the target Perspective to have rules as specified in the uploaded schema. 
 
 ###Update | Put Operation - cURL Command Format
 
@@ -187,7 +187,7 @@ curl -s -H "Accept: application/json" -XPUT "https://chapi.cloudhealthtech.com/v
 
 **Note:**
 
-  > This creates new groups when rules in the schema refer to groups that do not exist in the perspective.
+  > This creates new groups when rules in the schema refer to groups that do not exist in the Perspective.
 
   > Any existing group that is not referred to by a rule inside the schema will be deleted, if the `allow\_group\_delete` option is set. By default this is unset, and the call will fail if all rules to an existing group deletion is required.
 
@@ -200,21 +200,21 @@ When you create a group-to-group rule, the update/create calls verify that the s
 
 ###Soft Delete
 
-The following Delete call (the default option) soft deletes a perspective if there are no dependences, such as, from policies or report subscriptions.
+The following Delete call (the default option) soft deletes a Perspective if there are no dependences, such as, from policies or report subscriptions.
 
 ```bash
 curl -s -H "Accept: application/json" -XDELETE "chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>"
 ```
 
 ###Force Delete 
-To delete the perspective regardless of any dependency, you can add a **force** option, like so:
+To delete the Perspective regardless of any dependency, you can add a **force** option, like so:
 
 ```bash
 curl -s -H "Accept: application/json" -XDELETE "localhost:3000/v1/perspective_schemas/<perspective_id>?api_key=<api_key>&force=true"
 ```
 
 ###Hard Delete
-Deletion, by default, is a soft delete. Deleted perspective gets put into the Archive and can be resurrected (but any dependencies will have been dropped, they would have to be recreated). If we want to skip the archive and perform a hard-delete, there is the **hard_delete** option, like so:
+Deletion, by default, is a soft delete. Deleted Perspective gets put into the Archive and can be resurrected (but any dependencies will have been dropped, they would have to be recreated). If we want to skip the archive and perform a hard-delete, there is the **hard_delete** option, like so:
 
 ```bash
 curl -s -H "Accept: application/json" -XDELETE "localhost:3000/v1/perspective_schemas/<perspective id>?api_key=<api_key>&force=true&hard_delete=true"
