@@ -36,7 +36,7 @@ curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_repor
 Here is the command with a sample set of IDs
 
 ```bash
-curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/cost/history?api_key="<api_key>"&client_api_key="732""
+curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/cost/history?api_key=<api_key>&client_api_key=732"
 ```
 
 Asset API queries are similar. To list the accounts for a customer, and their metadata:
@@ -48,7 +48,7 @@ curl https://chapi.cloudhealthtech.com/api/search.json?api_version=2&api_key=<ap
 With sample ids:
 
 ```bash
-curl "https://chapi.cloudhealthtech.com/api/search.json?api_version=2&api_key==”9e0214340-139b-0133-1689-22000b100046”&client_api_key="732"&name=AwsAccount"
+curl "https://chapi.cloudhealthtech.com/api/search.json?api_version=2&api_key=9e0214340-139b-0133-1689-22000b100046&client_api_key=732&name=AwsAccount"
 ```
 
 Example Ruby Script
