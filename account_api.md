@@ -64,6 +64,8 @@ These fields are discovered after creation by interacting with the AWS API or by
 
 ## Example: Create Account
 
+> It is critical to pass in `-H 'Content-Type: application/json'` on the command line because curl defaults to `application/x-www-form-urlencoded` which won't work.
+
 Request:
 
 ```
