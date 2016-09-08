@@ -180,8 +180,8 @@ curl -s -H "Accept: application/json" "https://chapi.cloudhealthtech.com/v1/pers
   "206159659286": { "name": "Environment-tmp", "active": false  },
   "206159657643": { "name": "Efe Test", "active": false  },
   "206159708697": { "name": "Sidd test", "active": true  },
-  "181": { "name": "Function", "active": true  }
-  "650": { "name": "Finance Costs", "active": true  },
+  "181": { "name": "Function", "active": true  },
+  "650": { "name": "Finance Costs", "active": true  }
 }
 ```
 
@@ -198,8 +198,8 @@ curl -s -H "Accept: application/json" "https://chapi.cloudhealthtech.com/v1/pers
 { 
   "206159351171": { "name": "Environment ", "active": true  },
   "206159708697": { "name": "Fred test", "active": true  },
-  "181": { "name": "Function", "active": true  }
-  "650": { "name": "Finance Costs", "active": true  },
+  "181": { "name": "Function", "active": true  },
+  "650": { "name": "Finance Costs", "active": true  }
 }
 ```
 
@@ -210,13 +210,13 @@ To build a Perspective from scratch directly using the API use the POST action w
 ###Create | Post Operation - cURL Command Format
 
 ```bash
-curl -s -H "Accept: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>" -d 'schema=<schema in JSON format>'
+curl -s -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>" -d 'schema=<schema in JSON format>'
 ```
 
 ###Create | POST Operation - cURL Command Example
 
 ```bash
-curl -H "Accept: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas?api_key=<api_key>" -d 'schema={"name":"Environment-new","rules":[{"type":"categorize","asset":"AwsAsset","tag_field":["cht_env"],"ref_id":"206159110488","name":"Env"}],"merges":[],"constants":[{"ref_type":"Dynamic Group Block","ref_id":"206159110488","name":"Env"},{"ref_type":"Dynamic Group","ref_id":"206199274950","blk_id":"206159110488","val":"production","name":"production"},{"ref_type":"Dynamic Group","ref_id":"206199274960","blk_id":"206159110488","val":"feature","name":"feature"},{"ref_type":"Group","ref_id":"206195653674","name":"Other","is_other":"true"}]}'
+curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas?api_key=<api_key>" -d 'schema={"name":"Environment-new","rules":[{"type":"categorize","asset":"AwsAsset","tag_field":["cht_env"],"ref_id":"206159110488","name":"Env"}],"merges":[],"constants":[{"ref_type":"Dynamic Group Block","ref_id":"206159110488","name":"Env"},{"ref_type":"Dynamic Group","ref_id":"206199274950","blk_id":"206159110488","val":"production","name":"production"},{"ref_type":"Dynamic Group","ref_id":"206199274960","blk_id":"206159110488","val":"feature","name":"feature"},{"ref_type":"Group","ref_id":"206195653674","name":"Other","is_other":"true"}]}'
 ```
 
 ###Creating Duplicate Perspective
@@ -228,7 +228,7 @@ Another way to put this is, if there is a reference to a nonexistent group (none
 For example, this following POST call will create a **new Perspective**:
 
 ```bash
-curl -H "Accept: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas?api_key=<api_key>" -d 'schema={"name":"Test 1000002","rules":[{"type":"filter","asset":"AwsInstance","to":"new group 1","condition":{"clauses":[{"field":["Active?"],"op":"=","val":"true"}]}},{"type":"filter","asset":"AwsInstance","to":"new group 1","condition":{"clauses":[{"field":["First Discovered"],"op":">","val":"2016-01-04T23:19:34+00:00"}]}}],"constants":[],"merges":[]}'
+curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas?api_key=<api_key>" -d 'schema={"name":"Test 1000002","rules":[{"type":"filter","asset":"AwsInstance","to":"new group 1","condition":{"clauses":[{"field":["Active?"],"op":"=","val":"true"}]}},{"type":"filter","asset":"AwsInstance","to":"new group 1","condition":{"clauses":[{"field":["First Discovered"],"op":">","val":"2016-01-04T23:19:34+00:00"}]}}],"constants":[],"merges":[]}'
 {"message":"Perspective 893353516727 created"}
 ```
 
@@ -237,7 +237,7 @@ a new group (Group-1) has been created and is displayed in the constants lists.
 The references to "new group 1" will have been converted into references to the corresponding newly created group.
 
 ```bash
-curl -H "Accept: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>"{"name":"Test 1000004","include_in_reports":"false","rules":[{"type":"filter","asset":"AwsInstance","to":"893374827932","condition":{"clauses":[{"field":["Active?"],"op":"=","val":"true"}]}},{"type":"filter","asset":"AwsInstance","to":"893374827932","condition":{"clauses":[{"field":["First Discovered"],"op":"\u003E","val":"2016-01-04T23:19:34+00:00"}]}}],"merges":[],"constants":[{"ref_type":"Group","ref_id":"893374827931","name":"Other","is_other":"true"},{"ref_type":"Group","ref_id":"893374827932","name":"Group-1"}]}
+curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>"{"name":"Test 1000004","include_in_reports":"false","rules":[{"type":"filter","asset":"AwsInstance","to":"893374827932","condition":{"clauses":[{"field":["Active?"],"op":"=","val":"true"}]}},{"type":"filter","asset":"AwsInstance","to":"893374827932","condition":{"clauses":[{"field":["First Discovered"],"op":"\u003E","val":"2016-01-04T23:19:34+00:00"}]}}],"merges":[],"constants":[{"ref_type":"Group","ref_id":"893374827931","name":"Other","is_other":"true"},{"ref_type":"Group","ref_id":"893374827932","name":"Group-1"}]}
 ```
 
 ##Update Operation
@@ -247,14 +247,14 @@ Update is similar to Create; in fact, Create essentially creates an empty Perspe
 ###Update | Put Operation - cURL Command Format
 
 ```bash
-curl -s -H "Accept: application/json" -XPUT "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>" -d 'schema=<schema in JSON format>'
+curl -s -H "Content-Type: application/json" -XPUT "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>" -d 'schema=<schema in JSON format>'
 ```
 
 **Note:**
 
   > This creates new groups when rules in the schema refer to groups that do not exist in the Perspective.
 
-  > Any existing group that is not referred to by a rule inside the schema will be deleted, if the `allow\_group\_delete` option is set. By default this is unset, and the call will fail if all rules to an existing group deletion is required.
+  > Any existing group that is not referred to by a rule inside the schema will be deleted, if the `allow_group_delete` option is set. By default this is unset, and the call will fail if all rules to an existing group deletion is required.
 
 In addition to "to" fields in rules that specify target groups, you can specify a "from" group as well. This is typically not needed, as a missing "from" field, is interpreted as begin "from" the  Other (*Assets Not Allocated*) group.
 
@@ -270,7 +270,7 @@ If the perspective has been updated (and therefore version incremented) since th
 Example:
 
 ```bash
-curl -s -H "Accept: application/json" -XPUT "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>&check_version=3"	
+curl -s -H "Content-Type: application/json" -XPUT "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>&check_version=3"
 ```
 
 #####include_version
