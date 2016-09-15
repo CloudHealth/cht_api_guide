@@ -35,7 +35,7 @@ Response:
 ```
 {  
    "id":3947,
-   "name":"Acme Corp 9/15",
+   "name":"Acme Corp",
    "billing_contact":"john.doe@acmecorp.com",
    "margin_percentage":0.0,
    "created_at":"2016-09-15T18:17:04Z",
@@ -96,7 +96,7 @@ Request:
 
 ```
 {
-    "name": "Acme Corporation",
+    "name": "Acme Corporation"
 }
 ```
 
