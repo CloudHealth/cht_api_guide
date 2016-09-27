@@ -62,22 +62,25 @@ curl -s -H "Accept: application/json" "https://chapi.cloudhealthtech.com/v1/pers
 
 ```json
 {
-    "constants": [
-        {
-            "list": [
-                {
-                    "is_other": "true",
-                    "name": "Other",
-                    "ref_id": "206213093633"
-                }
-            ],
-            "type": "Group"
-        }
-    ],
-    "include_in_reports": "true",
-    "merges": [],
-    "name": "API",
-    "rules": []
+    "schema":
+    {
+        "constants": [
+            {
+                "list": [
+                    {
+                        "is_other": "true",
+                        "name": "Other",
+                        "ref_id": "206213093633"
+                    }
+                ],
+                "type": "Group"
+            }
+        ],
+        "include_in_reports": "true",
+        "merges": [],
+        "name": "API",
+        "rules": []
+    }
 }
 ```
 
@@ -87,58 +90,61 @@ curl -s -H "Accept: application/json" "https://chapi.cloudhealthtech.com/v1/pers
 
 ```json
 {
-    "constants": [
-        {
-            "list": [
-                {
-                    "name": "Env",
-                    "ref_id": "206159110488"
-                }
-            ],
-            "type": "Dynamic Group Block"
-        },
-        {
-            "list": [
-                {
-                    "blk_id": "206159110488",
-                    "name": "production",
-                    "ref_id": "206199274950",
-                    "val": "production"
-                },
-                {
-                    "blk_id": "206159110488",
-                    "name": "feature",
-                    "ref_id": "206199274960",
-                    "val": "feature"
-                }
-            ],
-            "type": "Dynamic Group"
-        },
-        {
-            "list": [
-                {
-                    "is_other": "true",
-                    "name": "Other",
-                    "ref_id": "206195653674"
-                }
-            ],
-            "type": "Group"
-        }
-    ],
-    "include_in_reports": "true",
-    "merges": [],
-    "name": "Environment ",
-    "rules": [
-        {
-            "asset": "AwsAsset",
-            "name": "Env",
-            "ref_id": "206159110488",
-            "tag_field": [
-                "cht_env"
-            ],
-            "type": "categorize"
-        }
-    ]
+    "schema":
+    {
+        "constants": [
+            {
+                "list": [
+                    {
+                        "name": "Env",
+                        "ref_id": "206159110488"
+                    }
+                ],
+                "type": "Dynamic Group Block"
+            },
+            {
+                "list": [
+                    {
+                        "blk_id": "206159110488",
+                        "name": "production",
+                        "ref_id": "206199274950",
+                        "val": "production"
+                    },
+                    {
+                        "blk_id": "206159110488",
+                        "name": "feature",
+                        "ref_id": "206199274960",
+                        "val": "feature"
+                    }
+                ],
+                "type": "Dynamic Group"
+            },
+            {
+                "list": [
+                    {
+                        "is_other": "true",
+                        "name": "Other",
+                        "ref_id": "206195653674"
+                    }
+                ],
+                "type": "Group"
+            }
+        ],
+        "include_in_reports": "true",
+        "merges": [],
+        "name": "Environment ",
+        "rules": [
+            {
+                "asset": "AwsAsset",
+                "name": "Env",
+                "ref_id": "206159110488",
+                "tag_field": [
+                    "cht_env"
+                ],
+                "type": "categorize"
+            }
+        ]
+    }
 }
 ```
 
