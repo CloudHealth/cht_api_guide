@@ -158,6 +158,13 @@ Customers can be deleted with the following call.
 curl -X "DELETE" https://chapi.cloudhealthtech.com/v1/customers/3942?api_key=<API_KEY>
 ```
 
+
+## Retrieving a single customer
+
+```shell
+curl -H "Content-Type: application/json" 'https://chapi.cloudhealthtech.com/v1/customers/:id?api_key=<API_KEY>"
+```
+
 ## Retrieving List of Customers
 
 ```shell
