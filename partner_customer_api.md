@@ -15,7 +15,7 @@ Request:
 {  
    "name":"Acme Corp",
    "billing_contact":"john.doe@acmecorp.com",
-   "trial_expiration_date":"2016-09-22 00:00:00",
+   "trial_expiration_date":"2016-09-22T00:00:00Z",
    "partner_billing_configuration":{  
       "enabled":"true",
       "folder":""
@@ -27,6 +27,10 @@ Request:
       "zipcode":"01234",
       "country":"US"
    }
+   "tags": {
+	    "customer_id" : "973532",
+	    "service_package" : "basic_managed"
+  },
 }
 ```
 
@@ -44,12 +48,16 @@ Response:
       "enabled":true,
       "folder":""
    },
-   "address":{  
+   "address": {  
       "street1":"1 Main St",
       "city":"Springfield",
       "state":"MA",
       "zipcode":"01234",
       "country":"US"
+   },
+   "tags": {
+	    "customer_id" : "973532",
+	    "service_package" : "basic_managed"
    },
    "_links":{  
       "self":{  
@@ -74,11 +82,13 @@ The following attributes are supported for customers.
 
 #### Optional Fields
 
- `trial_expiration_date` : A date in future when the customer's trial expires. Users in customer will no longer be able to access CloudHealth.
+ `trial_expiration_date` : A date in future when the customer's trial expires. Users in customer will no longer be able to access CloudHealth. Dates format should always be iso8601
 
  `billing_contact` : A text field to store an email address for a contact.
 
  `partner_billing_configuration`: Composite of boolean `enabled` (whether partner billing is enabled) and `folder` (folder prefix in S3 bucket for uploading billing artifacts.
+
+ `tags`: Key/Value identifiers. Maximum of 20 tags per customer can be created
 
 #### Read-only Fields
 
@@ -87,6 +97,10 @@ The following attributes are supported for customers.
 `created_at`: When the customer was originally created
 
 `updated_at`: When the customer attributes were last modified
+
+`billing_configuration_status`: configuration status (Healthy or not Healthy)
+
+`billing_configuration_reason`: configuration reason for non-healthy
 
 ## Modifying existing customers
 
