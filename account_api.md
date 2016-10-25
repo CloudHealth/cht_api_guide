@@ -190,6 +190,10 @@ curl -d '{"authentication":{"protocol":"assume_role","assume_role_arn":"arn:123"
 `GET https://chapi.cloudhealthtech.com/v1/aws_accounts`
 
 * Results will be paged
+    * Use the `page` query param to increment the page.
+       * `GET https://chapi.cloudhealthtech.com/v1/aws_accounts?page=2`
+    * The `per_page` param will adjust the number of results per page. It is 30 by default.
+       * `GET https://chapi.cloudhealthtech.com/v1/aws_accounts?page=3&per_page=100`
 * Header will contain:
     * `X-Total`: Total number of accounts
     * `X-Per-Page`: Accounts returned per page
