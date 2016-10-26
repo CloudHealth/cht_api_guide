@@ -9,6 +9,7 @@ CloudHealth provides API services to allow you to programmatically retrieve data
 - [Perspectives API](./perspectives_api.md)
 - [Partner API](./partner_api.md)
 - [Partner Customer Provisioning API](./partner_customer_api.md)
+- [Partner AWS Account Assignment API](./aws_account_assignment_api.md)
 - [Customer Statement API](./customer_statement_api.md)
 
 ##Disclaimer
