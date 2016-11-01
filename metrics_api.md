@@ -208,7 +208,7 @@ Pulling this all together we have:
 And translating that to a curl command, we have:
 
 ```
-curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<API-KEY>" -d '{"metrics":{"datasets":[{"metadata":{"assetType":"aws:ec2:instance","granularity":"hour","keys":["assetId","timestamp","memory:usedPercent.avg","memory:usedPercent.max","memory:usedPercent.min"]},"values":[["us-east-1:12345678:i-99999999","2015-06-03T01:00:00+00:00",100.0,200.0,50.0],["us-east-1:12345678:i-88888888","2015-06-03T02:00:00+00:00",25.5.0,45.2,15.0]]}]}}'
+curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<API-KEY>" -d '{"metrics":{"datasets":[{"metadata":{"assetType":"aws:ec2:instance","granularity":"hour","keys":["assetId","timestamp","memory:usedPercent.avg","memory:usedPercent.max","memory:usedPercent.min"]},"values":[["us-east-1:12345678:i-99999999","2015-06-03T01:00:00+00:00",100.0,200.0,50.0],["us-east-1:12345678:i-88888888","2015-06-03T02:00:00+00:00",25.5,45.2,15.0]]}]}}'
 ```
 
 
