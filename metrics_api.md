@@ -32,7 +32,7 @@ When posting to file systems, the associated instance must be present and active
 - Read requests are currently not throttled.
 - An HTTP status code of 429 is returned if the request is throttled.
 - The client should be written to handle this response and retry with an exponential backoff.
-- Since a payload can contain up to 1000 data points, a single client can push 60,000 data points a minute.
+- Since a payload can contain up to 1000 data points, a single client can push 60,000 data points per minute.
 
 ## POST Data Format
 To send metrics to CloudHealth you need to provide a **collection of datasets**. Each dataset describes a single asset type: instance or file system currently. Each dataset consists of:
