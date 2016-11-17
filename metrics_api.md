@@ -1,4 +1,4 @@
-# CloudHealth Metrics API -- BETA
+# CloudHealth Metrics API
 
 The CloudHealth Metrics API allows you to upload various performance metrics to CloudHealth. By doing so, you will not only have a better view into the health and performance of your systems, but CloudHealth will be able to generate better rightsizing recommendations.
 
@@ -12,6 +12,8 @@ __Note:__
 
 3. If your client library does not support sending parameters via both the query string and the POST body, you can supply the API key and the dryrun flag as root level elements in the POST body.
 
+4. We encourage you to include as many datapoints across multiple assets in a single request. For example, you could send 24 hourly metrics for 41 EC2 Instances in a single request. 
+
 ## Current Limitations
 This early release has the following limitations:
 
@@ -19,8 +21,18 @@ This early release has the following limitations:
 - Metrics must be at an hourly resolution
 - An active AWS instance associated with the metrics must already be present and active in the CloudHealth platform and not be Chef-managed
 - Metric retrieval is for individual assets only, that is, for AWS EC2 Instances or file systems of AWS EC2 Instances
+- The payload can contain a max of 1000 data points. If there are more, the entire request is rejected with a 422 response.
 
 When posting to file systems, the associated instance must be present and active as noted above. However, if a file system object does not currently exist, a new one is automatically created and linked to the instance. 
+
+## Rate Limiting
+
+- Rate limiting is at the "user" (i.e. API key) level.
+- We allow a total of 60 POST's per minute.
+- Read requests are currently not throttled.
+- An HTTP status code of 429 is returned if the request is throttled.
+- The client should be written to handle this response and retry with an exponential backoff.
+- Since a payload can contain up to 1000 data points, a single client can push 60,000 data points per minute.
 
 ## POST Data Format
 To send metrics to CloudHealth you need to provide a **collection of datasets**. Each dataset describes a single asset type: instance or file system currently. Each dataset consists of:
@@ -288,7 +300,7 @@ Here is an example of the response:
 ```
 
 ### Failure
-A failure response (either 400 or 500) will be returned if no data could be processed. For instance, if the JSON document was malformed. In general, if you get a 400 response, the problem exists in the payload, and you should be able to rectify it. A 500 response means there was some system failure on the CloudHealth side, and you should not try to resend the data immediately. In both cases, the response body is as follows:
+A failure response (either 400 or 500) will be returned if no data could be processed. For instance, if the JSON document was malformed. In general, if you get a 4XX response, the problem exists in the payload, and you should be able to rectify it. A 429 means the request was throttled. A 500 response means there was some system failure on the CloudHealth side, and you should not try to resend the data immediately. In both cases, the response body is as follows:
 
 ```
 { "error": "<error message>" }
