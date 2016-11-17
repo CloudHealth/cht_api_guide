@@ -21,7 +21,7 @@ This early release has the following limitations:
 - Metrics must be at an hourly resolution
 - An active AWS instance associated with the metrics must already be present and active in the CloudHealth platform and not be Chef-managed
 - Metric retrieval is for individual assets only, that is, for AWS EC2 Instances or file systems of AWS EC2 Instances
-- The payload can contain a max of 1000 data points. If there are more, the entire request is rejected.
+- The payload can contain a max of 1000 data points. If there are more, the entire request is rejected with a 422 response.
 
 When posting to file systems, the associated instance must be present and active as noted above. However, if a file system object does not currently exist, a new one is automatically created and linked to the instance. 
 
@@ -300,7 +300,7 @@ Here is an example of the response:
 ```
 
 ### Failure
-A failure response (either 400 or 500) will be returned if no data could be processed. For instance, if the JSON document was malformed. In general, if you get a 400 response, the problem exists in the payload, and you should be able to rectify it. A 429 means the request was throttled. A 500 response means there was some system failure on the CloudHealth side, and you should not try to resend the data immediately. In both cases, the response body is as follows:
+A failure response (either 400 or 500) will be returned if no data could be processed. For instance, if the JSON document was malformed. In general, if you get a 4XX response, the problem exists in the payload, and you should be able to rectify it. A 429 means the request was throttled. A 500 response means there was some system failure on the CloudHealth side, and you should not try to resend the data immediately. In both cases, the response body is as follows:
 
 ```
 { "error": "<error message>" }
