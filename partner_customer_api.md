@@ -26,7 +26,7 @@ Request:
       "state":"MA",
       "zipcode":"01234",
       "country":"US"
-   }
+   },
    "tags": {
 	    "customer_id" : "973532",
 	    "service_package" : "basic_managed"
@@ -78,7 +78,7 @@ The following attributes are supported for customers.
 
  `name` : A unique name for the Customer
 
- `location` : Composite of `address1`, `address2`, `city`, `state`, `zip_code`, `country`
+ `address` : Composite of `street1`, `street2`, `city`, `state`, `zipcode`, `country`
 
 #### Optional Fields
 
