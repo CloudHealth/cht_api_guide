@@ -401,6 +401,18 @@ You can also include related objects through the _include_ directive. e.g.
 curl "https://chapi.cloudhealthtech.com/api/search.json?api_key=20eaebc0-1626-0130-2f1e-58b035ef5111&name=AwsInstanceStatus&query=event_description<>''&include=instance"
 ```
 
+###API Paging
+CloudHealth recommends using paging when querying objects from the API. There are two parameters to configure paging: `&page=<page number>` and `&per_page=<max objects returned in a page>`.
+`&page=` specifies the page number which is incremented from 1 until no further results are returned.  `&per_page=` specifies the number of objects in a paged response.
+Maximum value for`&per_page=` is 1000 and the default is 100 if not specified.  Paging is only available in conjunction with `&api_version=2`  
+
+```
+curl "https://chapi.cloudhealthtech.com/api/search.json?api_key=20eaebc0-1626-0130-2f1e-58b035ef5111&api_version=2&page=1&per_page=200&name=AwsInstanceStatus&query=event_description<>''&include=instance"
+```
+
+When `&page=`is not present the API will return all objects in one call which may impact response time. 
+
+
 ###API Versioning
 The default API scopes all calls to assets that are active, regardless of whether the _is_active_ constraint is passed into a query. Including `&api_version=2` as an http query param will remove the scoping of only active assets, and default to returning *all* assets. To limit a query to return only active assets, include `is_active=1` in the query.
 
