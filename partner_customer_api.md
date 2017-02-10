@@ -112,7 +112,7 @@ The following attributes are supported for customers.
 
 #### Read-only Fields
 
-* `id` : Reference id for the customer
+* `id` : Reference id for the customer also known as MSP Client API Id
 
 * `created_at`: When the customer was originally created
 
