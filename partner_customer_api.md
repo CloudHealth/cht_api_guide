@@ -34,7 +34,7 @@ Request:
             {
               "key": "service_package", "value": "basic_managed"
             }
-    ],
+    ]
 }
 ```
 
