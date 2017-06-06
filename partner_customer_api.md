@@ -28,10 +28,13 @@ Request:
         "zipcode": "01234",
         "country": "US"
     },
-    "tags": {
-        "customer_id": "973532",
-        "service_package": "basic_managed"
-    },
+    "tags": [{
+              "key": "customer_id", "value": "973532"
+            },
+            {
+              "key": "service_package", "value": "basic_managed"
+            }
+    ],
 }
 ```
 
@@ -57,13 +60,13 @@ Response:
         "zipcode": "01234",
         "country": "US"
     },
-    "tags": [
-            {
-                "key": "customer_id", "value": "973532"
+    "tags": [{
+              "key": "customer_id", "value": "973532"
             },
             {
-                "key": "service_package", "value": "basic_managed"
-            }],
+              "key": "service_package", "value": "basic_managed"
+            }
+    ],
     "_links": {
         "self": {
          "href": "/v1/customers/3947"
