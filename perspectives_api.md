@@ -3,7 +3,7 @@
 
 
 ##Overview
-The CloudHealth Perspectives API allows for all CRUD operations on CloudHealth Perspectives.  A user can complete these CRUD operations via a Perspective schema JSON object. This schema can be retrieved by a READ operation for existing Perspectives. 
+The CloudHealth Perspectives API allows for all CRUD operations on CloudHealth Perspectives.  A user can complete these CRUD operations via a Perspective schema JSON object. This schema can be retrieved by a READ operation for existing Perspectives.
 
 Users can edit a schema file and upload it to an existing Perspective to modify rules, merges, perform re-ordering (among other things). Users can also post a schema to create a brand new Perspective, or delete a Perspective with these API calls.
 
@@ -37,7 +37,7 @@ Through all these operation described below you should be able to fully manage y
   - `<perspective_id>` with the required Perspective id
 
 ##Read Operation
-A cURL invocation of the Read API call requires the id of the Perspective and the api key. 
+A cURL invocation of the Read API call requires the id of the Perspective and the api key.
 [See here on how to obtain an API key](https://docs.google.com/document/d/1eCNQwawgJVoYqCXoTgD95j_cvoqGNHMkchZDrcQHg54/edit#heading=h.1r6ts8di8kml).
 
 ###GET Action
@@ -148,7 +148,7 @@ curl -s -H "Accept: application/json" "https://chapi.cloudhealthtech.com/v1/pers
 }
 ```
 
-##### Include Version for Perspective 
+##### Include Version for Perspective
 `include_version`
 
 If users want to retrieve the current version of the perspective, adding the `include_version=true` will return the current version of the perspective as an entry in the constants list.
@@ -180,7 +180,7 @@ curl -s -H "Accept: application/json" "https://chapi.cloudhealthtech.com/v1/pers
 ####Sample Response
 
 ```json
-{ 
+{
   "206159639971": { "name": "DDE Test", "active": false  },
   "206159351171": { "name": "Environment ", "active": true  },
   "206159659286": { "name": "Environment-tmp", "active": false  },
@@ -193,7 +193,7 @@ curl -s -H "Accept: application/json" "https://chapi.cloudhealthtech.com/v1/pers
 
 By default the  will return all perspectives, active and archived. To only return active perspectives, add the argument `active_only=true`
 
-####cURL Command to Index only Active Perspectives (non-archived) 
+####cURL Command to Index only Active Perspectives (non-archived)
 
 ```bash
 curl -s -H "Accept: application/json" "https://chapi.cloudhealthtech.com/v1/perspective_schemas?api_key=<api key>&active_only=true"
@@ -201,7 +201,7 @@ curl -s -H "Accept: application/json" "https://chapi.cloudhealthtech.com/v1/pers
 
 #### Sample Response
 ```json
-{ 
+{
   "206159351171": { "name": "Environment ", "active": true  },
   "206159708697": { "name": "Fred test", "active": true  },
   "181": { "name": "Function", "active": true  },
@@ -216,25 +216,25 @@ To build a Perspective from scratch directly using the API use the POST action w
 ###Create | Post Operation - cURL Command Format
 
 ```bash
-curl -s -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>" -d '{schema: <schema JSON>}'
+curl -s -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>" -d '{"schema": <schema JSON>}'
 ```
 
 ###Create | POST Operation - cURL Command Example
 
 ```bash
-curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas?api_key=<api_key>" -d '{schema:{"name":"Environment-new","rules":[{"type":"categorize","asset":"AwsAsset","tag_field":["cht_env"],"ref_id":"206159110488","name":"Env"}],"merges":[],"constants":[{"ref_type":"Dynamic Group Block","ref_id":"206159110488","name":"Env"},{"ref_type":"Dynamic Group","ref_id":"206199274950","blk_id":"206159110488","val":"production","name":"production"},{"ref_type":"Dynamic Group","ref_id":"206199274960","blk_id":"206159110488","val":"feature","name":"feature"},{"ref_type":"Group","ref_id":"206195653674","name":"Other","is_other":"true"}]}}'
+curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas?api_key=<api_key>" -d '{"schema":{"name":"Environment-new","rules":[{"type":"categorize","asset":"AwsAsset","tag_field":["cht_env"],"ref_id":"206159110488","name":"Env"}],"merges":[],"constants":[{"ref_type":"Dynamic Group Block","ref_id":"206159110488","name":"Env"},{"ref_type":"Dynamic Group","ref_id":"206199274950","blk_id":"206159110488","val":"production","name":"production"},{"ref_type":"Dynamic Group","ref_id":"206199274960","blk_id":"206159110488","val":"feature","name":"feature"},{"ref_type":"Group","ref_id":"206195653674","name":"Other","is_other":"true"}]}}'
 ```
 
 ###Creating Duplicate Perspective
-It is completely legal to extract a schema from a Perspective (e.g. Perspective A) and POST that schema after the name is changed (for example to B) to create a clone of A. All references in the schema rules to existing groups and blocks in (A) will just be seen as directive to create corresponding groups in B; it will not modify anything inside A. 
+It is completely legal to extract a schema from a Perspective (e.g. Perspective A) and POST that schema after the name is changed (for example to B) to create a clone of A. All references in the schema rules to existing groups and blocks in (A) will just be seen as directive to create corresponding groups in B; it will not modify anything inside A.
 
 ###Creating New Group
-Another way to put this is, if there is a reference to a nonexistent group (nonexistent inside the target Perspective) in a rule, the create/upload calls will create a brand new group inside the Perspective for it. This way, if you specify multiple rules referring to the same target string "my new group" inside the schema, the create/upload operations will create a new group and ensure these rules point to the newly created group. 
+Another way to put this is, if there is a reference to a nonexistent group (nonexistent inside the target Perspective) in a rule, the create/upload calls will create a brand new group inside the Perspective for it. This way, if you specify multiple rules referring to the same target string "my new group" inside the schema, the create/upload operations will create a new group and ensure these rules point to the newly created group.
 
 For example, this following POST call will create a **new Perspective**:
 
 ```bash
-curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas?api_key=<api_key>" -d '{schema:{"name":"Test 1000002","rules":[{"type":"filter","asset":"AwsInstance","to":"new group 1","condition":{"clauses":[{"field":["Active?"],"op":"=","val":"true"}]}},{"type":"filter","asset":"AwsInstance","to":"new group 1","condition":{"clauses":[{"field":["First Discovered"],"op":">","val":"2016-01-04T23:19:34+00:00"}]}}],"constants":[],"merges":[]}'
+curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas?api_key=<api_key>" -d '{"schema":{"name":"Test 1000002","rules":[{"type":"filter","asset":"AwsInstance","to":"new group 1","condition":{"clauses":[{"field":["Active?"],"op":"=","val":"true"}]}},{"type":"filter","asset":"AwsInstance","to":"new group 1","condition":{"clauses":[{"field":["First Discovered"],"op":">","val":"2016-01-04T23:19:34+00:00"}]}}],"constants":[],"merges":[]}'
 {"message":"Perspective 893353516727 created"}}
 ```
 
@@ -248,12 +248,12 @@ curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.c
 
 ##Update Operation
 
-Update is similar to Create; in fact, Create essentially creates an empty Perspective and 'updates' that Perspective with the supplied schema. The actual Update call modifies the target Perspective to have rules as specified in the uploaded schema. 
+Update is similar to Create; in fact, Create essentially creates an empty Perspective and 'updates' that Perspective with the supplied schema. The actual Update call modifies the target Perspective to have rules as specified in the uploaded schema.
 
 ###Update | Put Operation - cURL Command Format
 
 ```bash
-curl -s -H "Content-Type: application/json" -XPUT "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>" -d '{schema:<schema JSON>}'
+curl -s -H "Content-Type: application/json" -XPUT "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>" -d '{"schema":<schema JSON>}'
 ```
 
 **Note:**
@@ -266,12 +266,12 @@ In addition to "to" fields in rules that specify target groups, you can specify 
 
 When you create a group-to-group rule, the update/create calls verify that the source group already has at least one rule higher in the rule that targets it.
 
-#### Avoiding conflicts for concurrent updates 
+#### Avoiding conflicts for concurrent updates
 
 #####check_version for Updates
-If users want to enforce that they are not writing over an update made concurrently, they can send the version of the perspective (via a `check_version=<version>` argument) that they expect to be updating. 
+If users want to enforce that they are not writing over an update made concurrently, they can send the version of the perspective (via a `check_version=<version>` argument) that they expect to be updating.
 
-If the perspective has been updated (and therefore version incremented) since the last read operation, the update request will return a 400 error. 
+If the perspective has been updated (and therefore version incremented) since the last read operation, the update request will return a 400 error.
 
 Example:
 
@@ -294,7 +294,7 @@ The following Delete call (the default option) soft deletes a Perspective if the
 curl -s -H "Accept: application/json" -XDELETE "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>"
 ```
 
-###Force Delete 
+###Force Delete
 To delete the Perspective regardless of any dependency, you can add a **force** option, like so:
 
 ```bash
@@ -307,6 +307,3 @@ Deletion, by default, is a soft delete. Deleted Perspective gets put into the Ar
 ```bash
 curl -s -H "Accept: application/json" -XDELETE "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective id>?api_key=<api_key>&force=true&hard_delete=true"
 ```
-
-
-
