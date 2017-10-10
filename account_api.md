@@ -13,9 +13,11 @@ The Account API is used to administer Cloud Provider and Third Party integration
     * `protocol`: Either `access_key` or `assume_role`
     * `access_key`: Access Key, required if using authentication
     * `secret_key`: Secret Key, required if using authentication
-    * or
-    * `assume_role_arn`: Assume Role ARN, required if using authentication
-    * `assume_role_external_id`: External ID, optional
+    * `assume_role_arn`: Assume Role ARN, required if using Role-based authentication
+    * `assume_role_external_id`: External ID, required if using Role-based authentication.
+       CloudHealth generates a unique External ID for each customer. To get your External ID, log into the CloudHealth platform (https://apps.cloudhealthtech.com). From the left menu, select **Setup > Accounts > AWS** and click **New Account**. The account setup form displays the generated External ID.
+
+       ![](/images/get-external-id.png)
 
 ## Optional Fields:
 
@@ -23,7 +25,7 @@ The Account API is used to administer Cloud Provider and Third Party integration
     * `tags`: Key/Value identifiers. Keys must be unique.
     * `hide_public_fields`: If enabled, public DNS and IP info will not be stored
     * `region`: Either `global` or `govcloud`. Defaults to `global`
-  
+
 * Billing
     * `bucket`: S3 bucket containing the detailed billing record files
 
@@ -36,7 +38,7 @@ The Account API is used to administer Cloud Provider and Third Party integration
     * `enabled`: Whether to collect AWS Config files. Off by default.
     * `bucket`: S3 bucket containing the files
     * `prefix`: Prefix of files if configured
-    
+
 * CloudWatch
     * `enabled`: Whether to collect CloudWatch data. On by default.
 
@@ -73,7 +75,7 @@ Request:
     "name": "Production Account",
     "authentication": {
         "protocol": "access_key",
-        "access_key": "AKIAQQQQQQQQQQQ", 
+        "access_key": "AKIAQQQQQQQQQQQ",
         "secret_key": "S87345j34lkj3l45lkj3453453453+2342"
     },
     "billing": {
@@ -170,7 +172,7 @@ Request:
 
 ###Sample Request
 ```
-curl -d '{"authentication":{"protocol":"assume_role","assume_role_arn":"arn:123"},"name":"Tools 123"}' -H 'Content-Type: application/json' --request PUT 'https://chapi.cloudhealthtech.com/v1/aws_accounts/<account_id>?api_key=<api_key>'
+curl -d '{"authentication":{"protocol":"assume_role","assume_role_arn":"arn:123","assume_role_external_id":"61a1XXXXXXXXXXXXXXXXXXXXX5d8c6"},"name":"Tools 123"}' -H 'Content-Type: application/json' --request PUT 'https://chapi.cloudhealthtech.com/v1/aws_accounts/<account_id>?api_key=<api_key>'
 ```
 
 ## Endpoints
@@ -180,7 +182,7 @@ curl -d '{"authentication":{"protocol":"assume_role","assume_role_arn":"arn:123"
 `POST https://chapi.cloudhealthtech.com/v1/aws_accounts`
 
 * Result header will contain `Location: https://chapi.cloudhealthtech.com/v1/aws_accounts/1`
- 
+
 ### Read Single Account
 
 `GET https://chapi.cloudhealthtech.com/v1/aws_accounts/:id`
