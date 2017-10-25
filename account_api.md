@@ -15,7 +15,10 @@ The Account API is used to administer Cloud Provider and Third Party integration
     * `secret_key`: Secret Key, required if using authentication
     * `assume_role_arn`: Assume Role ARN, required if using Role-based authentication
     * `assume_role_external_id`: External ID, required if using Role-based authentication.
-       CloudHealth generates a unique External ID for each customer. To get your External ID, log into the CloudHealth platform (https://apps.cloudhealthtech.com). From the left menu, select **Setup > Accounts > AWS** and click **New Account**. The account setup form displays the generated External ID.
+
+       You cannot generate and specify your own External ID as the value of the `assume_role_external_id` parameter.
+       CloudHealth generates a unique External ID for each customer. You can only use this ID as the value of the `assume_role_external_id` parameter. Because the CloudHealth-generated ID is unique to you, you can reuse it across all your accounts.
+       To get your External ID, log into the CloudHealth platform (https://apps.cloudhealthtech.com). From the left menu, select **Setup > Accounts > AWS** and click **New Account**. The account setup form displays the generated External ID.
 
        ![](/images/get-external-id.png)
 
@@ -174,6 +177,8 @@ Request:
 ```
 curl -d '{"authentication":{"protocol":"assume_role","assume_role_arn":"arn:123","assume_role_external_id":"61a1XXXXXXXXXXXXXXXXXXXXX5d8c6"},"name":"Tools 123"}' -H 'Content-Type: application/json' --request PUT 'https://chapi.cloudhealthtech.com/v1/aws_accounts/<account_id>?api_key=<api_key>'
 ```
+
+> **How to get your External ID:** You cannot generate and specify your own External ID as the value of the `assume_role_external_id` parameter. Only use the CloudHealth-generated External ID. This ID is unique for each CloudHealth customer, so you can reuse it across all your accounts. To get your External ID, log into the CloudHealth platform (https://apps.cloudhealthtech.com). From the left menu, select **Setup > Accounts > AWS** and click **New Account**. The account setup form displays the generated External ID.
 
 ## Endpoints
 
