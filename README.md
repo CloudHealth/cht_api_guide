@@ -20,11 +20,11 @@ In order to make authenticated requests to the CloudHealth API service, it is ne
 
 To request an API key, click on My Profile in your user settings.
 
-![Report Elements](https://github.com/CloudHealth/cht_api_guide/blob/master/images/my_profile.png)
+![Access Your Profile](/images/my_profile.png)
 
 In your profile settings is a section named API Key. Click on the Generate API Key button to create your API key. The generated GUID will be saved with your user upon clicking the Update button. This GUID will need to be supplied with all future API requests.
 
-![Report Elements](https://github.com/CloudHealth/cht_api_guide/blob/master/images/api_key.png)
+![Report Elements](/images/api_key.png)
 
 To periodically rotate your API key for security reasons, just return to your profile settings and click Generate API Key to create a new key. Upon clicking update the previous key will cease working, and the new one will be in effect.
 
@@ -153,21 +153,22 @@ $ curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_rep
 For details on how to interpret the data returned, see the below section on Response For Report Request.
 
 #### Retrieve Data For a Custom Report
+You can retrieve data for a saved report. To do this, you need to have the URL for the report as discussed above.
 
-You can also retrieve data for a user saved report. To do this, you need to have the URL for the report as discussed above.  Its also possible to get the report ID from the UI. To get this identifier, go to Customer Reports, and click preview for the report you wish to retrieve.
+You can also get the report ID from the CloudHealth Platform. From the left menu, click **Saved Reports** to see a list of reports. Click View for the report that you want to retrieve using the API.
 
-You can identify the unique identifier from the URL:
+The URL in your browser contains ID of the selected report.
 
-![Report Elements](https://github.com/CloudHealth/cht_api_guide/blob/master/images/report_id.png)
+![Get Report ID](https://github.com/CloudHealth/cht_api_guide/blob/master/images/report_id.png)
 
-By adding the report id in the below request, you can retrieve the data for this report:
+To retrieve data for a custom report, enter the report ID in this request:
 
 ```
-$ curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/custom/<report id>?api_key=<your api key>"
+$ curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/custom/<Report-ID>?api_key=<Your-API-Key>"
 ```
 
 #### Response Format For Report Requests
-When you retrieve data for a report, the resulting json has the following major elements, each corresponding to the report terminology provided in Terminology section:
+When you retrieve data for a report, the resulting JSON has the following major elements, each corresponding to the report terminology provided in Terminology section:
 
 - “report” - the name of the report (string).
 - “dimensions” - the available dimensions (x-axis and category) and their members for the report (array).
