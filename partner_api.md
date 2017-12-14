@@ -1,4 +1,4 @@
-###Overview
+### Overview
 
 The Partner API uses the same request and response patterns as described in the [Reporting API](https://github.com/CloudHealth/cht_api_guide#reporting-api) with one distinction. In the CloudHealth Partner environment, there is a hierarchy of Partner-Customer, which is represented as
 
@@ -14,7 +14,7 @@ Partner
 
 For Partners, it is important to be able to query the API and get results for both the Partner and their customers.
 
-###Accessing Partner Customer Data
+### Accessing Partner Customer Data
 
 To access the results for the customer of a partner there are two methods. The first is to setup a CloudHealth user in the customer, and generate an API key for that user. Queries to that API Key will return results for only that customer. In the case of costs, these will be the post-processed costs as written by Partner Billing.
 
