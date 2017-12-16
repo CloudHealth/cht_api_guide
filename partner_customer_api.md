@@ -49,6 +49,7 @@ Response:
     "margin_percentage": 0.0,
     "created_at": "2016-09-15T18:17:04Z",
     "updated_at": "2016-09-15T18:17:04Z",
+    "generated_external_id": "1a2b3c4d5e6f",
     "partner_billing_configuration": {
         "enabled": true,
         "folder": ""
@@ -124,6 +125,8 @@ The following attributes are supported for customers.
 
 * `updated_at`: When the customer attributes were last modified
 
+* `generated_external_id`: External ID required for accounts with IAM Role Authorization
+
 * `billing_configuration_status`: configuration status (Healthy or not Healthy)
 
 * `billing_configuration_reason`: configuration reason for non-healthy
@@ -152,6 +155,7 @@ Response:
     "margin_percentage": 0.0,
     "created_at": "2016-09-15T13:10:47Z",
     "updated_at": "2016-09-15T16:46:34Z",
+    "generated_external_id": "1a2b3c4d5e6f",
     "partner_billing_configuration": {
         "enabled": true,
         "folder": ""
