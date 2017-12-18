@@ -213,3 +213,7 @@ curl -d '{"authentication":{"protocol":"assume_role","assume_role_arn":"arn:123"
 ### Delete Account
 
 `DELETE https://chapi.cloudhealthtech.com/v1/aws_accounts/:id`
+
+### Generate IAM Role External ID
+
+`GET https://chapi.cloudhealthtech.com/v1/aws_accounts/:id/generate_external_id`
