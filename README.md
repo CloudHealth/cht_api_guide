@@ -371,7 +371,7 @@ The Asset API can be used to retrieve information on assets you are currently or
 supports three basic functions:
 
 - List all available objects for your account
-- Provide detail on an object, including its attributes and relationships
+- Provide detail on an object, including its attributes, relationships and internal CloudHealth ID
 - Query objects of a specific type
 
 ### Listing Available Objects
