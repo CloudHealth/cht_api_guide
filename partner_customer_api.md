@@ -24,9 +24,9 @@ Request:
     "address": {
         "street1": "1 Main St",
         "city": "Springfield",
-        "state": "MA",
+        "State": "MA",
         "zipcode": "01234",
-        "country": "US"
+        "Country": "US"
     },
     "tags": [{
               "key": "customer_id", "value": "973532"
@@ -57,9 +57,9 @@ Response:
     "address": {
         "street1": "1 Main St",
         "city": "Springfield",
-        "state": "MA",
+        "State": "MA",
         "zipcode": "01234",
-        "country": "US"
+        "Country": "US"
     },
     "tags": [{
               "key": "customer_id", "value": "973532"
@@ -77,7 +77,7 @@ Response:
 ```
 
 ```shell
-curl --request POST -H 'Content-Type: application/json' -d '{ "name": "Acme Corp", "classification": "managed_without_access", "billing_contact": "john.doe@acmecorp.com", "trial_expiration_date": "2016-09-22T00:00:00", "partner_billing_configuration": {"enabled": "true", "folder": "" }, "address": { "street1": "1 Main St", "city": "Springfield", "state": "MA", "zipcode": "01234", "country": "US" } }' "https://chapi.cloudhealthtech.com/v1/customers?api_key=<API_KEY>"
+curl --request POST -H 'Content-Type: application/json' -d '{ "name": "Acme Corp", "classification": "managed_without_access", "billing_contact": "john.doe@acmecorp.com", "trial_expiration_date": "2016-09-22T00:00:00", "partner_billing_configuration": {"enabled": "true", "folder": "" }, "address": { "street1": "1 Main St", "city": "Springfield", "State": "MA", "zipcode": "01234", "Country": "US" } }' "https://chapi.cloudhealthtech.com/v1/customers?api_key=<API_KEY>"
 ```
 A new active, blank Customer will be created. Accounts from the partner consolidated can now be assigned to this customer.
 
@@ -87,7 +87,7 @@ The following attributes are supported for customers.
 
 * `name`: A unique name for the Customer
 
-* `address`: An object with the following fields:
+* `address`: An object with the following **case-sensitive** fields:
 
   * `street1`
 
@@ -95,11 +95,11 @@ The following attributes are supported for customers.
 
   * `city`
 
-  * `state`
+  * `State`
 
   * `zipcode`
 
-  * `country`
+  * `Country`
 
 #### Optional Fields
 
@@ -164,9 +164,9 @@ Response:
        "street1": "1 Main St",
        "street2": "",
        "city": "Springfield",
-       "state": "MA",
+       "State": "MA",
        "zipcode": "01234",
-       "country": "US"
+       "Country": "US"
     },
     "_links": {
         "self": {
