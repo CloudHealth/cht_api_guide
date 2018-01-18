@@ -367,7 +367,7 @@ curl -v -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_re
 Note, since the response is JSON, metacharacters will be Unicode encoded.
 
 ## Asset API
-The Asset API can be used to retrieve information on assets you are currently or have historically run with AWS. It
+The Asset API can be used to retrieve information on assets you are currently or have historically run with AWS and Azure. It
 supports three basic functions:
 
 - List all available objects for your account
