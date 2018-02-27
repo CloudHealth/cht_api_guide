@@ -146,7 +146,7 @@ Response:
   }
 }
 ```
-###Sample Request
+### Sample Request
 ```
 curl -d '{"name": "Production Account","authentication": {"protocol": "access_key","access_key": "AKIAQQQQQQQQQQQ","secret_key": "S87345j34lkj3l45lkj3453453453+2342"},"billing": {"bucket": "my-billing-bucket"},"cloudtrail": {"enabled": true,"bucket": "my-cloudtrail-bucket"},"aws_config": {"enabled" :true,"bucket": "my-aws-config-bucket","prefix": "foo"},"tags": [{"key": "Environment", "value": "Production"}]}' -H 'Content-Type: application/json' --request POST 'https://chapi.cloudhealthtech.com/v1/aws_accounts?api_key=f<api_key>'
 ```
@@ -173,7 +173,7 @@ Request:
 
 * Note: The tag collection will be completely replaced by the new set passed in. Thus, an empty array will clear tags.
 
-###Sample Request
+### Sample Request
 ```
 curl -d '{"authentication":{"protocol":"assume_role","assume_role_arn":"arn:123","assume_role_external_id":"61a1XXXXXXXXXXXXXXXXXXXXX5d8c6"},"name":"Tools 123"}' -H 'Content-Type: application/json' --request PUT 'https://chapi.cloudhealthtech.com/v1/aws_accounts/<account_id>?api_key=<api_key>'
 ```
