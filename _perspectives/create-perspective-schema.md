@@ -1,0 +1,33 @@
+---
+title: Create Perspective Schema
+position: 6
+description: Create a schema and associate it with a specific Perspective. Identify the specific Perspective by its ID. See [How to Get Perspective ID](#perspectivesget-perspective-id).
+type: post
+endpoint: https://chapi.cloudhealthtech.com/v1/perspective_schemas/:perspective-id
+parameters:
+  - name: include_version
+    required: no
+    content: Boolean that defines whether the current version of the perspective is returned in the response.
+content_markdown: |-
+  #### How to Duplicate a Perspective
+  To duplicate a Perspective, retrieve the schema from the source Perspective (e.g., Perspective A) and POST that schema with a new name (e.g., Perspective B) to create a duplicate of Perspective A. All references in the schema rules to existing groups and blocks in Perspective A are seen as directives to create corresponding groups in Perspective B. Perspective A and its Groups remain unchanged.
+
+  #### How to Add a Perspective Group
+  When creating a Perspective, if your schema contains a reference to a Group that does not exist within the Perspective, the POST call creates that Group in the Perspective. Therefore, if there are rules in your schema that reference a Group that does not exist in the Perspective, the POST call creates that new Group and associates those rules with the newly created Group.
+
+  For example, this POST call creates a Perspective:
+  ```
+  curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas?api_key=<api_key>" -d '{"schema":{"name":"Test 1000002","rules":[{"type":"filter","asset":"AwsInstance","to":"new group 1","condition":{"clauses":[{"field":["Active?"],"op":"=","val":"true"}]}},{"type":"filter","asset":"AwsInstance","to":"new group 1","condition":{"clauses":[{"field":["First Discovered"],"op":">","val":"2016-01-04T23:19:34+00:00"}]}}],"constants":[],"merges":[]}'
+  {"message":"Perspective 893353516727 created"}}
+  ```
+
+  When you make a subsequent GET call to retrieve this schema, a new group (Group-1) is created and displayed in the response. All references to `new group 1` in the schema are converted into references to the newly created group.
+right_code_blocks:
+  - code_block: |-
+      curl -s -H "Content-Type: application/json" -XPOST
+      "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>
+      ?api_key=<api_key>"
+      -d '{"schema":{"name":"Environment-new","rules":[{"type":"categorize","asset":"AwsAsset","tag_field":["cht_env"],"ref_id":"206159110488","name":"Env"}],"merges":[],"constants":[{"ref_type":"Dynamic Group Block","ref_id":"206159110488","name":"Env"},{"ref_type":"Dynamic Group","ref_id":"206199274950","blk_id":"206159110488","val":"production","name":"production"},{"ref_type":"Dynamic Group","ref_id":"206199274960","blk_id":"206159110488","val":"feature","name":"feature"},{"ref_type":"Group","ref_id":"206195653674","name":"Other","is_other":"true"}]}}'
+    title: Post
+    language: bash
+---
