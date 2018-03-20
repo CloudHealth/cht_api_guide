@@ -8,7 +8,7 @@ This API enables customers to read their customer statements
 ## Retrieving a single customer statement
 
 ```shell
-curl -H "Content-Type: application/json" 'https://chapi.cloudhealthtech.com/v1/customer_statements/:id?api_key=<API_KEY>"
+curl -H "Content-Type: application/json" "https://chapi.cloudhealthtech.com/v1/customer_statements/:id?api_key=<API_KEY>"
 ```
 
 Sample Response:
@@ -33,5 +33,5 @@ Sample Response:
 ## retrieving list of customer statements
 
 ```shell
-curl -H "Content-Type: application/json" 'https://chapi.cloudhealthtech.com/v1/customer_statements?api_key=<API_KEY>"
+curl -H "Content-Type: application/json" "https://chapi.cloudhealthtech.com/v1/customer_statements?api_key=<API_KEY>"
 ```
