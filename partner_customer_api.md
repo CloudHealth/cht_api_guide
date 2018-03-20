@@ -28,10 +28,13 @@ Request:
         "zipcode": "01234",
         "country": "US"
     },
-    "tags": {
-        "customer_id": "973532",
-        "service_package": "basic_managed"
-    },
+    "tags": [{
+              "key": "customer_id", "value": "973532"
+            },
+            {
+              "key": "service_package", "value": "basic_managed"
+            }
+    ]
 }
 ```
 
@@ -46,6 +49,7 @@ Response:
     "margin_percentage": 0.0,
     "created_at": "2016-09-15T18:17:04Z",
     "updated_at": "2016-09-15T18:17:04Z",
+    "generated_external_id": "1a2b3c4d5e6f",
     "partner_billing_configuration": {
         "enabled": true,
         "folder": ""
@@ -57,10 +61,13 @@ Response:
         "zipcode": "01234",
         "country": "US"
     },
-    "tags": {
-        "customer_id": "973532",
-        "service_package": "basic_managed"
-    },
+    "tags": [{
+              "key": "customer_id", "value": "973532"
+            },
+            {
+              "key": "service_package", "value": "basic_managed"
+            }
+    ],
     "_links": {
         "self": {
          "href": "/v1/customers/3947"
@@ -80,7 +87,7 @@ The following attributes are supported for customers.
 
 * `name`: A unique name for the Customer
 
-* `address`: An object with the following fields:
+* `address`: An object with the following **case-sensitive** fields:
 
   * `street1`
 
@@ -88,11 +95,11 @@ The following attributes are supported for customers.
 
   * `city`
 
-  * `state`
+  * `state` (can be code or the full state name)
 
   * `zipcode`
 
-  * `country`
+  * `country` (can be code or the full country name)
 
 #### Optional Fields
 
@@ -117,6 +124,8 @@ The following attributes are supported for customers.
 * `created_at`: When the customer was originally created
 
 * `updated_at`: When the customer attributes were last modified
+
+* `generated_external_id`: External ID required for accounts with IAM Role Authorization
 
 * `billing_configuration_status`: configuration status (Healthy or not Healthy)
 
@@ -146,6 +155,7 @@ Response:
     "margin_percentage": 0.0,
     "created_at": "2016-09-15T13:10:47Z",
     "updated_at": "2016-09-15T16:46:34Z",
+    "generated_external_id": "1a2b3c4d5e6f",
     "partner_billing_configuration": {
         "enabled": true,
         "folder": ""

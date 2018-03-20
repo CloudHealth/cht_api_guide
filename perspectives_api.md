@@ -17,7 +17,7 @@ A Perspective schema has the following fields:
 | ```include_in_reports``` | Whether the Perspective is included in Interactive Reports.                                                                                                                                                                                                                                                                    |
 | ```rules```              | An array of rules (objects) that govern Perspective membership. The ordering of the rules matter; rules will be evaluated in order starting from the top. This part of the schema makes group reordering easy. Run a read operation to get the schema of a Perspective, change the order in the schema via your favorite editor and upload the modified schema to same Perspective. |
 | ```merges```             | List of merge objects, which can be of type Dynamic Group or Dynamic Group Block. The Dynamic Group merge allows for two groups to merged and the Dynamic Block Group is to merge two entire blocks of group(s). Each merge specifies a list of source objects and a single target object (groups or blocks), where the sources are to be merged into the target.                                                                                             |
-| ```constants```          | List of reference objects that refer to groups, blocks, and assets that are specified in rules. When a schema is retrieved through a read, every group (dynamic and static) is listed in the constants section. Although meant mainly for reference, constants can be modified to change the name of groups and blocks.   |
+| ```constants```          | List of reference objects that refer to groups, blocks, and assets that are specified in rules. When a schema is retrieved through a read, every group (dynamic and static) is listed in the constants section. Although meant mainly for reference, constants can be modified to change the name of groups and blocks. The full list of potential constant types are listed at the bottom of the page. |
 
 ## Status Codes
 Upon a successful call the API will return responses with corresponding http status:
@@ -38,6 +38,7 @@ Through all these operation described below you should be able to fully manage y
 
 ## Read Operation
 A cURL invocation of the Read API call requires the id of the Perspective and the api key. 
+
 [See here on how to obtain an API key](https://docs.google.com/document/d/1eCNQwawgJVoYqCXoTgD95j_cvoqGNHMkchZDrcQHg54/edit#heading=h.1r6ts8di8kml).
 
 ### GET Action
@@ -148,7 +149,7 @@ curl -s -H "Accept: application/json" "https://chapi.cloudhealthtech.com/v1/pers
 }
 ```
 
-##### Include Version for Perspective 
+##### Include Version for Perspective
 `include_version`
 
 If users want to retrieve the current version of the perspective, adding the `include_version=true` will return the current version of the perspective as an entry in the constants list.
@@ -180,7 +181,7 @@ curl -s -H "Accept: application/json" "https://chapi.cloudhealthtech.com/v1/pers
 #### Sample Response
 
 ```json
-{ 
+{
   "206159639971": { "name": "DDE Test", "active": false  },
   "206159351171": { "name": "Environment ", "active": true  },
   "206159659286": { "name": "Environment-tmp", "active": false  },
@@ -201,7 +202,7 @@ curl -s -H "Accept: application/json" "https://chapi.cloudhealthtech.com/v1/pers
 
 #### Sample Response
 ```json
-{ 
+{
   "206159351171": { "name": "Environment ", "active": true  },
   "206159708697": { "name": "Fred test", "active": true  },
   "181": { "name": "Function", "active": true  },
@@ -216,13 +217,13 @@ To build a Perspective from scratch directly using the API use the POST action w
 ### Create | Post Operation - cURL Command Format
 
 ```bash
-curl -s -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>" -d '{schema: <schema JSON>}'
+curl -s -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>" -d '{"schema": <schema JSON>}'
 ```
 
 ### Create | POST Operation - cURL Command Example
 
 ```bash
-curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas?api_key=<api_key>" -d '{schema:{"name":"Environment-new","rules":[{"type":"categorize","asset":"AwsAsset","tag_field":["cht_env"],"ref_id":"206159110488","name":"Env"}],"merges":[],"constants":[{"ref_type":"Dynamic Group Block","ref_id":"206159110488","name":"Env"},{"ref_type":"Dynamic Group","ref_id":"206199274950","blk_id":"206159110488","val":"production","name":"production"},{"ref_type":"Dynamic Group","ref_id":"206199274960","blk_id":"206159110488","val":"feature","name":"feature"},{"ref_type":"Group","ref_id":"206195653674","name":"Other","is_other":"true"}]}}'
+curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas?api_key=<api_key>" -d '{"schema":{"name":"Environment-new","rules":[{"type":"categorize","asset":"AwsAsset","tag_field":["cht_env"],"ref_id":"206159110488","name":"Env"}],"merges":[],"constants":[{"ref_type":"Dynamic Group Block","ref_id":"206159110488","name":"Env"},{"ref_type":"Dynamic Group","ref_id":"206199274950","blk_id":"206159110488","val":"production","name":"production"},{"ref_type":"Dynamic Group","ref_id":"206199274960","blk_id":"206159110488","val":"feature","name":"feature"},{"ref_type":"Group","ref_id":"206195653674","name":"Other","is_other":"true"}]}}'
 ```
 
 ### Creating Duplicate Perspective
@@ -234,7 +235,7 @@ Another way to put this is, if there is a reference to a nonexistent group (none
 For example, this following POST call will create a **new Perspective**:
 
 ```bash
-curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas?api_key=<api_key>" -d '{schema:{"name":"Test 1000002","rules":[{"type":"filter","asset":"AwsInstance","to":"new group 1","condition":{"clauses":[{"field":["Active?"],"op":"=","val":"true"}]}},{"type":"filter","asset":"AwsInstance","to":"new group 1","condition":{"clauses":[{"field":["First Discovered"],"op":">","val":"2016-01-04T23:19:34+00:00"}]}}],"constants":[],"merges":[]}'
+curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas?api_key=<api_key>" -d '{"schema":{"name":"Test 1000002","rules":[{"type":"filter","asset":"AwsInstance","to":"new group 1","condition":{"clauses":[{"field":["Active?"],"op":"=","val":"true"}]}},{"type":"filter","asset":"AwsInstance","to":"new group 1","condition":{"clauses":[{"field":["First Discovered"],"op":">","val":"2016-01-04T23:19:34+00:00"}]}}],"constants":[],"merges":[]}'
 {"message":"Perspective 893353516727 created"}}
 ```
 
@@ -248,12 +249,12 @@ curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.c
 
 ## Update Operation
 
-Update is similar to Create; in fact, Create essentially creates an empty Perspective and 'updates' that Perspective with the supplied schema. The actual Update call modifies the target Perspective to have rules as specified in the uploaded schema. 
+Update is similar to Create; in fact, Create essentially creates an empty Perspective and 'updates' that Perspective with the supplied schema. The actual Update call modifies the target Perspective to have rules as specified in the uploaded schema.
 
 ### Update | Put Operation - cURL Command Format
 
 ```bash
-curl -s -H "Content-Type: application/json" -XPUT "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>" -d '{schema:<schema JSON>}'
+curl -s -H "Content-Type: application/json" -XPUT "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>" -d '{"schema":<schema JSON>}'
 ```
 
 **Note:**
@@ -266,12 +267,13 @@ In addition to "to" fields in rules that specify target groups, you can specify 
 
 When you create a group-to-group rule, the update/create calls verify that the source group already has at least one rule higher in the rule that targets it.
 
-#### Avoiding conflicts for concurrent updates 
+#### Avoiding conflicts for concurrent updates
 
 ##### check_version for Updates
 If users want to enforce that they are not writing over an update made concurrently, they can send the version of the perspective (via a `check_version=<version>` argument) that they expect to be updating. 
 
-If the perspective has been updated (and therefore version incremented) since the last read operation, the update request will return a 400 error. 
+
+If the perspective has been updated (and therefore version incremented) since the last read operation, the update request will return a 400 error.
 
 Example:
 
@@ -294,6 +296,7 @@ The following Delete call (the default option) soft deletes a Perspective if the
 curl -s -H "Accept: application/json" -XDELETE "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>"
 ```
 
+
 ### Force Delete 
 To delete the Perspective regardless of any dependency, you can add a **force** option, like so:
 
@@ -308,5 +311,205 @@ Deletion, by default, is a soft delete. Deleted Perspective gets put into the Ar
 curl -s -H "Accept: application/json" -XDELETE "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective id>?api_key=<api_key>&force=true&hard_delete=true"
 ```
 
+### Allowed Constant Types
 
+Constant Types can either be "Dynamic Group", "Dynamic Group", "Static Group", or an Asset Type listed below. (Note: Expansion Types are not included - e.g. AwsAsset or AzureTaggableAsset) 
+
+* AwsAccount
+* AwsAvailabilityZone
+* AwsGroup
+* AwsImage
+* AwsInstance
+* AwsInstanceReservation
+* AwsInstanceStatus
+* AwsInstanceType
+* AwsRdsInstance
+* AwsRegion
+* AwsSecurityGroup
+* AwsSecurityGroupRule
+* AwsSnapshot
+* AwsSpotRequest
+* AwsTag
+* AwsUser
+* AwsVolume
+* ChefAccount
+* ChefCookbook
+* ChefCookbookVersion
+* ChefNode
+* AwsS3Bucket
+* AwsCloudFormationStack
+* AwsCloudFormationResource
+* ChefCookbookConstraint
+* ChefEnvironment
+* AwsRdsSnapshot
+* AwsVpc
+* AwsRedshiftCluster
+* AwsRedshiftSnapshot
+* AwsRedshiftReservedNode
+* AwsVpcSubnet
+* AwsLoadBalancer
+* AwsDynamoDbTable
+* AwsCacheCluster
+* InstanceAttributeHash
+* InstanceFileSystem
+* PuppetAccount
+* PuppetNode
+* PuppetClass
+* AwsRdsInstanceReservation
+* AwsRdsSecurityGroup
+* AwsRdsSecurityGroupRule
+* AwsRdsSubnetGroup
+* AwsInstanceReservationModification
+* AwsInstanceReservationModificationItem
+* AwsEmrCluster
+* AwsEmrClusterInstanceGroup
+* AwsEmrClusterInstance
+* AwsInstanceReservationListing
+* PagerdutyAccount
+* PagerdutyIncident
+* AwsNaclTable
+* AwsNaclRule
+* AwsCustomerGateway
+* AwsVpnGateway
+* AwsVpnConnection
+* AwsInternetGateway
+* AwsEni
+* AwsElasticIp
+* AwsEipPrivateIp
+* Alert
+* GcpComputeRegion
+* GcpComputeZone
+* GcpComputeProject
+* GcpComputeMachineType
+* GcpComputeInstance
+* GcpComputeDiskType
+* GcpComputeDisk
+* GcpComputeSnapshot
+* GcpComputeImage
+* GcpComputeAttachedDisk
+* GcpComputeMachineTypeProfile
+* GcpTag
+* GcpBillingStatement
+* GcpBillingStatementItem
+* GcpUsageStatement
+* GcpStorageBucket
+* VmwareAccount
+* VmwareFolder
+* VmwareDatacenter
+* VmwareHost
+* VmwareDatastore
+* VmwareVirtualMachine
+* VmwareCustomField
+* DockerImage
+* DockerContainer
+* DelegatedAction
+* CloudFrontDistribution
+* CloudFrontOrigin
+* DataCenterAccount
+* DataCenterServer
+* DataCenterServerFileSystem
+* AzureEnrollment
+* AzureBillingStatementItem
+* AzureStoredBill
+* AzureVm
+* DataCenterServerNetworkInterface
+* DataCenterServerCpu
+* DataCenterServerBlockDevice
+* AlertlogicAccount
+* AwsRoute53HostedZone
+* AnsibleAccount
+* AnsibleNode
+* AwsConfigRule
+* AwsConfigRuleEvaluationResult
+* AwsElasticacheReservedNode
+* DatadogAccount
+* DatadogHost
+* DatadogTag
+* AzureSubscription
+* AzureTag
+* AwsLambdaFunction
+* AzureAccount
+* AzureDepartment
+* AzureCostCenter
+* NewrelicAccount
+* NewrelicServer
+* IntegrationTag
+* AzureZone
+* AzureRegion
+* AzureResourceGroup
+* AzureServicePrincipal
+* AzureVmFileSystem
+* AzureVmNetworkInterface
+* AzureVmCpu
+* AzureVmVirtualDisk
+* AzureVmSize
+* AzureCatalog
+* AzureVmRate
+* AzureOffer
+* AzureRateCard
+* AzureStoredUsage
+* AwsIamPolicy
+* AwsIamRole
+* AwsIamServerCertificate
+* AwsAdsAgentStat
+* AwsAdsServer
+* AwsAccountRegionAttribute
+* AwsAdsProcess
+* AwsAdsConnection
+* DataCenterTag
+* CustomerTag
+* AwsIamCredentialReport
+* AzureCloudService
+* AzureSecurityGroup
+* AzureSecurityRule
+* AzureIpAddress
+* AwsIamPasswordPolicy
+* AzureStorage
+* AzureVmScaleSet
+* AwsCloudtrailTrail
+* AzureSqlServer
+* AzureSqlDatabase
+* AzurePartnerCenter
+* AzureRedisCache
+* JiraAccount
+* IntegrationOauthAccount
+* AzurePartnerCustomer
+* IntegrationMetadata
+* AzureVirtualNetworkGateway
+* AzureAppServicePlan
+* AzureServiceBusNamespace
+* AzureVirtualNetwork
+* AzureBatchAccount
+* AzureBackupVault
+* AzureRecoveryServicesVault
+* AzureHdInsightCluster
+* AzureSearchService
+* AzureSqlDataWarehouse
+* AzureStorSimpleDeviceManager
+* AzureAppService
+* AzureLogAnalyticsWorkspace
+* AzureExpressRouteCircuit
+* AzureCdnProfile
+* AwsNatGateway
+* AzureSnapshot
+* AzureNetworkInterface
+* AzureManagedDisk
+* AzureAppInsight
+* AwsElasticFileSystem
+* AzureDocumentDb
+* AzureKeyVault
+* AwsElasticsearchDomain
+* AwsElasticsearchInstance
+* AwsElasticsearchVolume
+* AwsDedicatedHost
+* AzureApplicationGateway
+* AwsConfigSetting
+* AwsWorkspace
+* AzureAppServiceEnvironment
+* AwsAutoScalingGroup
+* AwsKinesisStream
+* AzureVmReservationRate
+* AzureReservationOrder
+* AzureReservation
+* AzureVmRiQuote
 

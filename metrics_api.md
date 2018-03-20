@@ -322,7 +322,7 @@ To retrieve metrics for an asset, simply add an `asset` parameter to the query s
 curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<YOUR-API-KEY>&asset=arn:aws:ec2:us-east-1:12345678:instance/i-99999999"
 ```
 
-This will return the first 100 metrics for this instance ordered by the time they were created or last updated.  The response format is very much the same as the POST format, with two notable exceptions.  One, the response is not wrapped in the `metrics` object, and two, there's a root-level `request` object, that contains a `next` link that can be followed to retrieve the next 100 instances.  The `next` attribute will be `null` if there are no more records to retrieve.
+This will return the first 100 metrics for this instance ordered by the time they were created or last updated.  (Fewer than 100 metrics may be returned depending upon the selected granularity and time_range, and the available metrics.  For example using the default time_range=yesterday with an hourly granularity, 24 hourly sets of metrics will be returned).   The response format is very much the same as the POST format, with two notable exceptions.  One, the response is not wrapped in the `metrics` object, and two, there's a root-level `request` object, that contains a `next` link that can be followed to retrieve the next 100 metrics.  The `next` attribute will be `null` if there are no more records to retrieve.
 
 ```
 {
