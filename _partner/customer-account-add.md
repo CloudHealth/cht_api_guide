@@ -21,13 +21,13 @@ parameters:
       - name: city
         required: yes
         content: City specified as a string
-      - name: state
+      - name: State
         required: yes
         content: State specified in abbreviated form. For example, specify Massachusetts as `MA`.
       - name: zipcode
         required: yes
         content: Zipcode specified as a number
-      - name: country
+      - name: Country
         required: yes
         content: Country specified a string
   - name: classification
