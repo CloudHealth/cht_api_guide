@@ -7,7 +7,7 @@ endpoint: https://chapi.cloudhealthtech.com/v1/custom_tags
 parameters:
   - name: JSON document
     required: yes
-    content: Payload containing the tags that you want to post. See [How Tags are Processed](#tagginghow-tags-are-processed).
+    content: Payload containing the tags that you want to post. See [How Tags are Processed](#tagging_how-tags-are-processed).
 content_markdown: |-
   The response to the post request is JSON.
   * Each successful update is shown to the `updates` array in the response.

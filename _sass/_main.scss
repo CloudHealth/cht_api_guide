@@ -306,7 +306,11 @@ h3 .endpoint {
 
 .endpoint.example {
 	&:after {
-		content: "📘";
+		content: "Ex";
+		background-color: #666666;
+		color: #FFFFFF;
+		padding: 3px;
+		border-radius: 2px;
 	}
 }
 

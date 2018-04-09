@@ -23,7 +23,7 @@ parameters:
         content: City specified as a string
       - name: state
         required: yes
-        content: State specified in abbreviated form. For example, specify Massachusetts as `MA`.
+        content: State specified in abbreviated form. For example, specify Massachusetts as `MA`. If your country is Australia, the API does not support abbreviated versions of state names. Use the fully spelled versions of Australian state names instead, namely, `Australian Capital Territory`, `New South Wales`, `Northern Territory`, `Queensland`, `South Australia`, `Tasmania`, `Victoria`, and `Western Australia`.
       - name: zipcode
         required: yes
         content: Zipcode specified as a number

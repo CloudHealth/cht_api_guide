@@ -1,13 +1,13 @@
 # ----
 # Site
 
-title: CloudHealth Developer Hub
+title: CloudHealth API Guide
 description: The official API guide for the CloudHealth Platform.
 # baseurl: ""
 url: http://apidocs.cloudhealthtech.com
 google_analytics_key:
 permalink: pretty
-repository: https://github.com/siddtewari/cht_help_staging
+repository: https://github.com/CloudHealth/cht_api_guide
 
 collections:
   documentation:
