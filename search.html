@@ -22,11 +22,13 @@ permalink: /search.html
 						"{{ item.id | slugify }}": {
 							"id": "{{ item.id | slugify }}",
 							"title": "{{ item.title | xml_escape }}",
-							"category": "{{ collection.label | xml_escape }}",
 							"description": "{{item.description | xml_escape }}",
 		  				"type": "{{item.type | xml_escape}}",
 							"url": "{{ site.baseurl }}/#{{ item.collection }}_{{item.title | slugify }}",
-							"content": {{ item.content | strip_html | replace_regex: "[\s/\n]+"," " | strip | jsonify }}
+							"content": {{ item.content_markdown | strip_html | replace_regex: "[\s/\n]+"," " | strip | jsonify }},
+							{% if item.parameters %}
+								"parameters" : "{% for parameter in item.parameters %}{{ parameter.name }} {{ parameter.content }}{% if parameter.sub-fields %}{% for field in parameter.sub-fields %}{{ field.name }}{{ field.content }}{% endfor %}{% endif %}{% endfor %}"
+							{% endif %}
 						}
 						{% assign added = true %}
 					{% endunless %}

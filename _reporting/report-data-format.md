@@ -6,8 +6,6 @@ parameters:
   - name:
     content:
 content_markdown: |-
-  Familiarize yourself with the format of the response that a Standard Report query returns.
-
   When you query a Standard Report, the response you receive has the following general structure.
 
   ```

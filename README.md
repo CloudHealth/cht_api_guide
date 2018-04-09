@@ -1,5 +1,5 @@
-# CloudHealth API Hub
-Welcome to the CloudHealth API Hub ([http://apidocs.cloudhealthtech.com](http://apidocs.cloudhealthtech.com)). Here you'll find documentation for API services that programmatically retrieve data from the CloudHealth Platform.
+# CloudHealth API Guide
+Welcome to the CloudHealth API Guide ([http://apidocs.cloudhealthtech.com](http://apidocs.cloudhealthtech.com)). Here you'll find documentation for API services that programmatically retrieve data from the CloudHealth Platform.
 
 The CloudHealth API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). The API has predictable, resource-oriented URLs, and it uses HTTP response codes to indicate API errors. All API responses, including errors, return JSON.
 

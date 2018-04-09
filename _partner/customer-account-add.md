@@ -23,7 +23,7 @@ parameters:
         content: City specified as a string
       - name: state
         required: yes
-        content: State specified in abbreviated form. For example, specify Massachusetts as `MA`.
+        content: State specified in abbreviated form. For example, specify Massachusetts as `MA`. For non-US countries, use the full, ASCII-transliterated state names. For example, for Australian state names, specify `Australian Capital Territory`, `New South Wales`, `Northern Territory`, and so on.
       - name: zipcode
         required: yes
         content: Zipcode specified as a number
