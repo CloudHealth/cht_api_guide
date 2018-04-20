@@ -73,9 +73,9 @@ right_code_blocks:
         "address": {
           "street1": "1 Main St",
           "city": "Springfield",
-          "State": "MA",
+          "state": "MA",
           "zipcode": "01234",
-          "Country": "US"
+          "country": "US"
         },
         "tags": [{
           "key": "customer_id", "value": "973532"
@@ -103,9 +103,9 @@ right_code_blocks:
         "address": {
             "street1": "1 Main St",
             "city": "Springfield",
-            "State": "MA",
+            "state": "MA",
             "zipcode": "01234",
-            "Country": "US"
+            "country": "US"
         },
         "tags": [{
                   "key": "customer_id", "value": "973532"
@@ -136,9 +136,9 @@ right_code_blocks:
           "address": {
             "street1": "1 Main St",
             "city": "Springfield",
-            "State": "MA",
+            "state": "MA",
             "zipcode": "01234",
-            "Country": "US"
+            "country": "US"
             }
           }'
           "https://chapi.cloudhealthtech.com/v1/customers?api_key=<your_api_key>"
