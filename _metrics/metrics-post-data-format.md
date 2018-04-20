@@ -96,31 +96,35 @@ content_markdown: |-
 
   The metadata array contains the `assetType`, `granularity`, and `keys` fields, which can take specific values.
 
-  | Field         | Supported values      | `keys` Field              |
-  | ------------- | --------------------- | ------------------------- |
-  | `assetType`   | `aws:ec2:instance `   | `cpu:used:percent.avg`    |
-  |               |                       | `cpu:used:percent.min`    |
-  |               |                       | `cpu:used:percent.max`    |
-  |               |                       | `memory:free:bytes.avg`   |
-  |               |                       | `memory:free:bytes.min`   |
-  |               |                       | `memory:free:bytes.max`   |
-  |               |                       | `memory:size:bytes.avg`   |
-  |               |                       | `memory:size:bytes.min`   |
-  |               |                       | `memory:size:bytes.max`   |
-  |               |                       | `memory:used:percent.avg` |
-  |               |                       | `memory:used:percent.min` |
-  |               |                       | `memory:used:percent.max` |
-  |               |                       | `assetId`                 |
-  |               |                       | `timestamp`               |  
-  |               | `aws:ec2:instance:fs` | `fs:size:bytes.avg`       |
-  |               |                       | `fs:size:bytes.min`       |
-  |               |                       | `fs:size:bytes.max`       |
-  |               |                       | `fs:used:bytes.avg`       |
-  |               |                       | `fs:used:bytes.min`       |
-  |               |                       | `fs:used:bytes.max`       |
-  |               |                       | `assetId`                 |
-  |               |                       | `timestamp`               |
-  | `granularity` | `hour`                |                           |
+  **Field:** `assetType`
+
+    | Supported Values      | `keys` Field              |
+    | --------------------- | ------------------------- |
+    | `aws:ec2:instance`    | `cpu:used:percent.avg`    |
+    |                       | `cpu:used:percent.min`    |
+    |                       | `cpu:used:percent.max`    |
+    |                       | `memory:free:bytes.avg`   |
+    |                       | `memory:free:bytes.min`   |
+    |                       | `memory:free:bytes.max`   |
+    |                       | `memory:size:bytes.avg`   |
+    |                       | `memory:size:bytes.min`   |
+    |                       | `memory:size:bytes.max`   |
+    |                       | `memory:used:percent.avg` |
+    |                       | `memory:used:percent.min` |
+    |                       | `memory:used:percent.max` |
+    |                       | `assetId`                 |
+    |                       | `timestamp`               |
+    | `aws:ec2:instance:fs` | `fs:size:bytes.avg`       |
+    |                       | `fs:size:bytes.min`       |
+    |                       | `fs:size:bytes.max`       |
+    |                       | `fs:used:bytes.avg`       |
+    |                       | `fs:used:bytes.min`       |
+    |                       | `fs:used:bytes.max`       |
+    |                       | `assetId`                 |
+    |                       | `timestamp`               |
+
+  **Field:** `granularity`
+  **Supported Values:** `hour`
 
   The **values** array has an entry for each series of metrics you want to post. Each entry is itself an array of metrics corresponding to the elements in the `keys` array, that is, in the same order and of the same length.
 

@@ -19,6 +19,13 @@ content_markdown: |-
       api_key=<your_api_key>"
     ```
 
+    #### List Available Fields for Azure Virtual Machines
+    ```
+    curl "https://chapi.cloudhealthtech.com/api/search.json?
+      api_key=<your_api_key>"
+      &name=AzureVm
+    ```
+
     #### Filter RDS Instances by Instance ID
     ```
     curl "https://chapi.cloudhealthtech.com/api/search.json?
@@ -35,7 +42,7 @@ content_markdown: |-
       ```
     * Unscoped Load Balancer Query
       ```
-      curl -g "https://chapi.cloudhealthtech.com/api/search.json?
+      curl "https://chapi.cloudhealthtech.com/api/search.json?
         api_key=<your_api_key>&name=AwsLoadBalancer"
       ```
     * Return ALB using `name` Filter

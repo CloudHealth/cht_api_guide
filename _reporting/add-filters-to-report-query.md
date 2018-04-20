@@ -12,9 +12,9 @@ content_markdown: |-
     For example, to get the EC2 Compute Cost in `us-east-1a`, you can apply a filter in this way.
     ```
     curl -H "Accept: application/json" 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance?
-      dimensions[]=time
-      &dimensions[]=AWS-Availaibility-Zones
-      &measures[]=ec2_cost_compute
+      dimensions\[\]=time
+      &dimensions\[\]=AWS-Availaibility-Zones
+      &measures\[\]=ec2_cost_compute
       &filters\[\]=AWS-Availaibility-Zones:select:us-east-1a
       &interval=monthly
       &api_key=<your_api_key>
