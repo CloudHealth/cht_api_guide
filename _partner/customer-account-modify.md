@@ -1,6 +1,6 @@
 ---
 title: Modify Existing Customer
-position: 5
+position: 6
 description: Modify a partner customer tenant that already exists in the CloudHealth Platform.
 type: put
 endpoint: https://chapi.cloudhealthtech.com/v1/customers/:customer_id
@@ -14,7 +14,7 @@ right_code_blocks:
     language: json
   - code_block: |-
       {
-        "id": 3942,
+        "id": XXXX,
         "name": "Acme Corporation",
         "classification": "managed_with_access",
         "billing_contact": "john.doe@acmecorp.com",
@@ -36,7 +36,7 @@ right_code_blocks:
         },
         "_links": {
             "self": {
-                "href": "/v1/customers/3942"
+                "href": "/v1/customers/XXXX"
             }
         }
       }
@@ -48,7 +48,7 @@ right_code_blocks:
         "name": "Acme Corporation",
         "classification": "managed_with_access"
       }'
-      "https://chapi.cloudhealthtech.com/v1/customers/3942?api_key=<your_api_key>"
+      "https://chapi.cloudhealthtech.com/v1/customers/<customer_id>?api_key=<your_api_key>"
     title: Sample Request
     language: bash
 ---

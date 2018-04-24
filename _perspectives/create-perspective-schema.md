@@ -1,9 +1,9 @@
 ---
 title: Create Perspective Schema
 position: 6
-description: Create a schema and associate it with a specific Perspective. Identify the specific Perspective by its ID. See [How to Get Perspective ID](#perspectivesget-perspective-id).
+description: Create a schema and associate it with a specific Perspective. Identify the specific Perspective by its ID. See [How to Get Perspective ID](#perspectives_how-to-get-perspective-id).
 type: post
-endpoint: https://chapi.cloudhealthtech.com/v1/perspective_schemas/:perspective-id
+endpoint: https://chapi.cloudhealthtech.com/v1/perspective_schemas/
 parameters:
   - name: include_version
     required: no
@@ -25,7 +25,7 @@ content_markdown: |-
 right_code_blocks:
   - code_block: |-
       curl -s -H "Content-Type: application/json" -XPOST
-      "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>
+      "https://chapi.cloudhealthtech.com/v1/perspective_schemas/
       ?api_key=<api_key>"
       -d '{"schema":{"name":"Environment-new","rules":[{"type":"categorize","asset":"AwsAsset","tag_field":["cht_env"],"ref_id":"206159110488","name":"Env"}],"merges":[],"constants":[{"ref_type":"Dynamic Group Block","ref_id":"206159110488","name":"Env"},{"ref_type":"Dynamic Group","ref_id":"206199274950","blk_id":"206159110488","val":"production","name":"production"},{"ref_type":"Dynamic Group","ref_id":"206199274960","blk_id":"206159110488","val":"feature","name":"feature"},{"ref_type":"Group","ref_id":"206195653674","name":"Other","is_other":"true"}]}}'
     title: Post

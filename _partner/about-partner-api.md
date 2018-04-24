@@ -10,5 +10,5 @@ content_markdown: |-
 
   ![](images/partner-cust-hier.png)
 
-  The Partner API allows partners to get reports, metrics, and assets for their customers. In order to use the Partner API, you need to include an additional parameter, the `client_api_id`, with each request. CloudHealth generates a unique ID for each partner customer.
+  The Partner API allows partners to get reports, metrics, and assets for their customers. In order to use the Partner API, you need to include an additional parameter, the `client_api_id`, with each request. CloudHealth generates a unique ID for each partner customer. See [How to Get Client API ID](#partner_how-to-get-client-api-id).
 ---
