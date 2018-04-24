@@ -1,6 +1,6 @@
 ---
 title: Statements for All Customers
-position: 10
+position: 11
 description: Retrieve billing statements for all partner customers.
 type: get
 endpoint: https://chapi.cloudhealthtech.com/customer_statements/:id
