@@ -21,7 +21,7 @@ parameters:
       - name: secret_key
         required: yes, if `protocol == access_key`
         content: Access Key for IAM User
-      - name: assume_role
+      - name: assume_role_arn
         required: yes, if `protocol == assume_role`
         content: Role ARN for IAM Role
       - name: assume_role_external_id
