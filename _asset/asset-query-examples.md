@@ -61,4 +61,15 @@ content_markdown: |-
       &name=AwsVolume
       &fields=in_use,attr_group__33XXSSDDYYYY,account.name
     ```
+
+    #### Include only instance as related object when searching for AWS Volumes
+    ```
+    curl 'https://chapi.cloudhealthtech.com/api/search?
+      &api_key=<your_api_key>
+      &api_version=2
+      &page=1
+      &per_page=5
+      &name=AwsVolume
+      &include=instance
+    ```
 ---
