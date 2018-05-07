@@ -13,7 +13,7 @@ parameters:
     content: Criteria for finding assets of a particular asset object type. Criteria are specified as `query=[field value][operator][value]`. For example, `query=name='MyAccount'+and+is_private=0`
   - name: include
     required: no
-    content: String that specifies the name of a related asset object to include when returning a response.
+    content: String that specifies the name of a related asset object to include when returning a response. You cannot use both the `include` parameter and the `fields` parameter in the same GET query.
   - name: api_version
     required: no
     content: Integer that specifies the API version to use. Possible values are `1` (default) and `2`. Version 1 queries only return assets are are active. Version 2 queries return both active and inactive assets.
