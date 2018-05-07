@@ -7,10 +7,16 @@ endpoint: https://chapi.cloudhealthtech.com/v1/metrics
 parameters:
   - name: asset
     required: yes
-    content: String that specifies the AWS ARN that identifies the asset. The format is `arn:aws:ec2:<region>:<account-number>:instance/<AWS-instance-ID>`. For example, `arn:aws:ec2:us-east-1:123456789012:instance/i-01a1234b56cdef7g8`.
+    content: String that specifies the AWS ARN that identifies the asset. The format is `arn:aws:ec2:<region>:<owner-id>:instance/<AWS-instance-ID>`. For example, `arn:aws:ec2:us-east-1:123456789012:instance/i-01a1234b56cdef7g8`.
   - name: granularity
     required: no
     content: String that specifies the resolution at which data should be returned. Possible values are `hour` (default), `day`, `week`, and `month`.
+  - name: from
+    required: no
+    content: Date in `YYYY-MM-DD` format that specifies the start date from which you want to see metrics for the asset. You can use this parameter in conjunction with the `to` parameter to specify a custom date range for metrics retrieval.
+  - name: to
+    required: no
+    content: Date in `YYYY-MM-DD` format that specifies the end date up to which you want to see metrics for the asset. You can use this parameter in conjunction with the `from` parameter to specify a custom date range for metrics retrieval.
   - name: time_range
     required: no
     content: String that specifies the time range limit to use when returning data. Possible values are `yesterday` (default), `mtd`, `last_month`, `last_3_months`, `last_6_months`, `last_12_months`, `wtd`, `last_week`, `last_2_weeks`, `last_4_weeks`, `last_52_weeks`, `today`, `yesterday`, `last_2_days`, `last_7_days`, `last_14_days`, and `last_31_days`
@@ -31,14 +37,13 @@ content_markdown: |-
   In addition, rollups are calculated daily. You will not receive `today`'s data at any `granularity` other than `hourly`, which is the default value.
 right_code_blocks:
   - code_block: |-
-      curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/metrics/v1/?api_key=<your api key>"`
+      curl 'https://chapi.cloudhealthtech.com/metrics/v1/?
+        api_key=<your_API_key>
+        &asset=arn:aws:ec2:<region>:<owner-id>:instance/<AWS-instance-ID>'
     title: Request
     language: bash
   - code_block: |-
       {
-        "request" : {
-          "next" : "https://chapi.cloudhealthtech.com/metrics/v1?api_key=<API_KEY>&asset=<AWS_ARN>&page=2",
-        },
         "datasets": [
           "metadata" : {
             "assetType" : "aws:ec2:instance",
