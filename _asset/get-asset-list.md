@@ -12,7 +12,7 @@ content_markdown: |-
 right_code_blocks:
   - code_block: |
       curl 'https://chapi.cloudhealthtech.com/api?
-        api_key=<<your_API_key>'
+        api_key=<your_api_key>'
     title: Request
     language: bash
   - code_block: |-
