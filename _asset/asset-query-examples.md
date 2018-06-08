@@ -21,9 +21,8 @@ content_markdown: |-
 
     #### List available fields for Azure Virtual Machines
     ```
-    curl "https://chapi.cloudhealthtech.com/api/search.json?
+    curl "https://chapi.cloudhealthtech.com/api/AzureVm?
       &api_key=<your_api_key>"
-      &name=AzureVm
     ```
 
     #### List available fields for AWS Load Balancer

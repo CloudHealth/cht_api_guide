@@ -18,7 +18,7 @@ parameters:
     required: no
     content: Array that specifies the filters to use for constraining report data.
 content_markdown: |-
-  Retrieving the data for a specific Standard report, such as `/cost/history`, `/cost/current`, or `/usage/instance-hours` involves the following steps.
+  Retrieving the data for a specific Standard report, such as `/cost/history`, `/cost/current`, or `/usage/instance` involves the following steps.
 
   1. Get the endpoints for all types of Standard reports.
 
@@ -51,24 +51,17 @@ content_markdown: |-
 
      This query returns the following response, which has been truncated here for simplification.
 
+     **Note:** Only those reports that have `/olap_reports` in their endpoint are accessible through the API.
+
      ```
      {  
      "links":{
         [...]
-        "usage/emr/cluster-hours":{  
-          "href":"https://chapi.cloudhealthtech.com/olap_reports/usage/emr/cluster-hours"
-        },
         "usage/instance":{  
           "href":"https://chapi.cloudhealthtech.com/olap_reports/usage/instance"
         },
-        "usage/instance-hours":{  
-          "href":"https://chapi.cloudhealthtech.com/olap_reports/usage/instance-hours"
-        },
-        "usage/instance/availability":{  
-          "href":"https://chapi.cloudhealthtech.com/olap_reports/usage/instance/availability"
-        },
-        "usage/instance/bursting":{  
-          "href":"https://chapi.cloudhealthtech.com/olap_reports/usage/instance/bursting"
+        "usage/volume":{  
+          "href":"https://chapi.cloudhealthtech.com/olap_reports/volume"
         },
         [...]
       }
