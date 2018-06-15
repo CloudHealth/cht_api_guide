@@ -1,7 +1,7 @@
 ---
 title: Update AWS Account Assignment
 position: 6
-description: Enable an AWS Account in the CloudHealth Platform.
+description: Update an existing AWS account assignment.
 type: put
 endpoint: https://chapi.cloudhealthtech.com/v1/aws_account_assignments
 parameters:

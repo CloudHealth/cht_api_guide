@@ -1,7 +1,7 @@
 ---
 title: Delete AWS Account Assignment
 position: 7
-description: Enable an AWS Account in the CloudHealth Platform.
+description: Delete the relationship between an AWS account and the Partner Customer to which it was assigned.
 type: delete
 endpoint: https://chapi.cloudhealthtech.com/v1/aws_account_assignments
 parameters:

@@ -1,5 +1,6 @@
 ---
 title: Understand Format of Metrics Payload
+description: Learn how to format the payload for uploading metric to the CloudHealth Platform.
 position: 3
 parameters:
   - name:

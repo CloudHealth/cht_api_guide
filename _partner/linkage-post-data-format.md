@@ -1,5 +1,6 @@
 ---
 title: Understand Format of GovCloud Linkage Payload
+description: Learn how to format the relationship that establishes a GovCloud linkage.
 position: 16
 content_markdown: |-
   Familiarize yourself with the format of the payload that you can post to define the linkage between a GovCloud Commercial Account and a GovCloud Asset Account.

@@ -1,7 +1,7 @@
 ---
 title: Read Single AWS Account Assignment
 position: 5
-description: Enable an AWS Account in the CloudHealth Platform.
+description: Get information on a single AWS account assignment.
 type: get
 endpoint: https://chapi.cloudhealthtech.com/v1/aws_account_assignments
 parameters:
