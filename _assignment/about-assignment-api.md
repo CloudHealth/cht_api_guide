@@ -1,5 +1,6 @@
 ---
 title: Introduction to Partner AWS Account Assignment API
+description: An introduction to the Account Assignment API.
 position: 1
 parameters:
   - name:

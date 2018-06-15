@@ -1,5 +1,6 @@
 ---
 title: Rate Limits
+description: Understand rate limits when making requests to the Metrics API.
 position: 2
 parameters:
   - name:

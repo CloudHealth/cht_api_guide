@@ -90,9 +90,9 @@ right_code_blocks:
       {
         "name": "Production Account",
         "authentication": {
-          "protocol": "access_key",
-          "access_key": "AKIAQQQQQQQQQQQ",
-          "secret_key": "S87345j34lkj3l45lkj+2342"
+          "protocol": "assume_role",
+          "assume_role_arn": "arn:aws:iam::XCXXXXXXXXXZ:role/CloudHealth-IAM-Role",
+          "assume_role_external_id": "ABCDEFGH1234"
         },
         "billing": {
           "bucket": "my-billing-bucket"
@@ -125,8 +125,9 @@ right_code_blocks:
           "level": "unknown"
         },
         "authentication": {
-          "protocol": "access_key",
-          "access_key": "AKIAQQQQQQQQQQQ"
+          "protocol": "assume_role",
+          "assume_role_arn": "arn:aws:iam::XCXXXXXXXXXZ:role/CloudHealth-IAM-Role",
+          "assume_role_external_id": "ABCDEFGH1234"
         },
         "billing": {
           "bucket": "my-billing-bucket",

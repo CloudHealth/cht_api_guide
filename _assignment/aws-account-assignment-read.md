@@ -1,7 +1,7 @@
 ---
 title: Read All AWS Account Assignments
 position: 4
-description: Enable an AWS Account in the CloudHealth Platform.
+description: Get information on all AWS account assignments.
 type: get
 endpoint: https://chapi.cloudhealthtech.com/v1/aws_account_assignments
 content_markdown: |-

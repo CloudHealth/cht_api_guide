@@ -13,7 +13,7 @@ The CloudHealth API's issue tracker is not a support forum.
 If you’re looking for support on the CloudHealth Platform, here are some options:
 * Read [CloudHealth Documentation](https://help.cloudhealthtech.com).
 * Create a [Support Ticket](https://support.cloudhealthtech.com/).
-* Browse [CloudHealth Academy](https://help.cloudhealthtech.com/cht-academy.html).
+* Browse [CloudHealth Academy](https://apps.cloudhealthtech.com/docebo/sso_login).
 
 ## Report a Bug
 If you think you’ve found a bug within the documentation, open an issue in this repository.
