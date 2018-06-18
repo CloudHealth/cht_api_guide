@@ -27,7 +27,7 @@ content_markdown: |-
   * Customer Statement
 
   #### Anatomy of a Request
-  Here's a REST-based query that uses the CloudHealth Query Language.
+  Here's a REST-based query that uses the CloudHealth API.
 
   ```
   curl 'https://chapi.cloudhealthtech.com/olap_reports/cost/history?api_key=XXXXX98900000YYYY&interval=monthly' -H 'Accept: application/json'
