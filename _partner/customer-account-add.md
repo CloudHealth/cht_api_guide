@@ -141,7 +141,7 @@ right_code_blocks:
             "country": "US"
             }
           }'
-          "https://chapi.cloudhealthtech.com/v1/customers?api_key=<your_api_key>"
+          'https://chapi.cloudhealthtech.com/v1/customers?api_key=<your_api_key>'
     title: Sample Request
     language: bash
 ---

@@ -11,8 +11,8 @@ parameters:
 right_code_blocks:
   - code_block: |-
       curl -H "Content-Type: application/json" 'https://chapi.cloudhealthtech.com/api/v1/govcloud_linkages?
-      api_key=<your_api_key>"
-      &client_api_id=<customer_api_id>
+      api_key=<your_api_key>
+      &client_api_id=<customer_api_id>'
     title: Request
     language: bash
   - code_block: |-
