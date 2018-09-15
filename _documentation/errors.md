@@ -25,8 +25,7 @@ content_markdown: |-
 left_code_blocks:
   - code_block: |-
       {
-        "error": true,
-        "message": "error message here"
+        "error": "error message here"
       }
     title: Error Response Structure
     language: json
