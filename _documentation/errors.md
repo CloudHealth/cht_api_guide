@@ -12,6 +12,7 @@ content_markdown: |-
   | Code | Name | Description |
   | --- | --- | --- |
   | 200 | OK | Success |
+  | 204 | OK | Success |
   | 400 | Bad Request | Header missing |
   | 401 | Unauthorized | Currently logged out |
   | 403 | Forbidden | Bad API Key |
