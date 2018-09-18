@@ -3,7 +3,7 @@ title: Update AWS Account Assignment
 position: 6
 description: Update an existing AWS account assignment.
 type: put
-endpoint: https://chapi.cloudhealthtech.com/v1/aws_account_assignments
+endpoint: https://chapi.cloudhealthtech.com/v1/aws_account_assignments/:id
 parameters:
   - name: id
     required: yes

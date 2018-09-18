@@ -4,6 +4,11 @@ position: 4
 description: Get information on all AWS account assignments.
 type: get
 endpoint: https://chapi.cloudhealthtech.com/v1/aws_account_assignments
+parameters:
+  - name: page
+    content: Specify the page number for results
+  - name: per_page
+    content: Specify how many results should be displayed per page
 content_markdown: |-
   #### Response header
   * `X-Total`: The total number of AWS account assignments
