@@ -51,7 +51,7 @@ parameters:
         content: String that specifies the prefix of the S3 folder that contains processed customer bills.
   - name: tags
     required: no
-    content: JSON field that specifies key-value pairs for tags to attach to the customer. Each customer can be assigned a maximum of 20 tags.
+    content: JSON array that specifies key-value pairs for tags to attach to the customer. Each customer can be assigned a maximum of 20 tags.
     sub-fields:
       - name: key
         required: yes
