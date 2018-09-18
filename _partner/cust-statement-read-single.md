@@ -1,7 +1,7 @@
 ---
-title: Statement for Single Customer
+title: Retrieve a Single Statement
 position: 10
-description: Retrieve the billing statement for a specific partner customer.
+description: Retrieve a billing statement by ID.
 type: get
 endpoint: https://chapi.cloudhealthtech.com/v1/customer_statements/:id
 right_code_blocks:
