@@ -69,7 +69,7 @@ parameters:
         content: Should CloudHealth collect AWS Config files? Default value is `True`
   - name: tags
     required: no
-    content: JSON field that specifies key-value pairs for tags. When you use this field, The API restricts queries to AWS accounts that are tagged with these key-value pairs.
+    content: JSON array that specifies key-value pairs for tags. When you use this field, The API restricts queries to AWS accounts that are tagged with these key-value pairs.
     sub-fields:
       - name: key
         required: yes
