@@ -36,14 +36,14 @@ right_code_blocks:
     title: Request
     language: bash
   - code_block: |-
-      {
+      '{
         "id": 8,
         "customer_id": XXXX,
         "govcloud_acct": 1,
         "commercial_acct": 2,
         "created_at": "2018-05-16T20:18:58Z",
         "updated_at": "2018-05-16T20:18:58Z"
-      }
+      }'
     title: Response
     language: bash
 ---
