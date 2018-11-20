@@ -12,8 +12,7 @@ parameters:
     content: Boolean that specifies whether only active Perspectives are returned in the response.
 right_code_blocks:
   - code_block: |-
-      curl -s -H "Accept: application/json" "https://chapi.cloudhealthtech.com/v1/perspective_schemas
-        ?api_key=<api key>"
+      curl -s -H "Accept: application/json" "https://chapi.cloudhealthtech.com/v1/perspective_schemas?api_key=<api key>"
     title: Request
     language: bash
   - code_block: |-

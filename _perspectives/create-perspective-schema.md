@@ -18,16 +18,16 @@ content_markdown: |-
   For example, this POST call creates a Perspective:
   ```
   curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas?api_key=<api_key>" -d '{"schema":{"name":"Test 1000002","rules":[{"type":"filter","asset":"AwsInstance","to":"new group 1","condition":{"clauses":[{"field":["Active?"],"op":"=","val":"true"}]}},{"type":"filter","asset":"AwsInstance","to":"new group 1","condition":{"clauses":[{"field":["First Discovered"],"op":">","val":"2016-01-04T23:19:34+00:00"}]}}],"constants":[],"merges":[]}'
-  {"message":"Perspective 893353516727 created"}}
   ```
 
   When you make a subsequent GET call to retrieve this schema, a new group (Group-1) is created and displayed in the response. All references to `new group 1` in the schema are converted into references to the newly created group.
 right_code_blocks:
   - code_block: |-
-      curl -s -H "Content-Type: application/json" -XPOST
-      "https://chapi.cloudhealthtech.com/v1/perspective_schemas/
-      ?api_key=<api_key>"
-      -d '{"schema":{"name":"Environment-new","rules":[{"type":"categorize","asset":"AwsAsset","tag_field":["cht_env"],"ref_id":"206159110488","name":"Env"}],"merges":[],"constants":[{"ref_type":"Dynamic Group Block","ref_id":"206159110488","name":"Env"},{"ref_type":"Dynamic Group","ref_id":"206199274950","blk_id":"206159110488","val":"production","name":"production"},{"ref_type":"Dynamic Group","ref_id":"206199274960","blk_id":"206159110488","val":"feature","name":"feature"},{"ref_type":"Group","ref_id":"206195653674","name":"Other","is_other":"true"}]}}'
+      curl -s -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/perspective_schemas/?api_key=<api_key>" -d '{"schema": {"name": "Environment","include_in_reports": "true",
+      "rules": [{"type": "categorize","asset": "AwsAsset","tag_field": ["cht_env"],"ref_id": "5841XXXXXXX853","name": "AWS Assets"}],
+      "merges": [{"type": "Group","to": "584XXXXX39263","from": ["584YYYYYY9283"]}],
+      "constants": [{"type": "Dynamic Group Block","list": [{"ref_id": "ABCDEFG522853","name": "AWS Assets"}],
+      }}'
     title: Post
     language: bash
 ---
