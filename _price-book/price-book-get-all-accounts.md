@@ -10,13 +10,13 @@ right_code_blocks:
         "price_book_account_assignments": [
         {
         "id": 55,
-        "target_customer_id": <client_api id>,
+        "target_client_api_id": <client_api id>,
         "price_book_assignment_id": <int>,
         "billing_account_owner_id": <string>
         },
         {
         "id": 56,
-        "target_customer_id": <client_api id>,
+        "target_client_api_id": <client_api id>,
         "price_book_assignment_id": <int>,
         "billing_account_owner_id": <string>
         }

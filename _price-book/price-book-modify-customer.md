@@ -14,7 +14,7 @@ right_code_blocks:
   - code_block: |-
       {
         "id": 6,
-        "target_customer_id": <client_api_id>,
+        "target_client_api_id": <client_api_id>,
         "price_book_id": XXXX,
         "created_at": "2018-01-01",
         "updated_at": "2018-01-01"
