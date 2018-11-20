@@ -42,13 +42,13 @@ right_code_blocks:
           "price_book_account_assignments": [
           {
             "id": 52,
-            "target_customer_id": <client_api_id>,
+            "target_client_api_id": <client_api_id>,
             "price_book_assignment_id": 6,
             "billing_account_owner_id": "343243"
           },
           {
             "id": 53,
-            "target_customer_id": <client_api_id>,
+            "target_client_api_id": <client_api_id>,
             "price_book_assignment_id": 6,
             "billing_account_owner_id": "3432423"
           }
@@ -59,7 +59,7 @@ right_code_blocks:
   - code_block: |-
       {
         "id": 54,
-        "target_customer_id": <client_api_id>,
+        "target_client_api_id": <client_api_id>,
         "price_book_assignment_id": 6,
         "billing_account_owner_id": "ALL"
       }

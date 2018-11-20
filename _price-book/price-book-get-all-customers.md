@@ -9,7 +9,7 @@ right_code_blocks:
       {
         "id": 1,
         "price_book_id": XXXX,
-        "target_customer_id": <client_api_id>,
+        "target_client_api_id": <client_api_id>,
         "created_at": "2018-01-01",
         "updated_at": "2018-01-01"
       }

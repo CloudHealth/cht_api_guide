@@ -14,7 +14,7 @@ right_code_blocks:
   - code_block: |-
       {
         "id": 36,
-        "target_customer_id": <client_api id>,
+        "target_client_api_id": <client_api id>,
         "price_book_assignment_id": <int>,
         "billing_account_owner_id": <string>
       }
