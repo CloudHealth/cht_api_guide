@@ -37,6 +37,9 @@ collections:
   assignment:
     title: Partner AWS Account Assignment
     position: 9
+  price-book:
+    title: Partner Custom Price Books
+    position: 10
 
 plugins:
   - jekyll-sitemap
