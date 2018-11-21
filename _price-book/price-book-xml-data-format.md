@@ -7,21 +7,12 @@ parameters:
   required: yes
   content: Top-level element that specifies the customer by name and customer-id, and whether or not the customer gets a EC2 reserved instance volume discount or rate change.
   sub-fields:
-   - name: customerID
-     required: no
-     content: Customer ID specified as a number
-   - name: customerName
-     required: no
-     content: String that specifies the customer name
    - name: createdBy
      required: no
      content: String of the email address of the author of the XML specification
    - name: date
      required: yes
-     content: Date string specified in `yyyy-mm-dd` of the date the XML specification was created
-   - name: payerAccounts
-     required: no
-     content: Payer account ID specified as a number that limits the price book to that payer account
+     content: Date string specified in `yyyy-mm-dd` or `mm-dd-yyyy` of the date the XML specification was created
 - name: Comment
   required: no
   content: String for documentation purposes specifying comments on the XML specification. Can be included in any element containing child elements.
@@ -31,10 +22,10 @@ parameters:
   sub-fields:
    - name: startDate
      required: no
-     content: Date string specified in `yyyy-mm-dd` of the date the rule group should take effect. If no date is specified, the rule group takes effect for all months.
+     content: Date string specified in `yyyy-mm-dd` or `mm-dd-yyyy` of the date the rule group should take effect. If no date is specified, the rule group takes effect for all months.
    - name: endDate
      required: no
-     content: Date string specified in `yyyy-mm-dd` of the date the rule group should cease effect. If no date is specified, the rule group takes effect for all months.
+     content: Date string specified in `yyyy-mm-dd` or `mm-dd-yyyy` of the date the rule group should cease effect. If no date is specified, the rule group takes effect for all months.
    - name: enabled
      required: no
      content: Boolean field that specifies whether the rule group should be enabled, or `true`, or disabled, or `false`. Default value is `true`.
@@ -83,7 +74,7 @@ parameters:
      content: String in AWS internal format that specifies the name of the region, such as `us-east-2`.
 - name: UsageType
   required: no
-  content: Specifies the usage type a rule applies to. Exclude the region on the billing file to apply UsageType to all regions and include the region to limit UsageType to that region. Child element of Product. 
+  content: Specifies the usage type a rule applies to. Exclude the region on the billing file to apply UsageType to all regions and include the region to limit UsageType to that region. Child element of Product.
   sub-fields:
    - name: name
      required: yes
