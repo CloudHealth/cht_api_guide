@@ -12,7 +12,7 @@ parameters:
      content: String of the email address of the author of the XML specification
    - name: date
      required: yes
-     content: Date string specified in `yyyy-mm-dd` or `mm-dd-yyyy` of the date the XML specification was created
+     content: Date string specified in `yyyy-mm-dd` or `mm/dd/yyyy` of the date the XML specification was created
 - name: Comment
   required: no
   content: String for documentation purposes specifying comments on the XML specification. Can be included in any element containing child elements.
@@ -22,10 +22,10 @@ parameters:
   sub-fields:
    - name: startDate
      required: no
-     content: Date string specified in `yyyy-mm-dd` or `mm-dd-yyyy` of the date the rule group should take effect. If no date is specified, the rule group takes effect for all months.
+     content: Date string specified in `yyyy-mm-dd` or `mm/dd/yyyy` of the date the rule group should take effect. If no date is specified, the rule group takes effect for all months.
    - name: endDate
      required: no
-     content: Date string specified in `yyyy-mm-dd` or `mm-dd-yyyy` of the date the rule group should cease effect. If no date is specified, the rule group takes effect for all months.
+     content: Date string specified in `yyyy-mm-dd` or `mm/dd/yyyy` of the date the rule group should cease effect. If no date is specified, the rule group takes effect for all months.
    - name: enabled
      required: no
      content: Boolean field that specifies whether the rule group should be enabled, or `true`, or disabled, or `false`. Default value is `true`.
