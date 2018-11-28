@@ -58,8 +58,8 @@ parameters:
   sub-fields:
    - name: productName
      required: yes
-     content: String specifying the name of the product as it appears in the billing file (case sensitive)
-   - name: includeData Transfer
+     content: String specifying the name of the product as it appears in the billing file (case sensitive). Enter `ANY` to apply the rule to all products.
+   - name: includeDataTransfer
      required: no
      content: Boolean field that specifies whether data transfer costs are covered for this product. Overrides BillingRule. Default value is `true`.
    - name: includeRIPurchases
