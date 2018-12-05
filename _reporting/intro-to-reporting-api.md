@@ -12,7 +12,7 @@ content_markdown: |-
 
   #### Which Reports are Queryable
   You can only retrieve data presented in OLAP reports. These are reports that are:
-  * available at the `/olap_reports` endpoint, and
+  * available at the `/olap_reports` endpoint (including the Container Cost History report), and
   * present data visually through charts and graphs
 
   #### Reporting Terminology
