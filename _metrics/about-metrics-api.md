@@ -6,7 +6,7 @@ parameters:
   - name:
     content:
 content_markdown: |-
-  The Metrics API allows REST-based access to performance metrics, such as CPU, Memory, and Disk for AWS and Azure assets.
+  The Metrics API allows REST-based access to performance metrics, such as CPU, Memory, and Disk for AWS assets.
 
   The Metrics API allows you to read and write various performance metrics at this endpoint.
   ```
