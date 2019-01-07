@@ -3,10 +3,14 @@ title: Statement for Single Customer
 position: 10
 description: Retrieve the billing statement for a specific partner customer.
 type: get
-endpoint: https://chapi.cloudhealthtech.com/v1/customer_statements/:id
+endpoint: https://chapi.cloudhealthtech.com/v1/customer_statements
+parameters:
+  - name: client_api_id
+    required: yes
+    content: String that specifies the unique customer API Key that CloudHealth generates. See [How to Get Client API ID](#partner_how-to-get-client-api-id)
 right_code_blocks:
   - code_block: |-
-      curl -H "Content-Type: application/json" 'https://chapi.cloudhealthtech.com/v1/customer_statements/:id?api_key=<your_api_key>'
+      curl -H "Content-Type: application/json" 'https://chapi.cloudhealthtech.com/v1/customer_statements?api_key=<your_api_key>&client_api_id=<client_api_id>'
     title: Request
     language: bash
   - code_block: |-
