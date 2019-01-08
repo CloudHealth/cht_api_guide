@@ -1,7 +1,7 @@
 ---
 title: Understand Format of Perspectives Schema
 position: 2
-description: Learn about the Perspective Schema Format. 
+description: Learn about the Perspective Schema Format.
 parameters:
   - name: name
     content: String that specifies the name of the Perspective. The name need not match the name of an existing (active or archived) Perspective.
@@ -56,9 +56,6 @@ content_markdown: |-
   - AwsCacheCluster
   - InstanceAttributeHash
   - InstanceFileSystem
-  - PuppetAccount
-  - PuppetNode
-  - PuppetClass
   - AwsRdsInstanceReservation
   - AwsRdsSecurityGroup
   - AwsRdsSecurityGroupRule
