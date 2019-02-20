@@ -5,9 +5,6 @@ description: Modify a Perspective based on rules posted through a schema.
 type: put
 endpoint: https://chapi.cloudhealthtech.com/v1/perspective_schemas/:perspective-id
 parameters:
-  - name: allow_group_delete
-    required: no
-    content: Boolean that defines whether an existing Group should be deleted if the posted schema does not contain at least one rule that applies to that Group. If this parameter is set to `False` (default), the PUT operation fails when there are no references in the schema to existing Groups.
   - name: check_version
     required: no
     content: Number that specifies the version of the Perspective schema that should be updated.
