@@ -40,6 +40,9 @@ collections:
   price-book:
     title: Partner Custom Price Books
     position: 10
+  service-principal:
+    title: Azure Service Principals
+    position: 11
 
 plugins:
   - jekyll-sitemap
