@@ -1,6 +1,6 @@
 ---
-title: Read Single AWS Account Assignment
-position: 5
+title: Read Single AWS Account Assignment (Version 1)
+position: 11
 description: Get information on a single AWS account assignment.
 type: get
 endpoint: https://chapi.cloudhealthtech.com/v1/aws_account_assignments

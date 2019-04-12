@@ -1,6 +1,6 @@
 ---
-title: How AWS Account Assignments are Validated
-position: 2
+title: How AWS Account Assignments are Validated (Version 1)
+position: 8
 description: Understand the criteria through which CloudHealth validates Partner AWS Account assignments.
 parameters:
   - name:

@@ -1,6 +1,6 @@
 ---
-title: Create AWS Account Assignment
-position: 3
+title: Create AWS Account Assignment (Version 1)
+position: 9
 description: Assign AWS accounts to Partner Customers for partner-generated billing purposes.
 type: post
 endpoint: https://chapi.cloudhealthtech.com/v1/aws_account_assignments
