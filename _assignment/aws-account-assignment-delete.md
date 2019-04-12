@@ -1,6 +1,6 @@
 ---
-title: Delete AWS Account Assignment
-position: 7
+title: Delete AWS Account Assignment (Version 1)
+position: 13
 description: Delete the relationship between an AWS account and the Partner Customer to which it was assigned.
 type: delete
 endpoint: https://chapi.cloudhealthtech.com/v1/aws_account_assignments
