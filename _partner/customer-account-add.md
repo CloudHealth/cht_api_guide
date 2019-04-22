@@ -45,7 +45,7 @@ parameters:
     sub-fields:
       - name: enabled
         required: yes
-        content: Boolean field that specifies whether partner billing is enabled. Default value is `true`.
+        content: Boolean field that specifies whether partner billing is enabled. Default value is `false`.
       - name: folder
         required: no
         content: String that specifies the prefix of the S3 folder that contains processed customer bills.
@@ -97,7 +97,7 @@ right_code_blocks:
         "updated_at": "2016-09-15T18:17:04Z",
         "generated_external_id": "1a2b3c4d5e6f",
         "partner_billing_configuration": {
-            "enabled": true,
+            "enabled": false,
             "folder": ""
         },
         "address": {
@@ -130,7 +130,7 @@ right_code_blocks:
           "billing_contact": "john.doe@acmecorp.com",
           "trial_expiration_date": "2016-09-22T00:00:00",
           "partner_billing_configuration": {
-              "enabled": "true",
+              "enabled": "false",
               "folder": ""
           },
           "address": {
