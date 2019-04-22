@@ -24,8 +24,10 @@ content_markdown: |-
 
 right_code_blocks:
   - code_block: |-
-      curl --request DELETE -H 'Content-Type: application/json'
-        'https://chapi.cloudhealthtech.com/v1/aws_account_assignments/<id>?api_key=<your_api_key>'
+      curl --request
+        -H 'Authorization: Bearer <your_api_key>'
+        DELETE -H 'Content-Type: application/json'
+        'https://chapi.cloudhealthtech.com/v1/aws_account_assignments/<id>'
     title: Sample Request
     language: bash
 ---

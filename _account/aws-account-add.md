@@ -185,7 +185,7 @@ right_code_blocks:
             "value": "Production"
           }]
         }'
-        -H 'Content-Type: application/json' --request POST 'https://chapi.cloudhealthtech.com/v1/aws_accounts?api_key=<your_api_key>'
+        -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' --request POST 'https://chapi.cloudhealthtech.com/v1/aws_accounts'
     title: Sample Request
     language: bash
 ---

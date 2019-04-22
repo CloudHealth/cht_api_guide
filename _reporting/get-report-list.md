@@ -24,11 +24,11 @@ content_markdown: |-
 
 right_code_blocks:
   - code_block: |
-      curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports?api_key=<your_api_key>"
+      curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports'
     title: Basic Request
     language: bash
   - code_block: |-
-      curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports?api_key=<your_api_key>" | python -m json.tool
+      curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' https://chapi.cloudhealthtech.com/olap_reports' | python -m json.tool
     title: Pretty print results
     language: bash
   - code_block: |-

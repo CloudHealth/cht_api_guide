@@ -66,12 +66,12 @@ right_code_blocks:
     title: Response Body for All Accounts
     language: json
   - code_block: |-
-      curl --request POST -H 'Content-Type: application/json' -d
+      curl --request POST -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
         '{
           "price_book_assignment_id": XXXX,
           "billing_account_owner_id": "ALL"
         }'
-      'https://chapi.cloudhealthtech.com/v1/price_book_account_assignments?api_key=<your_api_key>'
+      'https://chapi.cloudhealthtech.com/v1/price_book_account_assignments'
     title: Sample Request
     language: bash
 ---

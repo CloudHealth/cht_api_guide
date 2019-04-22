@@ -6,7 +6,7 @@ type: get
 endpoint: https://chapi.cloudhealthtech.com/v1/customer_statements
 right_code_blocks:
   - code_block: |-
-      curl -H "Content-Type: application/json" 'https://chapi.cloudhealthtech.com/v1/customer_statements?api_key=<your_api_key>'
+      curl -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' 'https://chapi.cloudhealthtech.com/v1/customer_statements'
     title: Request
     language: bash
   - code_block: |-

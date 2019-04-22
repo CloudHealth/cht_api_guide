@@ -38,8 +38,8 @@ content_markdown: |-
 right_code_blocks:
   - code_block: |-
       curl 'https://chapi.cloudhealthtech.com/metrics/v1/?
-        api_key=<your_API_key>
         &asset=arn:aws:ec2:<region>:<owner-id>:instance/<AWS-instance-ID>'
+        -H 'Authorization: Bearer <your_api_key>'
     title: Request
     language: bash
   - code_block: |-

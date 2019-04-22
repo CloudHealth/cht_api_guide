@@ -11,8 +11,7 @@ content_markdown: |-
   The response to this query contains a list of JSON objects that represent all the AWS, Azure, Data Center, and Google Cloud assets that CloudHealth has discovered in your environment.
 right_code_blocks:
   - code_block: |
-      curl 'https://chapi.cloudhealthtech.com/api?
-        api_key=<your_api_key>'
+      curl -H 'Authorization: Bearer <your_api_key>' 'https://chapi.cloudhealthtech.com/api'
     title: Request
     language: bash
   - code_block: |-

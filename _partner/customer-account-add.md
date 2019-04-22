@@ -123,7 +123,7 @@ right_code_blocks:
     title: Response Body
     language: json
   - code_block: |-
-      curl --request POST -H 'Content-Type: application/json' -d
+      curl --request POST -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
         '{
           "name": "Acme Corp",
           "classification": "managed_without_access",
@@ -141,7 +141,7 @@ right_code_blocks:
             "country": "US"
             }
           }'
-          'https://chapi.cloudhealthtech.com/v1/customers?api_key=<your_api_key>'
+          'https://chapi.cloudhealthtech.com/v1/customers'
     title: Sample Request
     language: bash
 ---

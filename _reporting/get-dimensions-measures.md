@@ -14,7 +14,7 @@ content_markdown: |-
 
 right_code_blocks:
   - code_block: |-
-      curl -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance/new?api_key=<your_api_key>'
+      curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance/new'
     title: Request
     language: bash
   - code_block: |-

@@ -133,7 +133,7 @@ right_code_blocks:
     title: Response Body for Direct Customer
     language: json
   - code_block: |-
-      curl --request POST -H 'Content-Type: application/json' -d
+      curl --request POST -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
         '{
           "name": "Production SP",
           "sp_type": "govcloud"  ,
@@ -147,7 +147,7 @@ right_code_blocks:
             }],     
           "create_sp_for_partner_customer": <client_api_id>
         }'
-          'https://chapi.cloudhealthtech.com/v1/azure_service_principals?api_key=<your_api_key>'
+          'https://chapi.cloudhealthtech.com/v1/azure_service_principals'
     title: Sample Request
     language: bash
 ---

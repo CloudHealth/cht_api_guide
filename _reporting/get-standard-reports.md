@@ -12,7 +12,7 @@ content_markdown: |-
 
   1. Get the endpoints for all types of Standard reports.
 
-     `curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports?api_key=<your_api_key>"`
+     `curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports'`
 
      This query returns the following response.
 
@@ -37,12 +37,12 @@ content_markdown: |-
 
   2. Query the endpoint for the type of report from this response and get a list of all reports of that type.
 
-     `curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/cost?api_key=<your_api_key>"`
+     `curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports/cost'`
 right_code_blocks:
   - code_block: |-
-      curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports?api_key=<your_api_key>"
+      curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports'
 
-      curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/cost?api_key=<your_api_key>"`
+      curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports/cost'`
     title: Request
     language: bash
   - code_block: |-

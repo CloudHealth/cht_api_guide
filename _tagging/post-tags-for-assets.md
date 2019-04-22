@@ -15,8 +15,7 @@ content_markdown: |-
   * If there is a mix of updates and errors, the HTTP response code will still be `200 OK`.
 right_code_blocks:
   - code_block: |-
-      curl -H "Accept: application/json" -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/v1/custom_tags?
-        api_key=<your_api_key>"
+      curl -H 'Authorization: Bearer <your_api_key>' -H "Accept: application/json" -H 'Content-Type: application/json' -XPOST 'https://chapi.cloudhealthtech.com/v1/custom_tags'
         -d '{
           "tag_groups":[
             {

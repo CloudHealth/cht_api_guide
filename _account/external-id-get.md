@@ -17,7 +17,7 @@ content_markdown: |-
   You can also get your API key through an endpoint.
 right_code_blocks:
   - code_block: |-
-      curl --request GET -H 'Content-Type: application/json' "https://chapi.cloudhealthtech.com/v1/aws_accounts/:id/generate_external_id?api_key=<your_api_key>"
+      curl --request GET -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' "https://chapi.cloudhealthtech.com/v1/aws_accounts/:id/generate_external_id"
     title: Sample Request
     language: bash
 ---

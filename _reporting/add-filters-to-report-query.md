@@ -11,13 +11,12 @@ content_markdown: |-
 
     For example, to get the EC2 Compute Cost in `us-east-1a`, you can apply a filter in this way.
     ```
-    curl -H "Accept: application/json" 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance?
+    curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance?
       dimensions\[\]=time
       &dimensions\[\]=AWS-Availaibility-Zones
       &measures\[\]=ec2_cost_compute
       &filters\[\]=AWS-Availaibility-Zones:select:us-east-1a
-      &interval=monthly
-      &api_key=<your_api_key>
+      &interval=monthly'
     ```
 
     In the query, each filter is represented using the `filters[]` parameter. this parameter has the this structure.
@@ -27,13 +26,12 @@ content_markdown: |-
 
     For example, to get the EC2 Compute Costs for all Availability Zones except `us-east-1b` and `us-east-1d`, you can apply a filter in this way.
     ```
-    curl -H "Accept: application/json" 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance
-      ?dimensions[]=time
-      &dimensions[]=AWS-Availaibility-Zones
-      &measures[]=ec2_cost_compute
+    curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance
+      ?dimensions\[\]=time
+      &dimensions\[\]=AWS-Availaibility-Zones
+      &measures\[\]=ec2_cost_compute
       &filters\[\]=AWS-Availaibility-Zones:reject:us-east-1b,us-east-1d
-      &interval=monthly
-      &api_key=<your_api_key>'
+      &interval=monthly'
     ```
 
     For more information on how to filter by time, see [Understand Time Filters](#Reportingunderstand-time-filters).

@@ -13,15 +13,15 @@ parameters:
     content: Specify how many results should be displayed per page. Default value is 30.
 right_code_blocks:
   - code_block: |-
-      curl --request GET -H 'Content-Type: application/json' "https://chapi.cloudhealthtech.com/v1/aws_accounts?api_key=<your_api_key>"
+      curl --request GET -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' "https://chapi.cloudhealthtech.com/v1/aws_accounts"
     title: All results
     language: bash
   - code_block: |-
-      curl --request GET -H 'Content-Type: application/json' "https://chapi.cloudhealthtech.com/v1/aws_accounts?api_key=<your_api_key>&page=2"
+      curl --request GET -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' "https://chapi.cloudhealthtech.com/v1/aws_accounts?page=2"
     title: Specific page
     language: bash
   - code_block: |-
-      curl --request GET -H 'Content-Type: application/json' "https://chapi.cloudhealthtech.com/v1/aws_accounts?api_key=<your_api_key>&page=3&per_page=100"
+      curl --request GET -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' "https://chapi.cloudhealthtech.com/v1/aws_accounts?page=3&per_page=100"
     title: Results per page
     language: bash
 ---

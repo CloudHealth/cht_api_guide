@@ -34,8 +34,7 @@ content_markdown: |-
   See [Asset Query Examples](#assetasset-query-examples).
 right_code_blocks:
   - code_block: |
-      curl 'https://chapi.cloudhealthtech.com/api/search?
-        &api_key=<your_API_key>
+      curl -H 'Authorization: Bearer <your_api_key>' 'https://chapi.cloudhealthtech.com/api/search?
         &api_version=2
         &page=1
         &per_page=5

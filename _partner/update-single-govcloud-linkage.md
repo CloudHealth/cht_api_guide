@@ -10,9 +10,8 @@ parameters:
     content: String that specifies the unique customer API Key that CloudHealth generates. See [How to Get Client API ID](#partner_how-to-get-client-api-id).
 right_code_blocks:
   - code_block: |-
-      curl -H "Content-Type: application/json" 'https://chapi.cloudhealthtech.com/api/v1/govcloud_linkages/25?
-      api_key=<your_api_key>
-      &client_api_id=<customer_api_id>' -d
+      curl -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' 'https://chapi.cloudhealthtech.com/api/v1/govcloud_linkages/25?
+      client_api_id=<customer_api_id>' -d
       '{
         "govcloud_acct_id": 17,
         "commercial_acct_id": 25
