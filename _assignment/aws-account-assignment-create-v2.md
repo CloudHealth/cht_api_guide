@@ -104,7 +104,10 @@ right_code_blocks:
     title: Response Body
     language: bash
   - code_block: |-
-      curl --request POST -H 'Content-Type: application/json' -d\
+      curl --request POST
+        -H 'Authorization: Bearer <your_api_key>'
+        -H 'Content-Type: application/json'
+        -d\
         '{
           "aws_account_assignments": [
             {
@@ -133,7 +136,7 @@ right_code_blocks:
             }
           ]
         }'\
-        'https://chapi.cloudhealthtech.com/v2/aws_account_assignments?api_key=<your_api_key>'
+        'https://chapi.cloudhealthtech.com/v2/aws_account_assignments'
     title: Sample Request
     language: bash
 ---

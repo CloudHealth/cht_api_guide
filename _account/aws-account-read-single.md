@@ -7,7 +7,7 @@ endpoint: https://chapi.cloudhealthtech.com/v1/aws_accounts/:id
 
 right_code_blocks:
   - code_block: |-
-      curl --request GET -H 'Content-Type: application/json' "https://chapi.cloudhealthtech.com/v1/aws_accounts/<account_ID>?api_key=<your_api_key>"
+      curl --request GET -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' "https://chapi.cloudhealthtech.com/v1/aws_accounts/<account_ID>"
     title: Sample Request
     language: bash
 ---

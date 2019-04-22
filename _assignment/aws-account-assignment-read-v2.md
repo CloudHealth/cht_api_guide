@@ -23,8 +23,9 @@ content_markdown: |-
 right_code_blocks:
   - code_block: |-
       curl --request GET \
-        'https://chapi.cloudhealthtech.com/v2/aws_account_assignments/?api_key=<your_api_key>' \
+        'https://chapi.cloudhealthtech.com/v2/aws_account_assignments/' \
         -H 'Content-Type: application/json'
+        -H 'Authorization: Bearer <your_api_key>'
     title: Sample Request
     language: bash
 ---

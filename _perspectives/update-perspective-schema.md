@@ -23,13 +23,13 @@ content_markdown: |-
   #### How to Avoid Conflicts during Concurrent Updates
   Use the `check_version` parameter to ensure that a concurrent update is not overwritten.
   ```
-  curl -s -H "Content-Type: application/json" -XPUT "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>&check_version=3"
+  curl -s -H 'Content-Type: application/json' -XPUT "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>&check_version=3"
   ```
 
   If the Perspective was updated, and therefore version-incremented, since the last GET operation, the update request returns a `400` error.
 right_code_blocks:
   - code_block: |-
-      curl -s -H "Content-Type: application/json" -XPUT "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>
+      curl -s -H 'Content-Type: application/json' -XPUT "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>
         ?api_key=<api_key>" -d '{"schema":<schema JSON>}'
     title: Update
     language: bash

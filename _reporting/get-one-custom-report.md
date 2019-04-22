@@ -29,7 +29,7 @@ content_markdown: |-
 
   2. Query the endpoint for the specific report to get its data.
 
-      `curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/custom/<Report-ID>?api_key=<your_api_key>"`
+      `curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports/custom/<Report-ID>'`
 
       This query returns a response similar to this truncated one.
 
@@ -66,7 +66,7 @@ content_markdown: |-
 
 right_code_blocks:
   - code_block: |-
-      curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/custom/<Report-ID>?api_key=<your_api_key>"
+      curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports/custom/<Report-ID>'
     title: Request
     language: bash
   - code_block: |-

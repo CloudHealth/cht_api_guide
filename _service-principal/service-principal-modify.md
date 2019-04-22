@@ -69,7 +69,7 @@ right_code_blocks:
     title: Response Body for Direct Customer
     language: json
   - code_block: |-
-      curl --request PUT -H 'Content-Type: application/json' -d
+      curl --request PUT -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
         '{
           "name": "Production SP 1",
           "client_secret": "cbdefeb",
@@ -81,7 +81,7 @@ right_code_blocks:
             "AzureKeyVaultSecret":false
           }]
         }'
-          'https://chapi.cloudhealthtech.com/v1/azure_service_principals/<sp_id>?api_key=<your_api_key>'
+          'https://chapi.cloudhealthtech.com/v1/azure_service_principals/<sp_id>'
     title: Sample Request
     language: bash
 ---

@@ -15,8 +15,7 @@ content_markdown: |-
   The `relations` array contains related assets. In the case of an AWS Instance, the `relations` array lists objects such as `AwsAccount`, `AWSInstanceType`, `AwsAvailabilityZone`, and `ChefNode` objects.
 right_code_blocks:
   - code_block: |
-      curl 'https://chapi.cloudhealthtech.com/api/AwsInstance?
-        api_key=<your_API_key>'
+      curl -H 'Authorization: Bearer <your_api_key>' 'https://chapi.cloudhealthtech.com/api/AwsInstance'
     title: Request
     language: bash
   - code_block: |-

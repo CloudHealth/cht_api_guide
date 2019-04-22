@@ -8,7 +8,7 @@ parameters:
     content:
 content_markdown: |-
     1. Retrieve the list of available measures and dimensions of for the EC2 Instance Report.
-       `curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/usage/instance/new?api_key=<your_api_key>"`
+       `curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' "https://chapi.cloudhealthtech.com/olap_reports/usage/instance/new"`
 
        This query returns a response that looks like this.
 
@@ -86,11 +86,10 @@ content_markdown: |-
        For each dimension, add a query  parameter called `dimensions[]` and for each measure add a parameter called `measures[]`. For each of these parameters, specify one or more values that you received when querying the `/new` endpoint. In general, the dimensions available are `hourly`, `daily`, `weekly`, and `monthly`.
 
        ```
-       curl -H "Accept: application/json" 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance?
+       curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance?
         dimensions[]=time
         &dimensions[]=AWS-Availaibility-Zones
         &measures[]=ec2_cost_compute
-        &interval=monthly
-        &api_key=<your_api_key>'
+        &interval=monthly'
        ```
 ---

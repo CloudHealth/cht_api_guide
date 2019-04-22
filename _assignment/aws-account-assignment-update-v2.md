@@ -51,12 +51,12 @@ right_code_blocks:
     title: Response Body
     language: bash
   - code_block: |-
-      curl --request PUT -H 'Content-Type: application/json' -d\
+      curl --request PUT -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d\
         '{
           "billing_block_name": "block name2",
           "payer_account_owner_id":"000000000003"
         }'\
-        'https://chapi.cloudhealthtech.com/v2/aws_account_assignments/<target_client_api_id>?api_key=<your_api_key>'
+        'https://chapi.cloudhealthtech.com/v2/aws_account_assignments/<target_client_api_id>'
     title: Sample Request
     language: bash
 ---

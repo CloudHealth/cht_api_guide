@@ -22,7 +22,7 @@ content_markdown: |-
 
   1. Get the endpoints for all types of Standard reports.
 
-     `curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports?api_key=<your_api_key>"`
+     `curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports'`
 
      This query returns the following response.
 
@@ -47,7 +47,7 @@ content_markdown: |-
 
   2. Query the endpoint for the type of report from this response and get a list of all reports of that type. This example request queries the `/usage` endpoint to get a list of all Standard Usage Reports.
 
-     `curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/usage?api_key=<your_api_key>"`
+     `curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports/usage'`
 
      This query returns the following response, which has been truncated here for simplification.
 
@@ -69,7 +69,7 @@ content_markdown: |-
      ```
   3. Query the endpoint for the specific report to get its data. This example request queries the `/usage/instance` endpoint to get the data for the EC2 Instance Usage report.
 
-      `curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/usage/instance?api_key=<your_api_key>"`
+      `curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance'`
 
       This query returns the following response, which has been truncated here for simplification.
 
@@ -105,7 +105,7 @@ content_markdown: |-
       {: .success}
 right_code_blocks:
   - code_block: |-
-      curl -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/usage/instance?api_key=<your_api_key>"`
+      curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance'`
     title: Request
     language: bash
   - code_block: |-

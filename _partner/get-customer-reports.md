@@ -12,7 +12,7 @@ content_markdown: |-
   Refer to [Data for Standard Report](#reporting_data-for-standard-report) for more information on retrieving data from a standard report.
 right_code_blocks:
   - code_block: |-
-      curl -H "Accept: application/json" 'https://chapi.cloudhealthtech.com/olap_reports/cost/history?api_key=<your_api_key>&client_api_id=<customer_api_id>'
+      curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports/cost/history?client_api_id=<customer_api_id>'
     title: Bash Request
     language: bash
   - code_block: |-

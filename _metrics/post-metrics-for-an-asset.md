@@ -48,8 +48,7 @@ content_markdown: |-
 
 right_code_blocks:
   - code_block: |-
-      curl -H "Content-Type: application/json" -XPOST "https://chapi.cloudhealthtech.com/metrics/v1?
-      api_key=<your_api_key>" -d '{"metrics":{"datasets":[{"metadata":{"assetType":"aws:ec2:instance","granularity":"hour","keys":["assetId","timestamp","memory:usedPercent.avg","memory:usedPercent.max","memory:usedPercent.min"]},"values":[["us-east-1:12345678:i-99999999","2015-06-03T01:00:00+00:00",100.0,200.0,50.0],["us-east-1:12345678:i-88888888","2015-06-03T02:00:00+00:00",25.5,45.2,15.0]]}]}}'
+      curl -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -XPOST "https://chapi.cloudhealthtech.com/metrics/v1" -d '{"metrics":{"datasets":[{"metadata":{"assetType":"aws:ec2:instance","granularity":"hour","keys":["assetId","timestamp","memory:usedPercent.avg","memory:usedPercent.max","memory:usedPercent.min"]},"values":[["us-east-1:12345678:i-99999999","2015-06-03T01:00:00+00:00",100.0,200.0,50.0],["us-east-1:12345678:i-88888888","2015-06-03T02:00:00+00:00",25.5,45.2,15.0]]}]}}'
     title: Post
     language: bash
   - code_block: |-

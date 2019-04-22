@@ -33,13 +33,13 @@ content_markdown: |-
 
 right_code_blocks:
   - code_block: |-
-      curl --request PUT -H 'Content-Type: application/json' -d
+      curl --request PUT -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
         '{
           "owner_id": "000000000001",
           "customer_id": 1,
           "payer_account_owner_id": "000000000001"
         }'
-        'https://chapi.cloudhealthtech.com/v1/aws_account_assignments/<id>?api_key=<your_api_key>'
+        'https://chapi.cloudhealthtech.com/v1/aws_account_assignments/<id>'
     title: Sample Request
     language: bash
 ---

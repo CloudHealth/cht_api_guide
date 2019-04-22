@@ -6,8 +6,8 @@ type: delete
 endpoint: https://chapi.cloudhealthtech.com/v1/price_books/:price book id
 right_code_blocks:
   - code_block: |-
-      curl --request DELETE -H 'Content-Type: application/json'
-      'https://chapi.cloudhealthtech.com/v1/price_books/<price book id>?api_key=<your_api_key>'
+      curl --request DELETE -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json'
+      'https://chapi.cloudhealthtech.com/v1/price_books/<price book id>'
     title: Sample Request
     language: bash
 ---
