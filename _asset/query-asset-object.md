@@ -27,9 +27,9 @@ parameters:
       - name: per_page
         required: no
         content: Only available when `api_version=2`. Integer that specifies the number of assets to return per page. Default value is `100` and maximum value is `1000`.
-      - name: is_active
+      - name: query
         required: no
-        content: Only available when `api_version=2`. Specify that only active assets should be returned by setting this parameter to `1`.
+        content: Only available when `api_version=2`. Filter query results based on one or more field values. For example, return only active assets by setting this parameter to `is_active=1`.
 content_markdown: |-
   See [Asset Query Examples](#assetasset-query-examples).
 right_code_blocks:
