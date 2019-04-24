@@ -43,6 +43,9 @@ collections:
   service-principal:
     title: Azure Service Principals
     position: 11
+  azure-partner:
+    title: Azure Partner
+    position: 12
 
 plugins:
   - jekyll-sitemap
