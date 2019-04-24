@@ -156,7 +156,7 @@ right_code_blocks:
     title: Response Body
     language: json
   - code_block: |-
-      curl -d
+      curl --request POST -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
         '{
            "name":"abc company",
            "azure_customer_id":"34fdg",
@@ -175,7 +175,6 @@ right_code_blocks:
               "key": "service_package", "value": "basic_managed"
                }]
               }'
-            -H 'Content-Type: application/json' --request POST 
           'https://chapi.cloudhealthtech.com/v2/customers?api_key=<your_api_key>'
     title: Sample Request
     language: bash

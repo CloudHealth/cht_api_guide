@@ -43,12 +43,11 @@ right_code_blocks:
     title: Response Body
     language: json
   - code_block: |-
-      curl -d
+      curl --request PUT -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
       '{
         "name": "Acme Corporation",
         "classification": "managed_with_access"
       }'
-      -H 'Content-Type: application/json' --request PUT 
       'https://chapi.cloudhealthtech.com/v2/customers/<client_api_id>?api_key=<your_api_key>'
     title: Sample Request
     language: bash
