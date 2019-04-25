@@ -175,7 +175,7 @@ right_code_blocks:
               "key": "service_package", "value": "basic_managed"
                }]
               }'
-          'https://chapi.cloudhealthtech.com/v2/customers?api_key=<your_api_key>'
+          'https://chapi.cloudhealthtech.com/v2/customers'
     title: Sample Request
     language: bash
 ---

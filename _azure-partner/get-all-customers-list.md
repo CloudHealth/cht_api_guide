@@ -7,7 +7,7 @@ endpoint: https://chapi.cloudhealthtech.com/v2/customers
 right_code_blocks:
   - code_block: |-
       curl --request GET -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
-        'https://chapi.cloudhealthtech.com/v2/customers?api_key=<your_api_key>'
+        'https://chapi.cloudhealthtech.com/v2/customers'
     title: Sample Request
     language: bash
 ---
