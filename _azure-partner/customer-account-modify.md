@@ -48,7 +48,7 @@ right_code_blocks:
         "name": "Acme Corporation",
         "classification": "managed_with_access"
       }'
-      'https://chapi.cloudhealthtech.com/v2/customers/<client_api_id>?api_key=<your_api_key>'
+      'https://chapi.cloudhealthtech.com/v2/customers/<client_api_id>'
     title: Sample Request
     language: bash
 ---
