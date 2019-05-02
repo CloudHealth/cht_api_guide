@@ -30,7 +30,7 @@ right_code_blocks:
       "azure_partner_customer_accounts": [
         {
           "customer_tenant_name": "Azure Two",
-          "partner_customer_account": {
+          "azure_partner_customer_account": {
             "name": "Indigo Montoya Inc",
             "domain": "chazureteam.onmicrosoft.com",
             "azure_customer_id": "abc"
