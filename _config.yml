@@ -46,6 +46,9 @@ collections:
   azure-partner:
     title: Azure Partner
     position: 12
+  azure-assignment:
+    title: Partner Azure Account Assignment
+    position: 13
 
 plugins:
   - jekyll-sitemap
