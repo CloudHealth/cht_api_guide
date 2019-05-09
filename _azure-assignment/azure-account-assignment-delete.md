@@ -30,13 +30,13 @@ right_code_blocks:
         "azure_partner_customer_account":{
           "name":"arriva",   
           "domain":"arriva.onmicrosoft.com",
-          "azure_customer_id":"1",
+          "azure_customer_id":"ab123",
           "created_at": "2018-12-27T17:36:36Z",
           "updated_at": "2019-04-26T20:49:59Z"
         },
         {"http_status": 422
           "error": "azure_customer_id not found"
-          "azure_customer_id": "2"
+          "azure_customer_id": "fgh345"
         }
       }]
     title: Response Body

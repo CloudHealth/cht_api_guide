@@ -33,7 +33,7 @@ right_code_blocks:
           "azure_partner_customer_account": {
             "name": "Indigo Montoya Inc",
             "domain": "chazureteam.onmicrosoft.com",
-            "azure_customer_id": "abc"
+            "azure_customer_id": "ab123"
             "created_at": "2018-12-27T17:36:36Z",
             "updated_at": "2019-04-26T20:49:59Z"
           }
