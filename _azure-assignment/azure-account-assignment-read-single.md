@@ -23,15 +23,16 @@ right_code_blocks:
           "azure_customer_id":"dfg234",
           "created_at": "2018-12-27T17:36:36Z",
           "updated_at": "2019-04-26T20:49:59Z"
-      }
+        }
       },{
         "customer_tenant_name":"arriva",
-          "azure_partner_customer_account":{
+        "azure_partner_customer_account":{
           "name":"card technologies"
           "domain":"card.onmicrosoft.com",
           "azure_customer_id":"xof194",
           "created_at": "2018-12-27T17:36:36Z",
-          "updated_at": "2019-04-26T20:49:59Z" }
+          "updated_at": "2019-04-26T20:49:59Z"
+        }
       }]
     title: Response Body
     language: json
