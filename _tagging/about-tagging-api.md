@@ -6,9 +6,9 @@ parameters:
   - name:
     content:
 content_markdown: |-
-  The Tagging API allows you to add tags (key-value pairs) to objects in the CloudHealth Platform, including taggable AWS assets, AWS accounts, taggable Azure assets, and Data Center servers. These tags are completely independent of your cloud provider tags.
+  The Tagging API allows you to add tags (key-value pairs) to objects in the CloudHealth Platform, including taggable AWS assets, AWS accounts, taggable Azure assets, taggable GCP assets, and Data Center servers. These tags are completely independent of your cloud provider tags.
 
-  When you tag objects using this API, the resources are only tagged in the CloudHealth Platform. The tags do not cascade down to your cloud provider (AWS, Azure, or Data Center). CloudHealth continues to pull tags from both your cloud provider.
+  When you tag objects using this API, the resources are only tagged in the CloudHealth Platform. The tags do not cascade down to your cloud provider (AWS, Azure, GCP, or Data Center). CloudHealth continues to pull tags from both your cloud provider.
 
   The Tagging API allows you to add tags at this endpoint.
   ```
