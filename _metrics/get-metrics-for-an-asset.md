@@ -22,7 +22,7 @@ parameters:
     content: String that specifies the time range limit to use when returning data. Possible values are `yesterday` (default), `mtd`, `last_month`, `last_3_months`, `last_6_months`, `last_12_months`, `wtd`, `last_week`, `last_2_weeks`, `last_4_weeks`, `last_52_weeks`, `today`, `yesterday`, `last_2_days`, `last_7_days`, `last_14_days`, and `last_31_days`
   - name: page
     required: no
-    content: Integer that specifies the page to display when results run over multiple pages. Default value is `1`.
+    content: Integer that specifies the page to display when results run over multiple pages. Default value is `1`. If this parameter is missing, the query returns all results, even if the `per_page` parameter is specified.
   - name: per_page
     required: no
     content: Integer between `1` and `500` that specifies the number of assets to return per page. Default value is `100` and maximum value is `1000`.
