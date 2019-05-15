@@ -23,7 +23,7 @@ parameters:
         content: Only available when `api_version=2`. Comma-separated list that specifies the specific fields to return when querying the asset object.
       - name: page
         required: no
-        content: Only available when `api_version=2`. Integer that specifies the page to display when results run over multiple pages. Default value is `1`.
+        content: Only available when `api_version=2`. Integer that specifies the page to display when results run over multiple pages. Default value is `1`. If this parameter is missing, the query returns all results, even if the `per_page` parameter is specified.
       - name: per_page
         required: no
         content: Only available when `api_version=2`. Integer that specifies the number of assets to return per page. Default value is `100` and maximum value is `1000`.
