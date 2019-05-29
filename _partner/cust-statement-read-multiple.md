@@ -12,6 +12,7 @@ right_code_blocks:
   - code_block: |-
       {
         customer_id : 1211,
+        cloud: "AWS",
         billing_period : "2016-08",
         total_amount : 211,523.09,
         status : "estimated",
