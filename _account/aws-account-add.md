@@ -34,6 +34,16 @@ parameters:
       - name: bucket
         required: yes
         content: Name of S3 bucket containing the DBR
+  - name: cost_and_usage_report
+    required: no
+    content: JSON field that specifies the location of the AWS Cost and Usage Report (CUR).
+    sub-fields:
+      - name: bucket
+        required: yes
+        content: Name of S3 bucket containing the CUR
+      - name: path
+        required: no
+        content: The path to the CUR report, including the prefix
   - name: cloudtrail
     required: no
     content: JSON field that specifies whether CloudHealth should collect CloudTrail Trails and the location of Trail files.
@@ -97,6 +107,10 @@ right_code_blocks:
         "billing": {
           "bucket": "my-billing-bucket"
         },
+        "cost_and_usage_report" : {
+          "bucket": "cur-bucket",
+          "path": "cur/path/api"
+        },
         "cloudtrail": {
           "enabled": true,
           "bucket": "my-cloudtrail-bucket"
@@ -132,6 +146,10 @@ right_code_blocks:
         "billing": {
           "bucket": "my-billing-bucket",
           "is_consolidated": false
+        },
+        "cost_and_usage_report" : {
+          "bucket": "cur-bucket",
+          "path": "cur/path/api"
         },
         "cloudtrail": {
           "enabled": true,
@@ -170,6 +188,10 @@ right_code_blocks:
           },
           "billing": {
             "bucket": "my-billing-bucket"
+          },
+          "cost_and_usage_report" : {
+            "bucket": "cur-bucket",
+            "path": "cur/path/api"
           },
           "cloudtrail": {
             "enabled": true,
