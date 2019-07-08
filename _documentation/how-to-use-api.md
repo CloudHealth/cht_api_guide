@@ -57,6 +57,9 @@ content_markdown: |-
       -H 'Accept: application/json'
     ```
   * POST requests send data to the CloudHealth Platform. They include a JSON-formatted message body, which contains the data that should be sent. Here, the message body is specified as a parameter following the `-d` flag.
+
+  * The `Content-Type: application/json` header is required when PUTting or POSTing JSON to the API, else an HTTP 422 Unprocessable Entity is issued
+
     ```
     curl 'https://chapi.cloudhealthtech.com/v1/perspective_schemas'
       -H 'Authorization: Bearer XXXXX98900000YYYY'
