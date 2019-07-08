@@ -1,7 +1,7 @@
 ---
 title: Create Perspective Schema
 position: 6
-description: Create a schema and associate it with a specific Perspective. Identify the specific Perspective by its ID. See [How to Get Perspective ID](#perspectives_how-to-get-perspective-id).
+description: Create a Perspective and associate it with a new schema. The ID of the new Perspective is returned in the message field in the POST response.
 type: post
 endpoint: https://chapi.cloudhealthtech.com/v1/perspective_schemas/
 parameters:

@@ -3,7 +3,7 @@ title: Upload Metrics for Single Asset
 type: post
 description: Post metrics for an individual asset, including historical metrics data.
 position: 5
-endpoint: https://chapi.cloudhealthtech.com/v1/metrics
+endpoint: https://chapi.cloudhealthtech.com/metrics/v1
 parameters:
   - name: JSON document
     required: yes
