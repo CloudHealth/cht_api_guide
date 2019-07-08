@@ -3,7 +3,7 @@ title: Metrics for Single Asset
 type: get
 description: Retrieve CPU, memory, and performance metrics for a specific asset
 position: 4
-endpoint: https://chapi.cloudhealthtech.com/v1/metrics
+endpoint: https://chapi.cloudhealthtech.com/metrics/v1
 parameters:
   - name: asset
     required: yes
