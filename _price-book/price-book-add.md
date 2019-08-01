@@ -22,21 +22,23 @@ right_code_blocks:
     language: json
   - code_block: |-
       {
-        "id": XXXX,
-        "book_name": "Gold tier",
-        "file_hash": "0aa0d13204c2bb",
-        "created_at": "2018-01-01",
-        "updated_at": "2018-01-01"
+        "price_book": {
+          "id": XXXX,
+          "book_name": "Gold tier",
+          "file_hash": "0aa0d13204c2bb",
+          "created_at": "2018-01-01",
+          "updated_at": "2018-01-01"
+        }
       }
     title: Response Body
     language: json
   - code_block: |-
-      curl --request POST -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
+      curl --request POST -H 'Content-Type: application/json' -d
         '{
           "book_name": "Gold tier",
           "specification": <XML>
         }'
-        'https://chapi.cloudhealthtech.com/v1/price_books'
+        'https://chapi.cloudhealthtech.com/v1/price_books?api_key=<your_api_key>'
     title: Sample Request
     language: bash
 ---
