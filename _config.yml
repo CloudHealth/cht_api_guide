@@ -31,24 +31,27 @@ collections:
   tagging:
     title: Tagging
     position: 7
+  organization:
+    title: Organization
+    position: 8
   partner:
     title: Partner
-    position: 8
+    position: 9
   assignment:
     title: Partner AWS Account Assignment
-    position: 9
+    position: 10
   price-book:
     title: Partner Custom Price Books
-    position: 10
+    position: 11
   service-principal:
     title: Azure Service Principals
-    position: 11
+    position: 12
   azure-partner:
     title: Azure Partner
-    position: 12
+    position: 13
   azure-assignment:
     title: Partner Azure Account Assignment
-    position: 13
+    position: 14
 
 plugins:
   - jekyll-sitemap
@@ -80,6 +83,7 @@ types:
   - put
   - delete
   - post
+  - patch
   - example
 
 languages:
