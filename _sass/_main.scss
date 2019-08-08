@@ -336,6 +336,13 @@ h3 .endpoint {
 	}
 }
 
+.endpoint.patch {
+	color: #C42B2B;
+	&:after {
+		content: "PATCH";
+	}
+}
+
 .main {
 	margin: 0 0 0 250px;
 	border-left: 1px solid #eee;
