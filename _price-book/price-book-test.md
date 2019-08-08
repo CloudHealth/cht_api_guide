@@ -32,7 +32,7 @@ right_code_blocks:
       curl --request PUT -H 'Content-Type: application/json' -d
       '{
         "price_book_id": XXXX,
-        "customer_id": <customer_api_id>,
+        "target_client_api_id": <customer_api_id>,
         "month": "2018-01",
         "billing_account_owner_id": 1234
       }'
