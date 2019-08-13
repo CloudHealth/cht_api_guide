@@ -1,6 +1,6 @@
 ---
 title: Create Partner Customer
-position: 5
+position: 6
 description: Add a partner customer tenant in the CloudHealth Platform.
 type: post
 endpoint: https://chapi.cloudhealthtech.com/v1/customers

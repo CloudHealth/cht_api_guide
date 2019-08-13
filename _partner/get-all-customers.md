@@ -1,6 +1,6 @@
 ---
 title: Get All Customers
-position: 9
+position: 10
 description: Retrieve a list of all customer tenants.
 type: get
 endpoint: https://chapi.cloudhealthtech.com/v1/customers

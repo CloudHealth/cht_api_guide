@@ -1,6 +1,6 @@
 ---
 title: Details of Single GovCloud Linkage
-position: 14
+position: 15
 description: Get details for a specific GovCloud linkage.
 type: get
 endpoint: https://chapi.cloudhealthtech.com/api/v1/govcloud_linkages/:id

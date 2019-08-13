@@ -1,6 +1,6 @@
 ---
 title: Specific Customer Report
-position: 3
+position: 4
 description: Retrieve a specific Standard Report for a specific customer tenant.
 type: get
 endpoint: https://chapi.cloudhealthtech.com/olap_reports/:report-type/:report-id
