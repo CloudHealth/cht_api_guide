@@ -1,6 +1,6 @@
 ---
 title: Update Single GovCloud Linkage
-position: 15
+position: 16
 description: Update a specific relationship between a GovCloud Commercial Account and GovCloud Asset Account.
 type: put
 endpoint: https://chapi.cloudhealthtech.com/api/v1/govcloud_linkages/:id

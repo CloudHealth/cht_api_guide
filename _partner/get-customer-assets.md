@@ -1,6 +1,6 @@
 ---
 title: Assets for Specific Customer
-position: 4
+position: 5
 description: Retrieve a list of assets associated with a specific partner customer.
 type: get
 endpoint: https://chapi.cloudhealthtech.com/api/search.json?api_version=2

@@ -1,6 +1,6 @@
 ---
 title: Get Single Customer
-position: 8
+position: 9
 description: Retrieve a specific customer tenant.
 type: get
 endpoint: https://chapi.cloudhealthtech.com/v1/customers/:customer_id

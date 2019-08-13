@@ -1,6 +1,6 @@
 ---
 title: List All GovCloud Linkages Owned by Current Customer
-position: 13
+position: 14
 description: Get all GovCloud linkages that are owned by the current customer.
 type: get
 endpoint: https://chapi.cloudhealthtech.com/api/v1/govcloud_linkages

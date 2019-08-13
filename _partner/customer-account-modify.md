@@ -1,6 +1,6 @@
 ---
 title: Modify Existing Customer
-position: 6
+position: 7
 description: Modify a partner customer tenant that already exists in the CloudHealth Platform.
 type: put
 endpoint: https://chapi.cloudhealthtech.com/v1/customers/:customer_id

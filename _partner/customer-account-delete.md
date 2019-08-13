@@ -1,6 +1,6 @@
 ---
 title: Delete Existing Customer
-position: 7
+position: 8
 description: Delete a partner customer tenant from the CloudHealth Platform.
 type: delete
 endpoint: https://chapi.cloudhealthtech.com/v1/customers/:customer_id

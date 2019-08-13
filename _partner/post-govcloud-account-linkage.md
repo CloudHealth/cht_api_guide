@@ -1,6 +1,6 @@
 ---
 title: Connect GovCloud Commercial Account to GovCloud Asset Account
-position: 12
+position: 13
 description: Link a GovCloud account that receives the Detailed Billing Record with the GovCloud account that owns AWS assets.
 type: post
 endpoint: https://chapi.cloudhealthtech.com/api/v1/govcloud_linkages
