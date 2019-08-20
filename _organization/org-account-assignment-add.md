@@ -17,9 +17,6 @@ parameters:
   - name: gcp_compute_projects
     required: no
     content: Enter a comma-separated list of GCP project IDs that should be assigned to the organization. The project IDs can be retrieved using the [Search for Assets](#asset_search-for-assets) endpoint. You can assign up to 500 GCP projects per endpoint.
-  - name: gcp_billing_accounts
-    required: no
-    content: Enter a comma-separated list of GCP billing account IDs that should be assigned to the organization. The account IDs can be retrieved using the [Search for Assets](#asset_search-for-assets) endpoint. You can assign up to 500 GCP accounts per endpoint.
   - name: data_center_accounts
     required: no
     content: Enter a comma-separated list of Data Center account names that should be assigned to the organization. The account names can be retrieved using the [Search for Assets](#asset_search-for-assets) endpoint. You can assign up to 500 Data Center accounts per endpoint.
@@ -30,7 +27,6 @@ right_code_blocks:
         "aws_accounts":["12345","67890"],
         "azure_subscriptions":["151f9055-7a93-4bbb","700f3a5c-8c56-44b9"],
         "gcp_compute_projects":["gcp-project-name","gcp-new-project"],
-        "gcp_billing_accounts":["00807B-DFFF5B","013FE6-F0F952"]
         "data_center_accounts":["myplace-datacenter"]
       }
     title: Request Body
@@ -44,7 +40,6 @@ right_code_blocks:
         "aws_accounts":["12345","67890"],
         "azure_subscriptions":["151f9055-7a93-4bbb","700f3a5c-8c56-44b9"],
         "gcp_compute_projects":["gcp-project-name","gcp-new-project"],
-        "gcp_billing_accounts":["00807B-DFFF5B","013FE6-F0F952"]
         "data_center_accounts":["myplace-datacenter"]
 
       }]
@@ -57,7 +52,6 @@ right_code_blocks:
           "aws_accounts":["12345","67890"],
           "azure_subscriptions":["151f9055-7a93-4bbb","700f3a5c-8c56-44b9"],
           "gcp_compute_projects":["gcp-project-name","gcp-new-project"],
-          "gcp_billing_accounts":["00807B-DFFF5B","013FE6-F0F952"]
           "data_center_accounts":["myplace-datacenter"]
         }'    
           'https://chapi.cloudhealthtech.com/v1/organizations/<org_id>/accounts'
