@@ -2,7 +2,7 @@
 title: Delete SSO configuration
 position: 3
 description: Delete an existing SSO configuration
-type: get
+type: delete
 endpoint: https://chapi.cloudhealthtech.com/v1/sso/unconfigure
 parameters:
   - name: client_api_id
