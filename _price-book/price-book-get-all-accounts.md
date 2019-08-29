@@ -4,6 +4,11 @@ position: 19
 description: Retrieve a list of all AWS accounts assigned to a custom price book.
 type: get
 endpoint: https://chapi.cloudhealthtech.com/v1/price_book_account_assignments
+parameters:
+  - name: page
+    content: Specify the page number for results
+  - name: per_page
+    content: Specify how many results should be displayed per page. Default value is 30.
 right_code_blocks:
   - code_block: |-
       {
