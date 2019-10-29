@@ -107,7 +107,7 @@ right_code_blocks:
         "billing": {
           "bucket": "my-billing-bucket"
         },
-        "cost_and_usage_report" : {
+        "cost_and_usage_report": {
           "bucket": "cur-bucket",
           "path": "cur/path/api"
         },
@@ -116,7 +116,7 @@ right_code_blocks:
           "bucket": "my-cloudtrail-bucket"
         },
         "aws_config": {
-          "enabled" :true,
+          "enabled": true,
           "bucket": "my-aws-config-bucket",
           "prefix": "foo"
         },
