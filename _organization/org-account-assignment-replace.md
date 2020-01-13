@@ -31,7 +31,7 @@ right_code_blocks:
       [{
         "id":1,
         "name": "abc",
-        "Description": "abc 123",
+        "description": "abc 123",
         "idp_name": "abc",
         "aws_accounts":["12345","67890"],
         "azure_subscriptions":["151f9055-7a93-4bbb","700f3a5c-8c56-44b9"],

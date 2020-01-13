@@ -14,7 +14,7 @@ parameters:
 right_code_blocks:
   - code_block: |-
       {
-        "Description": "abc 123"
+        "description": "abc 123"
       }
     title: Request Body
     language: json
@@ -22,7 +22,7 @@ right_code_blocks:
       {
         "id":1,
         "name": "abc",
-        "Description": "abc 123",
+        "description": "abc 123",
         "idp_name": "abc",
         "aws_accounts":["123"],
         "azure_subscriptions":["abc1"],
@@ -34,7 +34,7 @@ right_code_blocks:
   - code_block: |-
       curl --request PUT -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
         '{
-          "Description": "abc 123"
+          "description": "abc 123"
         }'
           'https://chapi.cloudhealthtech.com/v1/organizations/<org_id>'
     title: Sample Request
