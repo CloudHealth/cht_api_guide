@@ -1,7 +1,7 @@
 ---
 title: Create Organization
 position: 4
-description: Add a new organization to the CloudHealth Platform. 
+description: Add a new organization to the CloudHealth Platform.
 type: post
 endpoint: https://chapi.cloudhealthtech.com/v1/organizations
 parameters:
@@ -15,7 +15,7 @@ right_code_blocks:
   - code_block: |-
       {
         "name": "abc",
-        "Description": "abc desc"
+        "description": "abc desc"
       }
     title: Request Body
     language: json
@@ -23,7 +23,7 @@ right_code_blocks:
       {
         "id":1
         "name": "abc",
-        "Description": "abc desc",
+        "description": "abc desc",
         "idp_name": "abc",
         "aws_accounts":[],
         "azure_subscriptions":[],
@@ -36,7 +36,7 @@ right_code_blocks:
       curl --request POST -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
         '{
           "name": "abc",
-          "Description": "abc desc"
+          "description": "abc desc"
         }'    
           'https://chapi.cloudhealthtech.com/v1/organizations'
     title: Sample Request
