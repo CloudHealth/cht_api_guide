@@ -71,21 +71,28 @@ parameters:
   sub-fields:
    - name: name
      required: yes
-     content: String in AWS internal format that specifies the name of the region, such as `us-east-2`.
+     content: String in AWS internal format that specifies the name of the region, such as `us-east-2`. To specify the start of the field, use the format `[key word]*`. To specify the end of the field, use the format `*[key word]`. To specify a key word that appears anywhere in the field, including the start or end, use the format `*[key word]*`.
 - name: UsageType
   required: no
   content: Specifies the usage type a rule applies to. Exclude the region on the billing file to apply UsageType to all regions and include the region to limit UsageType to that region. Child element of Product.
   sub-fields:
    - name: name
      required: yes
-     content: String specifying the usage type name, formatted to match the usage type name on the billing file without the instance-type prefixes and suffixes.
+     content: String specifying the usage type name, formatted to match the usage type name on the billing file without the instance-type prefixes and suffixes. To specify the start of the field, use the format `[key word]*`. To specify the end of the field, use the format `*[key word]`. To specify a key word that appears anywhere in the field, including the start or end, use the format `*[key word]*`.
 - name: Operation
   required: no
   content:  Specifies the operations a rule applies to. Child element of Product.
   sub-fields:
    - name: name
      required: yes
-     content: String specifying the operation name, formatted to match the operation name on the billing file.
+     content: String specifying the operation name, formatted to match the operation name on the billing file. To specify the start of the field, use the format `[key word]*`. To specify the end of the field, use the format `*[key word]`. To specify a key word that appears anywhere in the field, including the start or end, use the format `*[key word]*`.
+- name: RecordType
+  required: no
+  content: Specifies the record types, or line item types, a rule applies to. Child element of Product.
+  sub-fields:
+   - name: name
+     required: no
+     content: String specifying the start, end, or key word in the RecordType field. To specify the start of the field, use the format `[key word]*`. To specify the end of the field, use the format `*[key word]`. To specify a key word that appears anywhere in the field, including the start or end, use the format `*[key word]*`.
 - name: InstanceProperties
   required: no
   content: Specifies whether the rule applies to the product for specific instance types and sizes and for reservations. Child element of Product.
@@ -103,6 +110,9 @@ parameters:
   required: no
   content: Specifies a constraint on which products a rule applies to based on the contents of the line item description field in the billing file. Child element of Product.
   sub-fields:
+   - name: name
+     required: no
+     content: String specifying the start, end, or key word in the line item description field. To specify the start of the field, use the format `[key word]*`. To specify the end of the field, use the format `*[key word]`. To specify a key word that appears anywhere in the field, including the start or end, use the format `*[key word]*`.
    - name: startsWith
      required: no
      content: String specifying the start of the line item description field
