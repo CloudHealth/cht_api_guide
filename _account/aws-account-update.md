@@ -74,6 +74,12 @@ parameters:
       - name: enabled
         required: yes
         content: Should CloudHealth collect AWS Config files? Default value is `True`
+      - name: namespaces
+        required: no
+        content: String that specifies the namespaces from which CloudWatch data should be gathered. Value can be `CWAgent`, `System/Linux`, `System/Windows`, or a comma-separated list of two or more of these values. Default value is an empty string.
+      - name: runtime
+        required: no
+        content: Number that specifies the frequency in hours at which CloudHealth should gather CloudWatch data. Default value is `1`. Value can be `1` or `24`.
   - name: tags
     required: no
     content: JSON field that specifies key-value pairs for tags. When you use this field, The API restricts queries to AWS accounts that are tagged with these key-value pairs.
