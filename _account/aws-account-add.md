@@ -57,19 +57,6 @@ parameters:
       - name: prefix
         required: yes, if you have enabled prefixing in AWS
         content: Prefix of Trail files
-  - name: aws_config
-    required: no
-    content: JSON field that specifies whether CloudHealth should collect AWS Config files and the location of the files.
-    sub-fields:
-      - name: enabled
-        required: yes
-        content: Should CloudHealth collect AWS Config files? Default value is `False`
-      - name: bucket
-        required: yes
-        content: Name of S3 bucket containing the files
-      - name: prefix
-        required: yes, if you have enabled prefixing in AWS
-        content: Prefix of files
   - name: cloudwatch
     required: no
     content: JSON field that specifies whether CloudHealth should collect CloudWatch data.
