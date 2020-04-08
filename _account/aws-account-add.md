@@ -108,11 +108,6 @@ right_code_blocks:
           "enabled": true,
           "bucket": "my-cloudtrail-bucket"
         },
-        "aws_config": {
-          "enabled": true,
-          "bucket": "my-aws-config-bucket",
-          "prefix": "foo"
-        },
         "tags": [
           {"key": "Environment", "value": "Production"}
         ]
@@ -147,11 +142,6 @@ right_code_blocks:
         "cloudtrail": {
           "enabled": true,
           "bucket": "my-cloudtrail-bucket"
-        },
-        "aws_config": {
-          "enabled": true,
-          "bucket": "my-aws-config-bucket",
-          "prefix": "foo"
         },
         "cloudwatch": {
           "enabled": true,
@@ -190,11 +180,6 @@ right_code_blocks:
           "cloudtrail": {
             "enabled": true,
             "bucket": "my-cloudtrail-bucket"
-          },
-          "aws_config": {
-            "enabled" :true,
-            "bucket": "my-aws-config-bucket",
-            "prefix": "foo"
           },
           "tags": [{
             "key": "Environment",
