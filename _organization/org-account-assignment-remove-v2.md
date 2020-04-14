@@ -1,9 +1,9 @@
 ---
 title: Delete Existing Organization Account Assignment
-position: 10
+position: 12
 description: Remove one of more accounts from an organization.
-type: patch
-endpoint: https://chapi.cloudhealthtech.com/v1/organizations/:org_id/accounts
+type: put
+endpoint: https://chapi.cloudhealthtech.com/v2/organizations/:org_id/accounts
 parameters:
   - name: accounts
     required: yes
@@ -33,19 +33,23 @@ right_code_blocks:
     language: json
   - code_block: |-
       {
-        "id":1,
+        "id":6116033432624,
         "name": "abc",
         "description": "abc 123",
         "idp_name": "abc",
-        "aws_accounts":["67890"],
-        "azure_subscriptions":["700f3a5c-8c56-44b9"],
-        "gcp_compute_projects":["gcp-new-project"],
-        "data_center_accounts":[]
+        "flex_org": false,
+        "default_organization": true,
+        "assigned_users_count": 124,
+        "num_aws_accounts": 118,
+        "num_azure_subscriptions": 25,
+        "num_gcp_compute_projects": 15,
+        "num_data_center_accounts": 84,
+        "num_vmware_csp_organizations": 1
       }
     title: Response Body
     language: json
   - code_block: |-
-      curl --request PATCH -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
+      curl --request PUT -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
         '{
           "accounts":"remove",
           "aws_accounts":["12345"],
@@ -53,7 +57,7 @@ right_code_blocks:
           "gcp_compute_projects":["gcp-project-name"],
           "data_center_accounts":["myplace-datacenter"]
         }'    
-          'https://chapi.cloudhealthtech.com/v1/organizations/<org_id>/accounts'
+          'https://chapi.cloudhealthtech.com/v2/organizations/<org_id>/accounts'
     title: Sample Request
     language: bash
 ---

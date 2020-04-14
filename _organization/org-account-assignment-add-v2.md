@@ -1,10 +1,13 @@
 ---
-title: Replace Existing Organization Account Assignment
-position: 9
-description: Replace an organization's current account assignments with a new list of accounts. This endpoint removes all accounts currently assigned to the organization and replaces them with the new accounts.
+title: Assign Account to Organization
+position: 8
+description: Assign accounts to an organization. If your organization is in FlexOrgs, run the [Get All Allowed Accounts](#organization_get-all-allowed-accounts) endpoint first to verify which accounts you can assign to the organization.
 type: put
-endpoint: https://chapi.cloudhealthtech.com/v1/organizations/:org_id/accounts
+endpoint: https://chapi.cloudhealthtech.com/v2/organizations/:org_id
 parameters:
+  - name: accounts
+    required: yes
+    content: Enter `add` to add new accounts to the organization.
   - name: aws_accounts
     required: no
     content: Enter a comma-separated list of AWS account IDs that should be assigned to the organization. The account IDs can be retrieved using the [Search for Assets](#asset_search-for-assets) endpoint. You can assign up to 500 AWS accounts per endpoint.
@@ -20,6 +23,7 @@ parameters:
 right_code_blocks:
   - code_block: |-
       {
+        "accounts":"add",
         "aws_accounts":["12345","67890"],
         "azure_subscriptions":["151f9055-7a93-4bbb","700f3a5c-8c56-44b9"],
         "gcp_compute_projects":["gcp-project-name","gcp-new-project"],
@@ -29,27 +33,31 @@ right_code_blocks:
     language: json
   - code_block: |-
       [{
-        "id":1,
+        "id":6116033432624,
         "name": "abc",
         "description": "abc 123",
         "idp_name": "abc",
-        "aws_accounts":["12345","67890"],
-        "azure_subscriptions":["151f9055-7a93-4bbb","700f3a5c-8c56-44b9"],
-        "gcp_compute_projects":["gcp-project-name","gcp-new-project"],
-        "data_center_accounts":["myplace-datacenter"]
-
+        "flex_org": false,
+        "default_organization": true,
+        "assigned_users_count": 124,
+        "num_aws_accounts": 118,
+        "num_azure_subscriptions": 25,
+        "num_gcp_compute_projects": 15,
+        "num_data_center_accounts": 84,
+        "num_vmware_csp_organizations": 1
       }]
     title: Response Body
     language: json
   - code_block: |-
       curl --request PUT -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
         '{
+          "accounts":"add",
           "aws_accounts":["12345","67890"],
           "azure_subscriptions":["151f9055-7a93-4bbb","700f3a5c-8c56-44b9"],
           "gcp_compute_projects":["gcp-project-name","gcp-new-project"],
           "data_center_accounts":["myplace-datacenter"]
         }'    
-          'https://chapi.cloudhealthtech.com/v1/organizations/<org_id>/accounts'
+          'https://chapi.cloudhealthtech.com/v2/organizations/<org_id>'
     title: Sample Request
     language: bash
 ---
