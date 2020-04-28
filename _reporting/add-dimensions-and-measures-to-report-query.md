@@ -83,7 +83,7 @@ content_markdown: |-
        ```
     2. Build a complex query that gets the EC2 Compute Cost by Availability Zone for a monthly granularity.
 
-       For each dimension, add a query  parameter called `dimensions[]` and for each measure add a parameter called `measures[]`. For each of these parameters, specify one or more values that you received when querying the `/new` endpoint. In general, the dimensions available are `hourly`, `daily`, `weekly`, and `monthly`.
+       For each dimension, add a query  parameter called `dimensions[]` and for each measure add a parameter called `measures[]`. For each of these parameters, specify one or more values that you received when querying the `/new` endpoint. In general, the dimensions available are `hourly`, `daily`, `weekly`, and `monthly`. You can add up to 4 dimensions.
 
        ```
        curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance?
