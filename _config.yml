@@ -46,15 +46,18 @@ collections:
   price-book:
     title: Partner Custom Price Books
     position: 12
+  billing-rules:
+    title: Partner Billing Rules
+    position: 13
   service-principal:
     title: Azure Service Principals
-    position: 13
+    position: 14
   azure-partner:
     title: Azure Partner
-    position: 14
+    position: 15
   azure-assignment:
     title: Partner Azure Account Assignment
-    position: 15
+    position: 16
 
 plugins:
   - jekyll-sitemap
