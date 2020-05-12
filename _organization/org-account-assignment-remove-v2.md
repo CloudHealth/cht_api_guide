@@ -10,7 +10,7 @@ parameters:
     content: Enter `remove` to remove accounts assigned to the organization.
   - name: aws_accounts
     required: no
-    content: Enter a comma-separated list of AWS account IDs that should be removed from the organization. The account IDs can be retrieved using the [Search for Assets](#asset_search-for-assets) endpoint. You can remove up to 500 AWS accounts per endpoint.
+    content: Enter a comma-separated list of AWS account IDs (also known as the owner ID) that should be removed from the organization. The account IDs can be retrieved using the [Search for Assets](#asset_search-for-assets) endpoint. You can remove up to 500 AWS accounts per endpoint.
   - name: azure_subscriptions
     required: no
     content: Enter a comma-separated list of Azure subscription GUIDs that should be removed from the organization. The subscription GUIDs can be retrieved using the [Search for Assets](#asset_search-for-assets) endpoint. You can remove up to 500 Azure accounts per endpoint.
