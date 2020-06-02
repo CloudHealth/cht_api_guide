@@ -55,7 +55,7 @@ right_code_blocks:
           "gcp_compute_projects":["gcp-project-name","gcp-new-project"],
           "data_center_accounts":["myplace-datacenter"]
         }'    
-          'https://chapi.cloudhealthtech.com/v2/organizations/<org_id>/<cloud_account>'
+          'https://chapi.cloudhealthtech.com/v2/organizations/<org_id>/accounts>'
     title: Sample Request
     language: bash
 ---
