@@ -122,6 +122,13 @@ parameters:
    - name: matchesRegex
      required: no
      content: A Java string specifying a regular expression matching the line item description field
+- name: SavingsPlanOfferingType
+  required: no
+  content: Specifies the Savings Plan offering types a rule applies to. Child element of Product.
+  sub-fields:
+   - name: name
+     required: no
+     content: String specifying the start, end, or key word in the SavingsPlanOfferingType field. To specify the start of the field, use the format `[key word]*`. To specify the end of the field, use the format `*[key word]`. To specify a key word that appears anywhere in the field, including the start or end, use the format `*[key word]*`.
 
 content_markdown: |-
   Familiarize yourself with the format of the XML specification that you can post to define the custom price book for a customer.
