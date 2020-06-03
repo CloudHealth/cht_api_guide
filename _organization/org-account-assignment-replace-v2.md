@@ -3,7 +3,7 @@ title: Replace Existing Organization Account Assignment
 position: 11
 description: Replace an organization's current account assignments with a new list of accounts. This endpoint removes all accounts currently assigned to the organization and replaces them with the new accounts.
 type: put
-endpoint: https://chapi.cloudhealthtech.com/v2/organizations/:org_id/:cloud_account
+endpoint: https://chapi.cloudhealthtech.com/v2/organizations/:org_id/:accounts
 parameters:
   - name: cloud_account
     required: yes
@@ -55,7 +55,7 @@ right_code_blocks:
           "gcp_compute_projects":["gcp-project-name","gcp-new-project"],
           "data_center_accounts":["myplace-datacenter"]
         }'    
-          'https://chapi.cloudhealthtech.com/v2/organizations/<org_id>/<cloud_account>'
+          'https://chapi.cloudhealthtech.com/v2/organizations/<org_id>/accounts>'
     title: Sample Request
     language: bash
 ---
