@@ -6,7 +6,7 @@ endpoint: https://chapi.cloudhealthtech.com/api/search
 position: 4
 parameters:
   - name: name
-    content: String that specifies the type asset object to query, for example, AWSInstance
+    content: String that specifies the type asset object to query, for example, AWSInstance, AzurePolicyAssignment, or AzurePolicyStates.
     required: yes
   - name: query
     required: yes
