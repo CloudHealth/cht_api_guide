@@ -33,7 +33,7 @@ parameters:
   - name: classification
     required: no
     content: String that specifies the level of access the customer has in the CloudHealth Platform. Specify as `managed_without_access` (managed customer that does not directly access the CloudHealth Platform) or `managed_with_access` (managed customer that directly accesses the CloudHealth Platform).
-  - name: trial_expiration_date
+  - name: trial_expiration
     required: no
     content: Date specified in ISO8601 format that indicates a date in the future when the customer's trial expires. Beyond this date, users belonging to the customer are unable to access the CloudHealth Platform.
   - name: billing_contact
@@ -65,7 +65,7 @@ right_code_blocks:
         "name": "Acme Corp",
         "classification": "managed_without_access",
         "billing_contact": "john.doe@acmecorp.com",
-        "trial_expiration_date": "2016-09-22T00:00:00Z",
+        "trial_expiration": "2016-09-22T00:00:00Z",
         "partner_billing_configuration": {
           "enabled": "true",
           "folder": ""
@@ -128,7 +128,7 @@ right_code_blocks:
           "name": "Acme Corp",
           "classification": "managed_without_access",
           "billing_contact": "john.doe@acmecorp.com",
-          "trial_expiration_date": "2016-09-22T00:00:00",
+          "trial_expiration": "2016-09-22T00:00:00",
           "partner_billing_configuration": {
               "enabled": "false",
               "folder": ""
