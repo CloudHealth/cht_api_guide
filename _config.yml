@@ -58,6 +58,9 @@ collections:
   azure-assignment:
     title: Partner Azure Account Assignment
     position: 16
+  gcp-account:
+    title: GCP Billing Accounts
+    position: 17
 
 plugins:
   - jekyll-sitemap
