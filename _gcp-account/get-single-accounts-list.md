@@ -1,6 +1,6 @@
 ---
 title: Get Single GCP Billing Account
-position: 6
+position: 7
 description: Retrieve a specific GCP billing account that you have enabled with the CloudHealth Platform.
 type: get
 endpoint: https://chapi.cloudhealthtech.com/v1/gcp_billing_accounts/:cloudhealth_billing_account_id

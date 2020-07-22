@@ -1,6 +1,6 @@
 ---
 title: Get All GCP Billing Accounts
-position: 5
+position: 6
 description: Retrieve a list of all GCP billing accounts that have been enabled with the CloudHealth Platform.
 type: get
 endpoint: https://chapi.cloudhealthtech.com/v1/gcp_billing_accounts

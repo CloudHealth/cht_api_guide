@@ -1,6 +1,6 @@
 ---
 title: Delete GCP Billing Account
-position: 8
+position: 9
 description: Remove a GCP billing account from the CloudHealth Platform.
 type: delete
 endpoint: https://chapi.cloudhealthtech.com/v1/gcp_billing_accounts/:cloudhealth_billing_account_id

@@ -1,6 +1,6 @@
 ---
 title: Modify Existing GCP Billing Account
-position: 7
+position: 8
 description: Modify a GCP billing account that already exists in the CloudHealth Platform.
 type: put
 endpoint: https://chapi.cloudhealthtech.com/v1/gcp_billing_accounts/:cloudhealth_billing_account_id
@@ -40,12 +40,12 @@ parameters:
     content: String that specifies the GCP service account associated with the billing account.
   - name: billing_account_service_account_json_key
     required: no
-    content: Enter the service account’s private JSON key.
+    content: Enter the service account’s private JSON key in the format `data:application/json;base64, <private JSON key>`.
     required: no
     content: String that specifies the second GCP service account associated with the billing account, if applicable. To ensure that the minimum set of permissions are used, some customers might prefer to use two service accounts for CloudHealth, one for billing data and one for asset and rightsizing data. CloudHealth recommends that partners use two service accounts for their partner customers, with the billing data service account owned by the partner and the asset and rightsizing data service account owned by the partner customer.
   - name: linked_projects_json_key
     required: no
-    content: Enter the second service account’s private JSON key. 
+    content: Enter the second service account’s private JSON key in the format `data:application/json;base64, <private JSON key>`.
 right_code_blocks:
   - code_block: |-
       {
