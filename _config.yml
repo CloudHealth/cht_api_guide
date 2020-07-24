@@ -37,30 +37,33 @@ collections:
   organization:
     title: Organization
     position: 9
+  policies:
+    title: Policies
+    position: 10
   partner:
     title: Partner
-    position: 10
+    position: 11
   assignment:
     title: Partner AWS Account Assignment
-    position: 11
+    position: 12
   price-book:
     title: Partner Custom Price Books
-    position: 12
+    position: 13
   billing-rules:
     title: Partner Billing Rules
-    position: 13
+    position: 14
   service-principal:
     title: Azure Service Principals
-    position: 14
+    position: 15
   azure-partner:
     title: Azure Partner
-    position: 15
+    position: 16
   azure-assignment:
     title: Partner Azure Account Assignment
-    position: 16
+    position: 17
   gcp-account:
     title: GCP Billing Accounts
-    position: 17
+    position: 18
 
 plugins:
   - jekyll-sitemap
