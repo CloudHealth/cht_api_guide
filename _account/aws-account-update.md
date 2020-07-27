@@ -83,6 +83,9 @@ parameters:
   - name: region
     required: no
     content: JSON field that specifies the type of AWS Account. Value can be `global` (default) or `govcloud`.
+  - name: primary_aws_region
+    required: no
+    content: String that specifies which region should be used to validate the read-only IAM policy. Value can be `us-east-1` (default) or `eu-central-1` for global AWS accounts. GovCloud customers cannot modify their default AWS region, `us-gov-west-1`.
 right_code_blocks:
   - code_block: |-
       {
