@@ -1,6 +1,6 @@
 ---
 title: Create CSP Partner Customer
-position: 3
+position: 4
 description: Add a Microsoft CSP partner customer tenant in the CloudHealth Platform.
 type: post
 endpoint: https://chapi.cloudhealthtech.com/v2/customers
