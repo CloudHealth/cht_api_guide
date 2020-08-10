@@ -1,6 +1,6 @@
 ---
 title: Get All CSP Partner Customers
-position: 7
+position: 8
 description: Retrieve a list of all customer tenants. This information is retrieved from the Azure Portal.
 type: get
 endpoint: https://chapi.cloudhealthtech.com/v1/azure_partner_customers

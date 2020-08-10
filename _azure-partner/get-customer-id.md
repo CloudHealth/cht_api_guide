@@ -1,6 +1,6 @@
 ---
 title: How to Get Database Partner Customer ID
-position: 2
+position: 3
 content_markdown: |-
   In order to use some of the Azure Partner endpoints, you need to provide the `db_partner_customer_id`. CloudHealth generates a unique ID for each partner customer.
 

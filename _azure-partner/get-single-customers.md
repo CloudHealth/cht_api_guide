@@ -1,6 +1,6 @@
 ---
 title: Get Single CSP Partner Customer
-position: 8
+position: 9
 description: Retrieve a specific customer tenant. This information is retrieved from the Azure Portal.
 type: get
 endpoint: https://chapi.cloudhealthtech.com/v1/azure_partner_customers/:db_partner_customer_id
