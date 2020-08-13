@@ -45,7 +45,7 @@ right_code_blocks:
       curl --request POST -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
         '{
           "name": "abc",
-          "description": "abc desc"
+          "description": "abc desc",
           "parent_organization_id": "24"
         }'    
           'https://chapi.cloudhealthtech.com/v2/organizations'
