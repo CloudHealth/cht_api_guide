@@ -1,13 +1,10 @@
 ---
 title: Assign Account to Organization
 position: 8
-description: Assign accounts to an organization. If your organization is in FlexOrgs, run the [Get All Allowed Accounts](#organization_get-all-allowed-accounts) endpoint first to verify which accounts you can assign to the organization.
+description: Assign accounts to an organization. If your organization is in FlexOrgs, run the [Get All Allowed Accounts](#organization_get-all-allowed-accounts) endpoint first to verify which accounts you can assign to the organization. Existing account assignments in the organization will be entirely replaced by the assignments you specify in the body of this request. If you want to add to existing account assignments, see [Add Accounts to Existing Organization Account Assignment](#organization_add-accounts-to-existing-organization-account-assignment).
 type: put
 endpoint: https://chapi.cloudhealthtech.com/v2/organizations/:org_id
 parameters:
-  - name: accounts
-    required: yes
-    content: Enter `add` to add new accounts to the organization.
   - name: aws_accounts
     required: no
     content: Enter a comma-separated list of AWS account IDs (also known as the owner ID) that should be assigned to the organization. The account IDs can be retrieved using the [Search for Assets](#asset_search-for-assets) endpoint. You can assign up to 500 AWS accounts per endpoint.
@@ -23,7 +20,6 @@ parameters:
 right_code_blocks:
   - code_block: |-
       {
-        "accounts":"add",
         "aws_accounts":["12345","67890"],
         "azure_subscriptions":["151f9055-7a93-4bbb","700f3a5c-8c56-44b9"],
         "gcp_compute_projects":["gcp-project-name","gcp-new-project"],

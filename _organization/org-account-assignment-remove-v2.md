@@ -2,7 +2,7 @@
 title: Delete Existing Organization Account Assignment
 position: 12
 description: Remove one of more accounts from an organization.
-type: put
+type: patch
 endpoint: https://chapi.cloudhealthtech.com/v2/organizations/:org_id/accounts
 parameters:
   - name: accounts
@@ -49,7 +49,7 @@ right_code_blocks:
     title: Response Body
     language: json
   - code_block: |-
-      curl --request PUT -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
+      curl --request PATCH -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
         '{
           "accounts":"remove",
           "aws_accounts":["12345"],
