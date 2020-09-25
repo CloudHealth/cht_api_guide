@@ -5,6 +5,9 @@ description: Add one of more accounts to an organization.
 type: patch
 endpoint: https://chapi.cloudhealthtech.com/v2/organizations/:org_id/accounts
 parameters:
+  - name: accounts
+    required: yes
+    content: Enter `add` to append accounts to the organization.
   - name: aws_accounts
     required: no
     content: Enter a comma-separated list of AWS account IDs (also known as the owner ID) that should be assigned to the organization. The account IDs can be retrieved using the [Search for Assets](#asset_search-for-assets) endpoint. You can assign up to 500 AWS accounts per endpoint.

@@ -1,7 +1,7 @@
 ---
 title: Assign Account to Organization
 position: 8
-description: Assign accounts to an organization. If your organization is in FlexOrgs, run the [Get All Allowed Accounts](#organization_get-all-allowed-accounts) endpoint first to verify which accounts you can assign to the organization. Existing account assignments in the organization will be entirely replaced by the assignments you specify in the body of this request. If you wnat to add to existing account assignments, see [Add Accounts to Existing Organization Account Assignment](#organization_add-accounts-to-existing-organization-account-assignment).
+description: Assign accounts to an organization. If your organization is in FlexOrgs, run the [Get All Allowed Accounts](#organization_get-all-allowed-accounts) endpoint first to verify which accounts you can assign to the organization. Existing account assignments in the organization will be entirely replaced by the assignments you specify in the body of this request. If you want to add to existing account assignments, see [Add Accounts to Existing Organization Account Assignment](#organization_add-accounts-to-existing-organization-account-assignment).
 type: put
 endpoint: https://chapi.cloudhealthtech.com/v2/organizations/:org_id
 parameters:
