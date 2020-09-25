@@ -1,9 +1,9 @@
 ---
-title: Assign Account to Organization
+title: Add Accounts to Existing Organization Account Assignment
 position: 8
-description: Assign accounts to an organization. If your organization is in FlexOrgs, run the [Get All Allowed Accounts](#organization_get-all-allowed-accounts) endpoint first to verify which accounts you can assign to the organization. Existing account assignments in the organization will be entirely replaced by the assignments you specify in the body of this request. If you wnat to add to existing account assignments, see [Add Accounts to Existing Organization Account Assignment](#organization_add-accounts-to-existing-organization-account-assignment).
-type: put
-endpoint: https://chapi.cloudhealthtech.com/v2/organizations/:org_id
+description: Add one of more accounts to an organization.
+type: patch
+endpoint: https://chapi.cloudhealthtech.com/v2/organizations/:org_id/accounts
 parameters:
   - name: aws_accounts
     required: no
@@ -20,6 +20,7 @@ parameters:
 right_code_blocks:
   - code_block: |-
       {
+        "accounts":"add"
         "aws_accounts":["12345","67890"],
         "azure_subscriptions":["151f9055-7a93-4bbb","700f3a5c-8c56-44b9"],
         "gcp_compute_projects":["gcp-project-name","gcp-new-project"],
@@ -45,7 +46,7 @@ right_code_blocks:
     title: Response Body
     language: json
   - code_block: |-
-      curl --request PUT -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
+      curl --request PATCH -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
         '{
           "accounts":"add",
           "aws_accounts":["12345","67890"],
@@ -53,7 +54,7 @@ right_code_blocks:
           "gcp_compute_projects":["gcp-project-name","gcp-new-project"],
           "data_center_accounts":["myplace-datacenter"]
         }'    
-          'https://chapi.cloudhealthtech.com/v2/organizations/<org_id>'
+          'https://chapi.cloudhealthtech.com/v2/organizations/<org_id>/accounts'
     title: Sample Request
     language: bash
 ---
