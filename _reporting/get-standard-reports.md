@@ -5,8 +5,9 @@ description: Retrieve the list of available Standard OLAP reports of a specify t
 position: 4
 endpoint: https://chapi.cloudhealthtech.com/olap_reports/:report-type
 parameters:
-  - name:
-    content:
+  - name: org_id
+    required: no
+    content: String that specifies the ID of the organization in which this query should run. See [How to Get Organization ID](#organization_how-to-get-organization-id). If not specified, this parameter assumes the ID of your default organization.
 content_markdown: |-
   Retrieving a list of all reports of a specific type, such as `/cost`, `/custom`, `/performance`, or `/usage` is a two-step process.
 

@@ -11,6 +11,9 @@ parameters:
   - name: hard_delete
     required: no
     content: Boolean that specifies whether the Hard Delete option is exercised. See [Hard Delete](#hard-delete).
+  - name: org_id
+    required: no
+    content: String that specifies the ID of the organization in which this query should run. See [How to Get Organization ID](#organization_how-to-get-organization-id). If not specified, this parameter assumes the ID of your default organization.
 content_markdown: |-
   There are three levels of Perspective deletion.
   #### Soft Delete (default)

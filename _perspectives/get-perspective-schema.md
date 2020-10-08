@@ -8,6 +8,9 @@ parameters:
   - name: include_version
     required: no
     content: Boolean that defines whether the current version of the perspective is returned in the response.
+  - name: org_id
+    required: no
+    content: String that specifies the ID of the organization in which this query should run. See [How to Get Organization ID](#organization_how-to-get-organization-id). If not specified, this parameter assumes the ID of your default organization.
 right_code_blocks:
   - code_block: |-
       curl -s -H "Accept: application/json" "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>"

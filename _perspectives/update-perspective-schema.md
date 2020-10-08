@@ -11,7 +11,9 @@ parameters:
   - name: include_version
     required: no
     content: Boolean that defines whether the current version of the perspective is returned in the response.
-
+  - name: org_id
+    required: no
+    content: String that specifies the ID of the organization in which this query should run. See [How to Get Organization ID](#organization_how-to-get-organization-id). If not specified, this parameter assumes the ID of your default organization.
 content_markdown: |-
   If the schema contains references to Groups that do no exist in the Perspective, the PUT operation creates those Groups in the Perspective.
   {:.warning}

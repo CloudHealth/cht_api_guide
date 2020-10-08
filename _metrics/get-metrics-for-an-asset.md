@@ -26,6 +26,9 @@ parameters:
   - name: per_page
     required: no
     content: Integer between `1` and `500` that specifies the number of assets to return per page. Default value is `100` and maximum value is `1000`.
+  - name: org_id
+    required: no
+    content: String that specifies the ID of the organization in which this query should run. See [How to Get Organization ID](#organization_how-to-get-organization-id). If not specified, this parameter assumes the ID of your default organization.
 content_markdown: |-
   By default, the request returns hourly sets of metric points for the previous day. If there are more than 100 data value sets, a next link to the next page of value sets is also returned
 

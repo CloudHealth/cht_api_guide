@@ -4,8 +4,9 @@ type: example
 description: Retrieve the query string and parameters that produce a Standard or Custom OLAP report.
 position: 8
 parameters:
-  - name:
-    content:
+  - name: org_id
+    required: no
+    content: String that specifies the ID of the organization in which this query should run. See [How to Get Organization ID](#organization_how-to-get-organization-id). If not specified, this parameter assumes the ID of your default organization.
 content_markdown: |-
   Each CloudHealth report is produced by a combination of parameters that together compose a query string.
   You can retrieve the query string that produces a Standard or Custom report.

@@ -17,6 +17,9 @@ parameters:
   - name: filters
     required: no
     content: Array that specifies the filters to use for constraining report data.
+  - name: org_id
+    required: no
+    content: String that specifies the ID of the organization in which this query should run. See [How to Get Organization ID](#organization_how-to-get-organization-id). If not specified, this parameter assumes the ID of your default organization.
 content_markdown: |-
   Custom reports are saved versions of Standard Reports. Retrieving the data for a specific saved report involves the following steps.
 
