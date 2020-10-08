@@ -5,8 +5,9 @@ description: Get dimensions and measures for a report so that you can build gran
 position: 7
 endpoint: https://chapi.cloudhealthtech.com/olap_reports/:report-type/:report-id/new
 parameters:
-  - name:
-    content:
+  - name: org_id
+    required: no
+    content: String that specifies the ID of the organization in which this query should run. See [How to Get Organization ID](#organization_how-to-get-organization-id). If not specified, this parameter assumes the ID of your default organization.
 content_markdown: |-
   You can build granular report queries by passing dimensions and measures into the query string. In order to build detailed queries, first discover which dimensions and measures are available at the endpoint for each report.
 

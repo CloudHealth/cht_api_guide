@@ -11,6 +11,9 @@ parameters:
   - name: dryrun
     required: no
     content: Test a POST operation without triggering a database change. Specified as `true` or `false` (default).
+  - name: org_id
+    required: no
+    content: String that specifies the ID of the organization in which this query should run. See [How to Get Organization ID](#organization_how-to-get-organization-id). If not specified, this parameter assumes the ID of your default organization.
 content_markdown: |-
   You can only post up to 8 days of historical metrics data.
   {:.warning}

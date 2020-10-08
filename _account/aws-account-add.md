@@ -89,6 +89,9 @@ parameters:
   - name: primary_aws_region
     required: no
     content: String that specifies which region should be used to validate the read-only IAM policy. Value can be `us-east-1` (default) or `eu-central-1` for global AWS accounts. GovCloud customers cannot modify their default AWS region, `us-gov-west-1`.
+  - name: org_id
+    required: no
+    content: String that specifies the ID of the organization in which this query should run. See [How to Get Organization ID](#organization_how-to-get-organization-id). If not specified, this parameter assumes the ID of your default organization.
 content_markdown: |-
   Result header contains `Location: https://chapi.cloudhealthtech.com/v1/aws_accounts/1`
 right_code_blocks:

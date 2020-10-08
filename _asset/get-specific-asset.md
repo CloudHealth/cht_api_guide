@@ -5,8 +5,9 @@ endpoint: https://chapi.cloudhealthtech.com/api/:asset
 position: 3
 description: Retrieve the attributes and related assets for a single asset object.
 parameters:
-  - name:
-    content:
+  - name: org_id
+    required: no
+    content: String that specifies the ID of the organization in which this query should run. See [How to Get Organization ID](#organization_how-to-get-organization-id). If not specified, this parameter assumes the ID of your default organization.
 content_markdown: |-
   The response to this query contains two arrays: `attributes` and `relations`.
 

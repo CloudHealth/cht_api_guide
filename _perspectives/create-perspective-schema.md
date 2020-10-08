@@ -8,6 +8,9 @@ parameters:
   - name: include_version
     required: no
     content: Boolean that defines whether the current version of the perspective is returned in the response.
+  - name: org_id
+    required: no
+    content: String that specifies the ID of the organization in which this query should run. See [How to Get Organization ID](#organization_how-to-get-organization-id). If not specified, this parameter assumes the ID of your default organization.
 content_markdown: |-
   #### How to Duplicate a Perspective
   To duplicate a Perspective, retrieve the schema from the source Perspective (e.g., Perspective A) and POST that schema with a new name (e.g., Perspective B) to create a duplicate of Perspective A. All references in the schema rules to existing groups and blocks in Perspective A are seen as directives to create corresponding groups in Perspective B. Perspective A and its Groups remain unchanged.
