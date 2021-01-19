@@ -104,7 +104,7 @@ right_code_blocks:
     title: Sample Request Body
     language: json
   - code_block: |-
-      curl -d '{"authentication":{"protocol":"assume_role","assume_role_arn":"arn:123","assume_role_external_id":"61a1XXXXXXXXXXXXXXXXXXXXX5d8c6"},"name":"Tools 123"}' -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -H 'Accept: application/json --request PUT 'https://chapi.cloudhealthtech.com/v1/aws_accounts/<account_id>'
+      curl -d '{"authentication":{"protocol":"assume_role","assume_role_arn":"arn:123","assume_role_external_id":"61a1XXXXXXXXXXXXXXXXXXXXX5d8c6"},"name":"Tools 123"}' -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -H 'Accept: application/json' --request PUT 'https://chapi.cloudhealthtech.com/v1/aws_accounts/<account_id>'
     title: Sample Request
     language: bash
 ---
