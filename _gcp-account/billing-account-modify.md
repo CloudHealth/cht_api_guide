@@ -50,6 +50,7 @@ right_code_blocks:
   - code_block: |-
       {
         "cloudhealth_billing_account_id": <cloudhealth_billing_account_id>,
+        "client_api_id": <client_api-id>,
         "billing_account_name": <billing_account_name>,
         "billing_account_id": <billing_account_id>,
         "bq_billing_dataset": <bq_billing_dataset>,
@@ -71,6 +72,7 @@ right_code_blocks:
       curl --request PUT -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
       '{
         "cloudhealth_billing_account_id": <cloudhealth_billing_account_id>,
+        "client_api_id": <client_api-id>,
         "billing_account_name": <billing_account_name>,
         "billing_account_id": <billing_account_id>,
         "bq_billing_dataset": <bq_billing_dataset>,
