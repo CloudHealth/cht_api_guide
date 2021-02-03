@@ -30,7 +30,7 @@ right_code_blocks:
     title: Response Body
     language: json
   - code_block: |-
-      curl --request PUT -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
+      curl --request GET -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
         {
           "azure_ids": ["1234-abcd-5678-efgh", "1234-abcd-5678-zxy"]
         }
