@@ -64,7 +64,7 @@ content_markdown: |-
       }
       ```
 
-      Depending on which saved report you query, the response might vary in structure. However, all responses have common elements. See [Understand Report Data Format](#Reportingreport-data-format).
+      Depending on which saved report you query, the response might vary in structure. However, all responses have common elements. See [Understand Report Data Format](#reporting_understand-report-data-format).
       {: .success}
 
 right_code_blocks:
