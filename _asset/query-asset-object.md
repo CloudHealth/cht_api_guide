@@ -34,7 +34,7 @@ parameters:
         required: no
         content: Only available when `api_version=2`. Filter query results based on one or more field values. For example, return only active assets by setting this parameter to `is_active=1`.
 content_markdown: |-
-  See [Asset Query Examples](#assetasset-query-examples).
+  See [Asset Query Examples](#asset_asset-query-examples).
 right_code_blocks:
   - code_block: |
       curl -H 'Authorization: Bearer <your_api_key>' 'https://chapi.cloudhealthtech.com/api/search?
