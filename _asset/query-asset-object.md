@@ -10,7 +10,7 @@ parameters:
     required: yes
   - name: query
     required: yes
-    content: Criteria for finding assets of a particular asset object type. Criteria are specified as `query=[field value][operator][value]`. For example, `query=name='MyAccount'+and+is_private=0`
+    content: Criteria for finding assets of a particular asset object type. Criteria are specified as `query=[field value][operator][value]`. For example, `query=is_active=1`. Enclose **Boolean** and **String** query parameter values in single quotes or else the API call will fail. For example, `query=name='MyAccount'+and+is_private=0`.
   - name: include
     required: no
     content: String that specifies the name of a related asset object to include when returning a response. You cannot use both the `include` parameter and the `fields` parameter in the same GET query.
