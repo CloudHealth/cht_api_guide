@@ -11,7 +11,11 @@ parameters:
   - name: query
     required: yes
 <<<<<<< HEAD
+<<<<<<< HEAD
     content: Criteria for finding assets of a particular asset object type. Criteria are specified as `query=[field value][operator][value]`. For example, `query=name='MyAccount'+and+is_private=0`
+=======
+    content: Criteria for finding assets of a particular asset object type. For integers and numerical boolean values, the format is `query=[field value][operator][value]`, e.g. `query=is_active=1`. For boolean (true or false) and string values, the format is `query='[field value]'[operator][value]`, e.g. `query=name='MyAccount'+and+is_private=0`. 
+>>>>>>> parent of 0730df4 (Update query-asset-object.md)
 =======
     content: Criteria for finding assets of a particular asset object type. For integers and numerical boolean values, the format is `query=[field value][operator][value]`, e.g. `query=is_active=1`. For boolean (true or false) and string values, the format is `query='[field value]'[operator][value]`, e.g. `query=name='MyAccount'+and+is_private=0`. 
 >>>>>>> parent of 0730df4 (Update query-asset-object.md)
