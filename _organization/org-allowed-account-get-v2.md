@@ -1,7 +1,7 @@
 ---
 title: Get All Allowed Accounts
 position: 10
-description: Retrieve a list of all accounts that can be assigned to the organization. If your organization is in FlexOrgs, then only accounts assigned to the organization's parent organizations are retrieved.
+description: Returns accounts that belong to an organization and that can be assigned to potential child organizations. So, you would make a GET call on the organization's parent organization that you want to add accounts to.
 type: get
 endpoint: https://chapi.cloudhealthtech.com/v2/organizations/:org_id/available_accounts
 parameters:
