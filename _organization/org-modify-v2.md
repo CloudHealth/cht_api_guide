@@ -11,21 +11,16 @@ parameters:
   - name: description
     required: no
     content: String that specifies a description of the organization.
-  - name: parent_organization_id
-    required: no
-    content: String that specifies the ID of the parent organization. Applies only for organizations in FlexOrgs.
 right_code_blocks:
   - code_block: |-
       {
         "description": "abc 123"
-        "parent_organization_id": "24"
       }
     title: Request Body
     language: json
   - code_block: |-
       {
         "id":6116033432624,
-        "parent_organization_id": "24",
         "name": "abc",
         "description": "abc 123",
         "idp_name": "abc",
@@ -44,7 +39,6 @@ right_code_blocks:
       curl --request PUT -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d
         '{
           "description": "abc 123"
-          "parent_organization_id": "24"
         }'
           'https://chapi.cloudhealthtech.com/v2/organizations/<org_id>'
     title: Sample Request

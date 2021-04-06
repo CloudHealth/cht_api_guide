@@ -5,8 +5,7 @@ description: Add a dynamic group to an existing Perspective. You can exclude the
 position: 9
 right_code_blocks:
   - code_block: |-
-      curl -s -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json'
-        "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id> -d '{"type": "categorize","asset": "AwsAsset","tag_field": ["Environment"],"ref_id": "123456789","name": "Environment"}'
+      curl -s -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -X PUT "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>" -d '{"schema":{"name": "<perspective_name>","rules": [{"type": "categorize","asset": "AwsS3Bucket","field": ["Active?"],"name": "Dynamic_group_name"}]}}''
     title: Request
     language: bash
 ---
