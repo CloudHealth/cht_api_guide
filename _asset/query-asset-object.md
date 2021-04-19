@@ -10,7 +10,7 @@ parameters:
     required: yes
   - name: query
     required: yes
-    content: Criteria for finding assets of a particular asset object type. Enclose query parameter values in single quotes. Format is `query='[field value]'[operator][value]`. For example, `query=name='MyAccount'+and+is_private=0`. 
+    content: Criteria for finding assets of a particular asset object type. Enclose query parameter values in single quotes. This also applies to boolean assignment values that are either `True` or `False`. Format is `query='[field value]'[operator][value]`. For example, `query=name='MyAccount'+and+is_private=0`. 
   - name: include
     required: no
     content: String that specifies the name of a related asset object to include when returning a response. You cannot use both the `include` parameter and the `fields` parameter in the same GET query.
