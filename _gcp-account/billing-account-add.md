@@ -45,6 +45,8 @@ parameters:
     required: no
     content: Enter the second service account’s private JSON key in the format `data:application/json;base64, <private JSON key>`.
 content_markdown: |-
+  **Note:** If you update the service account key here, it will not be applied to the derived projects. Contact CloudHealth Support to apply the service account key to all the derived projects.
+  
   | Response Code              | Description              |
   | -------------------------- | ------------------------ |
   | `422 Unprocessable Entity` | Unprocessable entity     |
@@ -63,9 +65,9 @@ right_code_blocks:
         "billing_bucket": <billing_bucket>,
         "billing_bucket_prefix": <billing_bucket_prefix>,
         "billing_account_service_account": <billing_account_service_account>,
-        "billing_account_service_account_json_key": <billing_account_service_account_json_key>,
+        "billing_account_service_account_json_key": data:application/json;base64, <private JSON key>,
         "linked_projects_service_account" : <linked_projects_service_account>,
-        "linked_projects_json_key": <linked_projects_json_key>
+        "linked_projects_json_key": data:application/json;base64, <private JSON key>
       }
     title: Request Body
     language: json
