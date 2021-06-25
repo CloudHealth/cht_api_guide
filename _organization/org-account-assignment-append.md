@@ -23,7 +23,7 @@ parameters:
 right_code_blocks:
   - code_block: |-
       {
-        "accounts":"add"
+        "accounts":"add",
         "aws_accounts":["12345","67890"],
         "azure_subscriptions":["151f9055-7a93-4bbb","700f3a5c-8c56-44b9"],
         "gcp_compute_projects":["gcp-project-name","gcp-new-project"],
@@ -33,7 +33,7 @@ right_code_blocks:
     language: json
   - code_block: |-
       [{
-        "id":6116033432624,
+        "id":"6116033432624",
         "name": "abc",
         "description": "abc 123",
         "idp_name": "abc",

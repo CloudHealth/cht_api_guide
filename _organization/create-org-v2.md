@@ -18,14 +18,14 @@ right_code_blocks:
   - code_block: |-
       {
         "name": "abc",
-        "description": "abc desc"
+        "description": "abc desc",
         "parent_organization_id": "24"
       }
     title: Request Body
     language: json
   - code_block: |-
       {
-        "id":6116033432624
+        "id":"6116033432624",
         "parent_organization_id": "24",
         "name": "abc",
         "description": "abc desc",
