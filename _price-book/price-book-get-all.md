@@ -9,8 +9,6 @@ parameters:
     content: Specify the page number for results
   - name: per_page
     content: Specify how many results should be displayed per page. Default value is 30.
-  - name: target_client_api_id
-    content: Specifies the assigned customer’s `client_api_id`.
 right_code_blocks:
   - code_block: |-
       [{

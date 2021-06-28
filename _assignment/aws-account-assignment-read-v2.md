@@ -4,6 +4,9 @@ position: 4
 description: Retrieve a list of all AWS billing blocks and their account assignments.
 type: get
 endpoint: https://chapi.cloudhealthtech.com/v2/aws_account_assignments
+parameters:
+  - name: target_client_api_id
+    content: The client API ID of the customer.
 content_markdown: |-
   #### Response header
   * `X-Total`: The total number of AWS account assignments
