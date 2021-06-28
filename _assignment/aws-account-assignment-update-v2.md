@@ -45,7 +45,7 @@ right_code_blocks:
             "billing_block_type": "Consolidated",
             "billing_block_name": "block name2",
             "errors": {}
-          },
+          }
         ]
       }
     title: Response Body

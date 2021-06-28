@@ -1,7 +1,7 @@
 ---
 title: Delete AWS Account Assignment (Version 2)
 position: 7
-description: Delete the relationship between an AWS account and the Partner Customer to which it was assigned. For consolidated billing blocks, the designated payer account assignment cannot be deleted through an API endpoint and must be deleted in the CloudHealth Platform. **Note:** If all accounts assigned to a billing block are deleted, the billing block is also deleted.
+description: Delete the relationship between an AWS account and the Partner Customer to which it was assigned. **Note:** If all accounts assigned to a billing block are deleted, the billing block is also deleted.
 type: delete
 endpoint: https://chapi.cloudhealthtech.com/v2/aws_account_assignments/:id
 content_markdown: |-

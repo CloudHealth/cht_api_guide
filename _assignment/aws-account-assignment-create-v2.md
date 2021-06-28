@@ -46,7 +46,7 @@ right_code_blocks:
               "000000000002",
               "000000000003"
             ],
-          "payer_account_owner_id": "000000000002"
+            "payer_account_owner_id": "000000000002"
           },
           {
             "target_client_api_id": 1234,
@@ -124,7 +124,7 @@ right_code_blocks:
                 "000000000002",
                 "000000000003"
               ],
-            "payer_account_owner_id": "000000000002"
+              "payer_account_owner_id": "000000000002"
             },
             {
               "target_client_api_id": 1234,

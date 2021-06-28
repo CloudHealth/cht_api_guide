@@ -77,12 +77,14 @@ right_code_blocks:
           "zipcode": "01234",
           "country": "US"
         },
-        "tags": [{
+        "tags": [
+        {
           "key": "customer_id", "value": "973532"
         },
         {
           "key": "service_package", "value": "basic_managed"
-        }]
+        }
+        ]
       }
     title: Request Body
     language: json
@@ -107,7 +109,8 @@ right_code_blocks:
             "zipcode": "01234",
             "country": "US"
         },
-        "tags": [{
+        "tags": [
+                {
                   "key": "customer_id", "value": "973532"
                 },
                 {
