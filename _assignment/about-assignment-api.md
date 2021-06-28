@@ -6,7 +6,7 @@ parameters:
   - name:
     content:
 content_markdown: |-
-  Use this API to administer AWS Accounts that belong to CloudHealth Partners and to assign AWS accounts to Partner Customers for partner-generated billing purposes.
+  Use this API to administer AWS accounts that belong to CloudHealth partners and to assign AWS accounts to partner customers for partner-generated billing purposes.
 
   Partner AWS Account Assignment API is available in two versions:
     * **[Version 2](#assignment_how-aws-account-assignments-are-validated-version-2):** This API supports partner billing blocks and allows partners to assign AWS accounts in billing blocks to partner customers programmatically. Once you have assigned AWS accounts to a partner customer using Version 2 API, you can no longer use Version 1 API to assign, modify, get, or delete account assignments for that partner customer.
