@@ -9,7 +9,7 @@ parameters:
     required: yes
     content: String that specifies the unique display name of an AWS account.
   - name: authentication
-    required: yes
+    required: no
     content: JSON field that specifies how to authenticate with your AWS accounts. Use IAM Role (recommended) or IAM User (less secure) to authenticate.
     sub-fields:
       - name: protocol
