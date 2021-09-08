@@ -88,7 +88,7 @@ right_code_blocks:
             "owner_id": "000000000003",
             "target_client_api_id": 1234,
             "payer_account_owner_id": "000000000002",
-            "billing_family_owner_id": "000000000007",
+            "billing_family_owner_id": "000000000006",
             "billing_block_type": "Consolidated",
             "billing_block_name": "block name2",
             "errors": {}
@@ -98,7 +98,7 @@ right_code_blocks:
             "owner_id": "000000000004",
             "target_client_api_id": 1234,
             "payer_account_owner_id": "000000000004",
-            "billing_family_owner_id": "000000000008",
+            "billing_family_owner_id": "000000000007",
             "billing_block_type": "Standalone",
             "billing_block_name": "block name3",
             "errors": {}
