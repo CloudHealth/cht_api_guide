@@ -11,6 +11,7 @@ content_markdown: |-
   * `owner_id`: The AWS ID of the assigned account
   * `target_client_api_id`: The client API ID of the customer
   * `payer_account_owner_id`: The AWS ID of the account whose bills receive the billing line items for the assigned account
+  * `billing_family_owner_id`: The AWS ID of the billing family of the assigned account
   * `billing_block_type`: The type of billing block
   * `billing_block_name`: The name of the billing block
 
