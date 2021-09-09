@@ -68,7 +68,7 @@ right_code_blocks:
             "owner_id": "000000000001",
             "target_client_api_id": 123,
             "payer_account_owner_id": "000000000001",
-            "billing_family_owner_id": "000000000005",
+            "billing_family_owner_id": "000000000001",
             "billing_block_type": "Family",
             "billing_block_name": "block name1",
             "errors": {}
