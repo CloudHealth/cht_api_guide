@@ -2,7 +2,7 @@
 title: Add Dimensions and Measures to Report Query
 type: example
 description: Customize the granularity of report data by building complex queries that employ measures, dimensions, and filters. This example shows how to build a complex query to get the EC2 Compute Cost by Availability Zone for a monthly granularity.
-position: 9
+position: 11
 parameters:
   - name:
     content:

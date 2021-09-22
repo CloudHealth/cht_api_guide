@@ -1,6 +1,6 @@
 ---
 title: Understand Time Filters
-position: 11
+position: 3
 description: Familiarize yourself with how time filters work when used with the Reporting API.
 parameters:
   - name:
