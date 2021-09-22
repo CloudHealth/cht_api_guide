@@ -2,7 +2,7 @@
 title: Add Filters to Report Query
 type: example
 description: Use filters in conjunction with dimensions and measures to build complex queries.
-position: 10
+position: 12
 parameters:
   - name:
     content:

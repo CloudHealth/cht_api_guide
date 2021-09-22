@@ -2,7 +2,7 @@
 title: Report Dimensions and Measures
 type: get
 description: Get dimensions and measures for a report so that you can build granular report queries
-position: 7
+position: 9
 endpoint: https://chapi.cloudhealthtech.com/olap_reports/:report-type/:report-id/new
 parameters:
   - name: org_id

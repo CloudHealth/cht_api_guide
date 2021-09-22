@@ -2,7 +2,7 @@
 title: Get Query for a Report
 type: example
 description: Retrieve the query string and parameters that produce a Standard or Custom OLAP report.
-position: 8
+position: 10
 parameters:
   - name: org_id
     required: no

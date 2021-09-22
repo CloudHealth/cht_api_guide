@@ -2,7 +2,7 @@
 title: List Reports of Specific Type
 type: get
 description: Retrieve the list of available Standard OLAP reports of a specify type.
-position: 4
+position: 6
 endpoint: https://chapi.cloudhealthtech.com/olap_reports/:report-type
 parameters:
   - name: org_id

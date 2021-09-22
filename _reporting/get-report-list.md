@@ -2,7 +2,7 @@
 title: List of Queryable Reports
 type: get
 description: Retrieve a list of Standard OLAP reports that you can query.
-position: 3
+position: 5
 endpoint: https://chapi.cloudhealthtech.com/olap_reports
 parameters:
   - name: org_id

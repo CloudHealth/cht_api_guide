@@ -2,7 +2,7 @@
 title: Data for Custom Report
 type: get
 description: Retrieve the data for a custom Standard report.
-position: 6
+position: 8
 endpoint: https://chapi.cloudhealthtech.com/olap_reports/custom/:report-id
 parameters:
   - name: dimensions
