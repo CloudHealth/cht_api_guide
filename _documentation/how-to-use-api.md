@@ -72,6 +72,9 @@ content_markdown: |-
           "constants":[…]}
         }'
     ```
+    All the curl examples in the CloudHealth REST API doc are tested successfully on the Git Bash shell terminal. However, to use the Windows Command prompt, replace the single quotes in the curl request with double quotes. For example:
+    ```curl -H "Authorization: Bearer XXXXX98900000YYYY" -H "Accept: application/json" "https://chapi.cloudhealthtech.com/olap_reports/cost/history?interval=monthly"```
+    {:.warning}
 left_code_blocks:
   - code_block:
     title:
