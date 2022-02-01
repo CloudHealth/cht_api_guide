@@ -95,7 +95,7 @@ content_markdown: |-
      }
    ],
    "include_in_reports": "false"
- }
+  }
   ```
 
   After the group is removed, the schema no longer lists the `Group to Delete`:
@@ -140,7 +140,7 @@ content_markdown: |-
      }
    ],
    "include_in_reports": "false"
- }
+  }
   ```
 right_code_blocks:
   - code_block: |-
