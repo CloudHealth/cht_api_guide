@@ -19,7 +19,7 @@ parameters:
     content: String that specifies the client API ID of the partner customer. Use this parameter only when modifying the service principal of a partner customer and partner in CloudHealth. For information on how to get this ID, see [How to Get Client API ID](#partner_how-to-get-client-api-id).
   - name: disable_assets_collection
     required: no
-    content: JSON field that specifies whether to not collect data for specific assets. Enter `true` to disable asset collection for the specified asset. Default value for all assets is `false`.
+    content: JSON field that specifies whether data collection is skipped for specific assets. Enter `true` to disable asset collection for the specified asset. Default value for all assets is `false`.
 right_code_blocks:
   - code_block: |-
       {
@@ -27,9 +27,9 @@ right_code_blocks:
         "client_secret": "cbdefeb",
         "is_metrics_enabled": true,
         "modify_sp_for_partner_customer": <client_api_id>
-        "disable_assets_collection"             
+        "disable_assets_collection":            
         [{
-          "AzureKeyVaultKey" : true,
+          "AzureKeyVaultKey": true,
           "AzureKeyVaultSecret": false
         }]
       }
@@ -40,7 +40,7 @@ right_code_blocks:
         "name": "Production SP 1",
         "client_secret": "cbdefeb",
         "is_metrics_enabled": true,
-        "disable_assets_collection"             
+        "disable_assets_collection":             
         [{
           "AzureKeyVaultKey": true,
           "AzureKeyVaultSecret": false
@@ -77,8 +77,8 @@ right_code_blocks:
           "modify_sp_for_partner_customer": <client_api_id>
           "disable_assets_collection"             
           [{
-            "AzureKeyVaultKey" : true,
-            "AzureKeyVaultSecret":false
+            "AzureKeyVaultKey": true,
+            "AzureKeyVaultSecret": false
           }]
         }'
           'https://chapi.cloudhealthtech.com/v1/azure_service_principals/<sp_id>'
