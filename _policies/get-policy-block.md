@@ -3,7 +3,7 @@ title: Get All Policy Blocks
 position: 3
 description: Retrieve a list of all policy blocks for a policy.
 type: get
-endpoint: https://chapi.cloudhealthtech.com/v1/policies/<policy_id>/policy_blocks
+endpoint: https://chapi.cloudhealthtech.com/v1/policies/`<policy_id>`/policy_blocks
 parameters:
   - name: policy_id
     required: yes
