@@ -3,7 +3,7 @@ title: Get Single Policy Violation
 position: 5
 description: Retrieve a single policy violation and a list of all assets and resources affected by the violation.
 type: get
-endpoint: https://chapi.cloudhealthtech.com/v1/policies/`<policy_id>`/policy_blocks/`<policy_block_id>`/violations/`<violation_id>`?api_key=`<client_api_id>`&page=`<page_number>`&per_page=`<count_per_page>`
+endpoint: https://chapi.cloudhealthtech.com/v1/policies/:policy_id/policy_blocks/:policy_block_id/violations/:violation_id?api_key=:client_api_id&page=:page_number&per_page=:count_per_page
 parameters:
   - name: api_key
     required: no
