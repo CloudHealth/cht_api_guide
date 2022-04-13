@@ -19,7 +19,7 @@ parameters:
     content: String that specifies the ID of the organization in which this query should run. See [How to Get Organization ID](#organization_how-to-get-organization-id). If not specified, this parameter assumes the ID of your default organization.
   - name: api_version
     required: no
-    content: Integer that specifies the API version to use. Possible values are `1` (default) and `2`. Version 1 queries only return assets are are active. Version 2 queries return both active and inactive assets.
+    content: Integer that specifies the API version to use. Possible values are `1` (default) and `2`. Version 1 queries only return assets that are active. Version 2 queries return both active and inactive assets.
     sub-fields:
       - name: fields
         required: no
