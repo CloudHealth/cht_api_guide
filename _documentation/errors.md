@@ -18,6 +18,7 @@ content_markdown: |-
   | 401 | Unauthorized | Currently logged out |
   | 403 | Forbidden | Bad API Key |
   | 404 | Not Found | Bad endpoint |
+  | 408 | | Request Timeout | Exceeding read timeout |
   | 422 | Unprocessable Entity | Input format error |
   | 429 | Too many requests | Exceeding post rate limit |
   | 500 | Internal Service Error | General error |
