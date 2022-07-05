@@ -45,7 +45,7 @@ parameters:
     required: no
     content: Enter the second service account’s private JSON key in the format `data:application/json;base64, <private JSON key>`.
 content_markdown: |-
-  **Note:** If you update the service account key here, it will not be applied to the derived projects. Contact CloudHealth Support to apply the service account key to all the derived projects.
+  **Note:** If you update the service account key here, it will not be applied to the derived projects. Use the Graphql API [Update GCP Project Details](https://help.cloudhealthtech.com/graphql-api/#update-gcp-project-details) to apply the service account key to all the derived projects.
   
   | Response Code              | Description              |
   | -------------------------- | ------------------------ |
