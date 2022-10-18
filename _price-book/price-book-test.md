@@ -17,6 +17,9 @@ parameters:
   - name: billing_account_owner_id
     required: yes
     content: String that specifies which account to test the custom price book on.
+  - name: upload_to_s3
+    optional: yes
+    content: If set to true, the test results will be uploaded to the Bill Generation S3 bucket configured in the UI under Setup > Admin > Settings, within the 'cpb-dryrun-results' directory. Default value is false and an email will be sent.
 
 right_code_blocks:
   - code_block: |-
