@@ -27,8 +27,121 @@ content_markdown: |-
   ```
   curl -s -H 'Content-Type: application/json' -X PUT "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>?api_key=<api_key>&check_version=3"
   ```
-
   If the Perspective was updated, and therefore version-incremented, since the last GET operation, the update request returns a `400` error.
+
+  #### How to Remove a Static Group from a Perspective
+  To remove a static group from a perspective, remove the rules targeting that group from the schema.
+
+  In this example, the static group `Group To Delete` will be removed from the perspective, and `Group to Keep` will not be removed. The following example shows what the schema looks like before the group is removed from the perspective:
+
+  ```
+  {
+   "name": "RemoveStaticGroup",
+   "rules": [
+     {
+       "type": "filter",
+       "asset": "Group To Keep",
+       "to": "123456789",
+       "condition": {
+         "clauses": [
+           {
+             "field": [
+               "Active?"
+             ],
+             "op": "=",
+             "val": "true"
+           }
+         ]
+       }
+     },
+     {
+       "type": "filter",
+       "asset": "Group To Delete",
+       "to": "2468101214",
+       "condition": {
+         "clauses": [
+           {
+             "field": [
+               "Active?"
+             ],
+             "op": "=",
+             "val": "false"
+           }
+         ]
+       }
+     }
+   ],
+   "merges": [
+
+   ],
+   "constants": [
+     {
+       "type": "Static Group",
+       "list": [
+         {
+           "ref_id": "123456789",
+           "name": "KeepMe"
+         },
+         {
+           "ref_id": "2468101214",
+           "name": "DeleteMe"
+         },
+         {
+           "ref_id": "13579131517",
+           "name": "Other",
+           "is_other": "true"
+         }
+       ]
+     }
+   ],
+   "include_in_reports": "false"
+  }
+  ```
+
+  After the group is removed, the schema no longer lists the `Group to Delete`:
+
+  ```
+  {
+   "name": "AfterRemovingStaticGroup",
+   "rules": [
+     {
+       "type": "filter",
+       "asset": "Group To Keep",
+       "to": "123456789",
+       "condition": {
+         "clauses": [
+           {
+             "field": [
+               "Active?"
+             ],
+             "op": "=",
+             "val": "true"
+           }
+         ]
+       }
+     },
+   "merges": [
+
+   ],
+   "constants": [
+     {
+       "type": "Static Group",
+       "list": [
+         {
+           "ref_id": "123456789",
+           "name": "KeepMe"
+         },
+         {
+           "ref_id": "13579131517",
+           "name": "Other",
+           "is_other": "true"
+         }
+       ]
+     }
+   ],
+   "include_in_reports": "false"
+  }
+  ```
 right_code_blocks:
   - code_block: |-
       curl -s -H 'Content-Type: application/json' -X PUT "https://chapi.cloudhealthtech.com/v1/perspective_schemas/<perspective_id>

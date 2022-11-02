@@ -2,7 +2,7 @@
 title: Data for Custom Report
 type: get
 description: Retrieve the data for a custom Standard report.
-position: 6
+position: 8
 endpoint: https://chapi.cloudhealthtech.com/olap_reports/custom/:report-id
 parameters:
   - name: dimensions
@@ -64,7 +64,7 @@ content_markdown: |-
       }
       ```
 
-      Depending on which saved report you query, the response might vary in structure. However, all responses have common elements. See [Understand Report Data Format](#Reportingreport-data-format).
+      Depending on which saved report you query, the response might vary in structure. However, all responses have common elements. See [Understand Report Data Format](#reporting_understand-report-data-format).
       {: .success}
 
 right_code_blocks:

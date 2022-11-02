@@ -12,5 +12,6 @@ content_markdown: |-
   3. [Assign Price Book to Customer](#price-book_assign-price-book-to-customer)
   4. [Assign Price Book to Account](#price-book_assign-price-book-to-account)
 
+  **Note:** Custom price books are only available for AWS.
 
 ---

@@ -2,7 +2,7 @@
 title: Data for Standard Report
 type: get
 description: Retrieve the data for a specific Standard report.
-position: 5
+position: 7
 endpoint: https://chapi.cloudhealthtech.com/olap_reports/:report-type/:report-id
 parameters:
   - name: dimensions

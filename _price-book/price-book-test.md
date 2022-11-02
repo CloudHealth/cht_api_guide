@@ -25,8 +25,8 @@ right_code_blocks:
   - code_block: |-
       {
         "price_book_id": XXXX,
-        "customer_id": <customer_api_id>,
-        "month": "2018-01",
+        "target_client_api_id": <customer_api_id>,
+        "month": "2021-01",
         "billing_account_owner_id": 1234
       }
     title: Request Body
@@ -36,7 +36,7 @@ right_code_blocks:
       '{
         "price_book_id": XXXX,
         "target_client_api_id": <customer_api_id>,
-        "month": "2018-01",
+        "month": "2021-01",
         "billing_account_owner_id": 1234
       }'
       'https://chapi.cloudhealthtech.com/v1/price_books/dry_run?api_key=<your_api_key>'

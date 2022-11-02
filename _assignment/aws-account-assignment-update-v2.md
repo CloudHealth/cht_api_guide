@@ -33,6 +33,7 @@ right_code_blocks:
             "owner_id": "000000000002",
             "target_client_api_id": 1234,
             "payer_account_owner_id": "000000000003",
+            "billing_family_owner_id": "000000000001",
             "billing_block_type": "Consolidated",
             "billing_block_name": "block name2",
             "errors": {}
@@ -42,10 +43,11 @@ right_code_blocks:
             "owner_id": "000000000003",
             "target_client_api_id": 1234,
             "payer_account_owner_id": "000000000003",
+            "billing_family_owner_id": "000000000001",
             "billing_block_type": "Consolidated",
             "billing_block_name": "block name2",
             "errors": {}
-          },
+          }
         ]
       }
     title: Response Body

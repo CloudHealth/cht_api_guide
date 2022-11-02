@@ -2,7 +2,7 @@
 title: Add Filters to Report Query
 type: example
 description: Use filters in conjunction with dimensions and measures to build complex queries.
-position: 10
+position: 12
 parameters:
   - name:
     content:
@@ -13,9 +13,9 @@ content_markdown: |-
     ```
     curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance?
       dimensions\[\]=time
-      &dimensions\[\]=AWS-Availaibility-Zones
+      &dimensions\[\]=AWS-Availability-Zones
       &measures\[\]=ec2_cost_compute
-      &filters\[\]=AWS-Availaibility-Zones:select:us-east-1a
+      &filters\[\]=AWS-Availability-Zones:select:us-east-1a
       &interval=monthly'
     ```
 
@@ -28,9 +28,9 @@ content_markdown: |-
     ```
     curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance
       ?dimensions\[\]=time
-      &dimensions\[\]=AWS-Availaibility-Zones
+      &dimensions\[\]=AWS-Availability-Zones
       &measures\[\]=ec2_cost_compute
-      &filters\[\]=AWS-Availaibility-Zones:reject:us-east-1b,us-east-1d
+      &filters\[\]=AWS-Availability-Zones:reject:us-east-1b,us-east-1d
       &interval=monthly'
     ```
 

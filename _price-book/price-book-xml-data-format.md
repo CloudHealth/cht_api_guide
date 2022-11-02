@@ -3,7 +3,7 @@ title: Understand Format of Price Book Specification
 description: Learn how to format the XML specification that establishes a custom price book.
 position: 8
 parameters:
-- name: CHBillingRules
+- name: CHTBillingRules
   required: yes
   content: Top-level element that specifies the customer by name and customer-id, and whether or not the customer gets a EC2 reserved instance volume discount or rate change.
   sub-fields:
@@ -18,7 +18,7 @@ parameters:
   content: String for documentation purposes specifying comments on the XML specification. Can be included in any element containing child elements.
 - name: RuleGroup
   required: yes
-  content: Groups together an ordered set of rules that share a common range of applicable dates. Child element of CHBillingRules.
+  content: Groups together an ordered set of rules that share a common range of applicable dates. Child element of CHTBillingRules.
   sub-fields:
    - name: startDate
      required: no
@@ -145,7 +145,7 @@ content_markdown: |-
   **Example:**
 
   ```
-  <CHBillingRules createdBy=\"user@partner.com\" date=\"2018-01-01\">
+  <CHTBillingRules createdBy=\"user@partner.com\" date=\"2018-01-01\">
     <Comment>This is the Price Book specification for a Customer</Comment>
 
     <RuleGroup>
@@ -169,6 +169,6 @@ content_markdown: |-
 
     </RuleGroup>
 
-  </CHBillingRules>
+  </CHTBillingRules>
   ```
 ---
