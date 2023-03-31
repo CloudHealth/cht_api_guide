@@ -24,7 +24,6 @@ right_code_blocks:
     language: bash
   - code_block: |-
       {
-        customer_id : 1211,
         cloud: "AWS",
         billing_period : "2020-12",
         total_amount : 211,523.09,
