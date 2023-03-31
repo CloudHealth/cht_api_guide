@@ -27,7 +27,7 @@ content_markdown: |-
          },
          {
               "label": "Availability Zones",
-              "name": "AWS-Availaibility-Zones"
+              "name": "AWS-Availability-Zones"
               "members": [
                   {
                       "label": "us-east-1a",
@@ -88,7 +88,7 @@ content_markdown: |-
        ```
        curl -H 'Authorization: Bearer <your_api_key>' -H 'Accept: application/json' 'https://chapi.cloudhealthtech.com/olap_reports/usage/instance?
         dimensions[]=time
-        &dimensions[]=AWS-Availaibility-Zones
+        &dimensions[]=AWS-Availability-Zones
         &measures[]=ec2_cost_compute
         &interval=monthly'
        ```
