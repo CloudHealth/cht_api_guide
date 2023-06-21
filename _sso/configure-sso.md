@@ -17,10 +17,10 @@ parameters:
   - name: default_organization_id
     required: no
     content: Number that specifies the ID of the default organization to which new users should be assigned.
-  - name: endpoint
+  - name: sign_in_endpoint
     required: yes, if `sso_provider == saml`
     content: String that specifies the SAML 2.0 Endpoint from your IdP.
-  - name: certificate
+  - name: signing_cert
     required: yes, if `sso_provider == saml`
     content: String that specifies the contents of the X.509 certificate from your IdP.
   - name: sso_ignore_idp_organization
