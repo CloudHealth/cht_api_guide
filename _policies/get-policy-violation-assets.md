@@ -6,7 +6,7 @@ type: get
 endpoint: https://chapi.cloudhealthtech.com/v1/policies/:policy_id/policy_blocks/:policy_block_id/violations/:violation_id?api_key=:api access key&client_api_id=:client api Id&page=:page_number&per_page=:count_per_page
 parameters:
   - name: api_key
-    required: no
+    required: yes
     content: String that specifies the unique customer API Key, or Client API ID, that CloudHealth generates. Use this parameter if you are a partner who wants to retrieve a list of all policies belonging to a partner customer. See [How to Get Client API ID](#partner_how-to-get-client-api-id).
   - name: policy_id
     required: yes
