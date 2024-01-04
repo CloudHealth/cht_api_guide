@@ -14,11 +14,11 @@ content_markdown: |-
 
   To request an API key, click on My Profile in your user settings.
 
-  ![](images/my-profile.png)
+  ![](images/user-profile.png)
 
   In your profile settings, scroll to the API Key section and click **Get API Key**. Then click **Save Profile Changes**.
 
-  ![](images/api-key.png)
+  ![](images/generate-api-key.png)
 
   Include this GUID with each API request to authenticate into the CloudHealth platform.
 

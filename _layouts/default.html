@@ -8,23 +8,12 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="{{ site.baseurl }}/js/main.js"></script>
 		<link rel="icon" href="{{ site.baseurl }}/favicon.ico" type="image/x-icon" />
-
-		{% if jekyll.environment == 'production' %}
-			<script>
-				(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
-				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
-				ga("create", "{{ site.google_analytics_key }}", "auto");
-				ga("send", "pageview");
-			</script>
-		{% endif %}
 	</head>
 	<body>
 		<header>
 			<h1>
 				<button type="button" class="open-nav" id="open-nav"></button>
-				<a href="{{ site.baseurl }}/"><img src="{{site.baseurl}}/images/logo-white.png" alt="{{ site.title }} logo"></a>
+				<a href="{{ site.baseurl }}/"><img src="{{site.baseurl}}/images/vmw-aria-cost-icon.png" alt="{{ site.title }} logo"></a>
 			</h1>
 
 			<form action="{{ site.baseurl }}/search.html" method="get">
@@ -35,7 +24,13 @@
 			{% include sidebar.html %}
 
 			<p class="copyright">
-				&copy; {{ 'now' | date: "%Y" }} <a href="https://www.cloudhealthtech.com/">CloudHealth Technologies</a>
+    				&copy; {{ 'now' | date: "%Y" }} <a href=https://www.vmware.com/>VMware, Inc.</a>
+			</p>
+			<p class="copyright">
+  				<a href=https://www.vmware.com/help/legal.html target="_blank">Terms of Use</a> | <a href=https://www.vmware.com/help/privacy.html target="_blank">Privacy</a>
+			</p>
+			<p class="copyright">
+   				This Website Does Not Use Cookies or Other Tracking Technology
 			</p>
 		</header>
 		<div class="main">
