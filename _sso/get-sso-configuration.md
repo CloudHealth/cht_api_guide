@@ -3,7 +3,7 @@ title: Retrieve SSO configuration
 position: 2
 description: Retrieve an existing SSO configuration
 type: get
-endpoint: https://chapi.cloudhealthtech.com/v1/sso/configure
+endpoint: https://chapi.cloudhealthtech.com/v1/sso/configuration
 parameters:
   - name: client_api_id
     required: no
