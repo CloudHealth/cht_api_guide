@@ -10,7 +10,10 @@ parameters:
     content: String that specifies the unique customer API Key that CloudHealth generates. See [How to Get Client API ID](#partner_how-to-get-client-api-id).
   - name: sso_provider
     required: yes
-    content: String that specifies the unique display name of an AWS account. Specify `samlp` (SAML), `google-apps` (Google Apps), or `waad` (Azure AD).
+    content: String that specifies the unique display name of an AWS account. Specify `ah-saml` (SAML), or `ah-waad` (Azure AD).
+  - name: issuer
+    required: yes
+    content: String that specifies the SAML Issuer or Entity ID.
   - name: domains
     required: yes
     content: Array that specifies SSO domains, with each domain specified in `company.com` format.
@@ -31,11 +34,11 @@ parameters:
     content: Boolean that specifies whether the Azure Roles protocol is used to pass roles to the CloudHealth Platform. Default value is `true`.
 right_code_blocks:
   - code_block: |-
-      curl -X PUT -H 'Authorization: Bearer <your_api_key>' -H 'Content-Type: application/json' -d '{"sso_provider":"google-apps", "domains":["cloudhealthtech.com"]}' 'https://chapi.cloudhealthtech.com/v1/sso/configure'
+      curl -X PUT -H 'Authorization: Bearer API_KEY' -H 'Content-Type: application/json' -d '{"sso_provider": <"ah-samlp"|"ah-waad">, "domains": ["<domain-1>,...,<domain-N>"], "signing_cert": "<cert>", "sign_in_endpoint": "<sign_in_endpoint>", "issuer": "<issuer>", "sso_ignore_idp_organization": <true|false>}' 'https://chapi.cloudhealthtech.com/v1/sso/configure'
     title: Request Body
     language: bash
   - code_block: |-
-      {"success":"SSO configured for CloudHealth Technologies", "configuration_url": "www.provider.com/configure" }
+      {"identityProviderId":"<idp-guid>","verifyCertAlias":"cloudhealth-<id>","samlMDidpRedirectBindingURL":"<sign_in_endpoint>","issuer":"<issuer>","cert":"<cert>","message":"SSO configured for <customer>"}
     title: Response
     language: json
 ---
