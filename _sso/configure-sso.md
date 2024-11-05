@@ -1,7 +1,7 @@
 ---
 title: Configure SSO
 position: 1
-description: Create or update SSO configuration in the CloudHealth Platform.
+description: Create or update SSO configuration in the CloudHealth platform.
 type: put
 endpoint: https://chapi.cloudhealthtech.com/v1/sso/configure
 parameters:
@@ -31,7 +31,7 @@ parameters:
     content: Boolean that specifies whether the IdP does not support passing the organization to which a new user should be assigned. Default value is `false`.
   - name: azure_ad_roles_protocol
     required: yes, if `sso_provider == waad`
-    content: Boolean that specifies whether the Azure Roles protocol is used to pass roles to the CloudHealth Platform. Default value is `true`.
+    content: Boolean that specifies whether the Azure Roles protocol is used to pass roles to the CloudHealth platform. Default value is `true`.
 right_code_blocks:
   - code_block: |-
       curl -X PUT -H 'Authorization: Bearer API_KEY' -H 'Content-Type: application/json' -d '{"sso_provider": <"ah-samlp"|"ah-waad">, "domains": ["<domain-1>,...,<domain-N>"], "signing_cert": "<cert>", "sign_in_endpoint": "<sign_in_endpoint>", "issuer": "<issuer>", "sso_ignore_idp_organization": <true|false>}' 'https://chapi.cloudhealthtech.com/v1/sso/configure'
