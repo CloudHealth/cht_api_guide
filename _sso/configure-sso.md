@@ -10,7 +10,7 @@ parameters:
     content: String that specifies the unique customer API Key that CloudHealth generates. See [How to Get Client API ID](#partner_how-to-get-client-api-id).
   - name: sso_provider
     required: yes
-    content: String that specifies the unique display name of an AWS account. Specify `ah-saml` (SAML), or `ah-waad` (Azure AD).
+    content: String that specifies the unique display name of an AWS account. Specify `ah-saml` (AuthHub SAML), or `ah-waad` (AuthHub Azure AD).
   - name: issuer
     required: yes
     content: String that specifies the SAML Issuer or Entity ID.
