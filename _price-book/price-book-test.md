@@ -26,12 +26,12 @@ parameters:
 
 right_code_blocks:
 - code_block: |-
-      {
-        "price_book_id": XXXX,
-        "customer_id": <customer_api_id>,
-        "month": "2018-01",
-        "billing_account_owner_id": 1234
-      }
+    {
+      "price_book_id": XXXX,
+      "customer_id": <customer_api_id>,
+      "month": "2018-01",
+      "billing_account_owner_id": 1234
+    }
     title: Request Body
     language: json
   - code_block: |-
@@ -48,7 +48,7 @@ right_code_blocks:
     - code_block: |-
       Success (200): 
       {
-	"message": Dry run request processing, you will receive an email with your results in a few minutes. Current rate limit job count equals 2 out of 4000 per hour"
+        "message": Dry run request processing, you will receive an email with your results in a few minutes. Current rate limit job count equals 2 out of 4000 per hour"
       }
     title: Response Body
     language: json
@@ -77,7 +77,7 @@ right_code_blocks:
     - code_block: |-
       Success (200): 
       {
-	"message": "Dry run request processing, results will be uploaded to your Bill Generation S3 Bucket in a few minutes. Current rate limit job count equals 1 out of 4000 per hour"
+        "message": "Dry run request processing, results will be uploaded to your Bill Generation S3 Bucket in a few minutes. Current rate limit job count equals 1 out of 4000 per hour"
       }
     title: Response Body
     language: json
