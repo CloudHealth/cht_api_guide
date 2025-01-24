@@ -1,9 +1,7 @@
 ---
 title: Test New Price Book
 position: 9
-description: Test a customer's new custom price book without impacting the customer's CloudHealth environment. The test results are emailed to the email address specified in the partner CloudHealth account profile. For more details, see [Understand Price Book Test Results](#price-book_understand-price-book-test-results).
-
-NOTE: Enclose each parameter in double quotes. 
+description: Test a customer's new custom price book without impacting the customer's CloudHealth environment. The test results are emailed to the email address specified in the partner CloudHealth account profile. For more details, see [Understand Price Book Test Results](#price-book_understand-price-book-test-results). <br> **note:** Enclose each parameter in double quotes. 
 
 type: put
 endpoint: https://chapi.cloudhealthtech.com/v1/price_books/dry_run
@@ -26,12 +24,12 @@ parameters:
 
 right_code_blocks:
   - code_block: |-
-    {
-      "price_book_id": XXXX,
-      "customer_id": <customer_api_id>,
-      "month": "2018-01",
-      "billing_account_owner_id": 1234
-    }
+      {
+       "price_book_id": XXXX,
+       "customer_id": <customer_api_id>,
+       "month": "2018-01",
+       "billing_account_owner_id": 1234
+      }
     title: Request Body
     language: json
   - code_block: |-
