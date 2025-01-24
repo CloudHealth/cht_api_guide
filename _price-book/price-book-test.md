@@ -1,7 +1,7 @@
 ---
 title: Test New Price Book
 position: 9
-description: Test a customer's new custom price book without impacting the customer's CloudHealth environment. The test results are emailed to the email address specified in the partner CloudHealth account profile. See [Understand Price Book Test Results](#price-book_understand-price-book-test-results).
+description: Test a customer's new custom price book without impacting the customer's CloudHealth environment. The test results are emailed to the email address specified in the partner CloudHealth account profile. For more details, see [Understand Price Book Test Results](#price-book_understand-price-book-test-results).
 
 NOTE: Enclose each parameter in double quotes. 
 
