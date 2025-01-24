@@ -25,7 +25,7 @@ parameters:
     content: If set to true, the test results will be uploaded to the Bill Generation S3 bucket configured in the UI under **Setup** > **Admin** > **Settings**, within the ‘cpb-dryrun-results' directory. The default value is false.
 
 right_code_blocks:
-- code_block: |-
+  - code_block: |-
     {
       "price_book_id": XXXX,
       "customer_id": <customer_api_id>,
