@@ -45,7 +45,7 @@ right_code_blocks:
       'https://chapi.cloudhealthtech.com/v1/price_books/dry_run?api_key=<your_api_key>'
     title: Sample Request
     language: bash
-    - code_block: |-
+  - code_block: |-
       Success (200): 
       {
         "message": Dry run request processing, you will receive an email with your results in a few minutes. Current rate limit job count equals 2 out of 4000 per hour"
@@ -74,7 +74,7 @@ right_code_blocks:
       'https://chapi.cloudhealthtech.com/v1/price_books/dry_run?api_key=<your_api_key>'
     title: Sample Request
     language: bash
-    - code_block: |-
+  - code_block: |-
       Success (200): 
       {
         "message": "Dry run request processing, results will be uploaded to your Bill Generation S3 Bucket in a few minutes. Current rate limit job count equals 1 out of 4000 per hour"

@@ -1,3 +1,8 @@
 _site/
 .sass-cache/
 cloudhealth-swagger.json
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/cht_api_guide.iml
